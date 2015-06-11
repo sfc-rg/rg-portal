@@ -1,0 +1,56 @@
+.likes .title,
+.comments .title {
+  font-size: 140%;
+  margin-bottom: 10px;
+}
+
+.comment {
+  $_icon_size: 48px;
+  position: relative;
+  margin-bottom: 10px;
+
+  .user {
+    .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $_icon_size;
+      height: $_icon_size;
+
+      img {
+        border-radius: 5px;
+        width: $_icon_size;
+        height: $_icon_size;
+      }
+    }
+  }
+
+  .box {
+    margin-left: $_icon_size + 20px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    position: relative;
+    background: #ebebeb;
+
+    &:after {
+      right: 100%;
+      top: 24px;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(235, 235, 235, 0);
+      border-right-color: #ebebeb;
+      border-width: 10px;
+      margin-top: -10px;
+    }
+
+    .info {
+      font-size: 90%;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+!!!
+%html{ lang: 'ja' }
+  %head
+    %meta{ charset: 'utf-8' }
+    %title= content_for?(:title) ? content_for(:title) : 'Team::IO'
+    = content_for(:css)
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = content_for(:javascript)
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav
+      .inner
+        .title Team::IO
+        - if @current_user
+          .user
+            .icon= image_tag @current_user.icon_url
+            .name= @current_user.name
+
+    .main
+      = yield
