@@ -1,66 +1,12 @@
+// Reset CSS
 @import "reset";
+
+// Bootstrap
 @import "bourbon";
 @import "neat";
 @import "base/base";
+
+// Customize
 @import "content";
-
-body {
-  background-color: #eeeeee;
-}
-
-nav > .inner,
-.header > .inner,
-.main {
-  @include outer-container(1000px);
-}
-
-nav {
-  $_nav_height: 50px;
-  height: $_nav_height;
-  border-bottom: solid 1px gray;
-  color: white;
-  background-color: #3c3c3c;
-
-  .inner {
-    @include row();
-  }
-
-  .title {
-    @include span-columns(1 of 2);
-    height: $_nav_height;
-    line-height: $_nav_height;
-  }
-
-  .user {
-    $_icon_size: 36px;
-    @include span-columns(1 of 2);
-    text-align: right;
-    height: $_nav_height;
-    line-height: $_nav_height;
-
-    .icon {
-      display: inline;
-
-      img {
-        margin-top: ($_nav_height - $_icon_size) / 2;
-        border-radius: 5px;
-        width: $_icon_size;
-        height: $_icon_size;
-      }
-    }
-
-    .name {
-      display: inline;
-      vertical-align: top;
-    }
-  }
-}
-
-.header {
-
-}
-
-.main {
-  padding: 30px;
-  background-color: white;
-}
+@import "style";
+@import "pages";
