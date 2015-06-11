@@ -1,9 +1,9 @@
 - content_for :css do
   - stylesheet_link_tag 'pages'
 
-.content
-  - if @page
-    = render 'page', page: @page
-  - else
+- if @page
+  = render 'page', page: @page
+- else
+  .content
     まだ誰も作成していません
     = link_to '良かったら作りませんか', edit_page_path

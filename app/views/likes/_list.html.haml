@@ -1,0 +1,12 @@
+.likes
+  .title Likes
+
+  - page.likes.each do |like|
+    .like
+      .icon= image_tag like.user.icon_url
+      .nickname= like.user.nickname
+
+  = form_for Like.new(page: page) do |f|
+    = f.hidden_field :page_id
+    .like
+      = f.submit 'Like'

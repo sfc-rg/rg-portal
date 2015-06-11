@@ -17,5 +17,9 @@
             .icon= image_tag @current_user.icon_url
             .name= @current_user.name
 
+    - if content_for?(:header)
+      .header
+        .inner= content_for(:header)
+
     .main
       = yield

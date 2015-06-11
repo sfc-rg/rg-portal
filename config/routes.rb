@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: :create
+  resources :likes, only: [:create, :destroy]
 
   # scope format: false do
   #   get

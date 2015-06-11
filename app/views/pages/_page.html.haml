@@ -1,4 +1,12 @@
-%h1= page.title
-= raw page.render_content
+- content_for(:header) do
+  %h1
+    = page.title
+    %span.star
+      %i.fa.fa-star
+      = page.likes.count
+  .breadcrumb= raw page_breadcrumb_links(page)
 
-= render 'comments/list', page: page
+.content
+  = raw page.render_content
+  = render 'likes/list', page: page
+  = render 'comments/list', page: page

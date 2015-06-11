@@ -2,17 +2,14 @@ class CommentsController < ApplicationController
   before_action :require_current_user
 
   def create
-    options = comments_params.merge({
-      user: @current_user
-    })
-    @comment = Comment.create(options)
+    @comment = Comment.create(comment_params)
 
     redirect_to page_path(path: @comment.page.path)
   end
 
   private
 
-  def comments_params
-    params.require(:comment).permit(:page_id, :content)
+  def comment_params
+    params.require(:comment).permit(:page_id, :content).merge({ user: @current_user })
   end
 end

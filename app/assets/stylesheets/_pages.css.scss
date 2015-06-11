@@ -1,3 +1,43 @@
+.header {
+  background-color: #F93;
+  padding-bottom: 40px;
+
+  h1 {
+    margin-bottom: 0;
+    padding-top: 40px;
+    font-size: 200%;
+    color: white;
+  }
+
+  .star {
+    background-color: #8B8B8B;
+    padding: 4px 8px;
+    font-size: 60%;
+  }
+
+  .like_button {
+
+  }
+
+  .breadcrumb {
+    .link {
+      display: inline;
+      margin-right: 10px;
+      font-size: 90%;
+
+      a {
+        color: #666;
+      }
+
+      &:before {
+        padding-right: 6px;
+        content: '≫';
+        color: #666;
+      }
+    }
+  }
+}
+
 .likes .title,
 .comments .title {
   font-size: 140%;
@@ -30,7 +70,7 @@
     padding: 8px 12px;
     border-radius: 5px;
     position: relative;
-    background: #ebebeb;
+    background-color: #ebebeb;
 
     &:after {
       right: 100%;
@@ -57,4 +97,38 @@
       margin-bottom: 0;
     }
   }
+}
+
+.likes .title{
+  display: inline-block;
+}
+
+.like {
+  $_icon_size: 24px;
+  display: inline-block;
+  margin-right: 10px;
+
+  .icon {
+    display: inline;
+    width: $_icon_size;
+    height: $_icon_size;
+
+    img {
+      margin-bottom: 0;
+      border-radius: 5px;
+      width: $_icon_size;
+      height: $_icon_size;
+    }
+  }
+
+  .nickname {
+    display: inline;
+    position: relative;
+    top: -6px;
+  }
+}
+
+.new_like {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
