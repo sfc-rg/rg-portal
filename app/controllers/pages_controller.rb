@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :require_current_user
   before_action :set_page, only: [:show, :edit, :update]
   before_action :set_new_comment, only: :show
 
