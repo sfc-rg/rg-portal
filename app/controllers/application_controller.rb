@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_user
+  before_action :require_current_user
 
   protect_from_forgery with: :exception
 

@@ -1,6 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :require_current_user, only: :create
-
   def create
     options = comments_params.merge({
       user: @current_user
