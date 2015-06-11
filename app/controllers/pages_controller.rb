@@ -3,11 +3,8 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update]
   before_action :set_new_comment, only: :show
 
-  DEFAULT_PAGE_PATH = 'TopPage'
-
   def index
-    @page = Page.find_by(path: DEFAULT_PAGE_PATH)
-    render 'show'
+    @recent_pages = Page.recent.limit(10).each
   end
 
   def show
