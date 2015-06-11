@@ -6,7 +6,14 @@
       .icon= image_tag like.user.icon_url
       .nickname= like.user.nickname
 
-  = form_for Like.new(page: page) do |f|
-    = f.hidden_field :page_id
-    .like
-      = f.submit 'Like'
+  - like = page.like_by(@current_user)
+  - if like.present?
+    = form_for like, url: like_path(like), method: :delete do |f|
+      = f.hidden_field :page_id
+      .like
+        = f.submit 'Unlike'
+  - else
+    = form_for Like.new(page: page) do |f|
+      = f.hidden_field :page_id
+      .like
+        = f.submit 'Like'
