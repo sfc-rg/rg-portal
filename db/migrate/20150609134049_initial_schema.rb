@@ -15,7 +15,6 @@ class InitialSchema < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :slack_credentials, :users
 
     create_table :pages do |t|
       t.string :path
@@ -40,7 +39,5 @@ class InitialSchema < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :comments, :users
-    add_foreign_key :comments, :pages
   end
 end
