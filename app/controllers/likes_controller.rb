@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :require_current_user
-  before_action :ser_like
+  before_action :set_like
 
   def create
     return redirect_to root_path if @like.present? # raise error
