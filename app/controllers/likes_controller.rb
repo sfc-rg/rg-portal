@@ -19,7 +19,7 @@ class LikesController < ApplicationController
   private
 
   def set_like
-    @like = Like.find_by(page_id: params[:page_id], user: @current_user)
+    @like = Like.find_by(page_id: params[:like][:page_id], user: @current_user)
   end
 
   def like_params
