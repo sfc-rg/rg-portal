@@ -12,7 +12,7 @@ set :log_level, :debug
 set :rails_env, :production
 set :keep_releases, 5
 
-set :linked_files, %w{config/secrets.yml config/oauth.yml}
+set :linked_files, %w{config/secrets.yml config/oauth.yml config/database.yml}
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
