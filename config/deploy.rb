@@ -1,6 +1,6 @@
 lock '3.4.0'
 
-set :application, 'team-io'
+set :application, 'rg-portal'
 set :repo_url, 'git@github.com:sfc-arch/rg-team-io.git'
 set :scm, :git
 

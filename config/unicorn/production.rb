@@ -1,4 +1,4 @@
-app_path = '/var/www/team-io'
+app_path = '/var/www/rg-portal'
 app_shared_path = "#{app_path}/shared"
 
 listen "#{app_shared_path}/tmp/unicorn.sock"
