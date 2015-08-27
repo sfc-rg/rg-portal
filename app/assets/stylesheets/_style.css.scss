@@ -5,12 +5,13 @@ body {
 nav > .inner,
 .header > .inner,
 .main {
-  @include outer-container(1000px);
+  @include outer-container(1200px);
 }
 
 nav {
   $_nav_height: 50px;
   height: $_nav_height;
+  padding: 0 30px;
   color: white;
   background-color: #3c3c3c;
 
@@ -22,6 +23,9 @@ nav {
     @include span-columns(1 of 2);
     height: $_nav_height;
     line-height: $_nav_height;
+    a {
+      color: white;
+    }
   }
 
   .user {
@@ -36,7 +40,8 @@ nav {
 
       img {
         margin-top: ($_nav_height - $_icon_size) / 2;
-        border-radius: 5px;
+        margin-right: 5px;
+        border-radius: 3px;
         width: $_icon_size;
         height: $_icon_size;
       }

@@ -1,10 +1,9 @@
 .header {
+  padding: 30px;
   background-color: #F93;
-  padding-bottom: 40px;
 
   h1 {
     margin-bottom: 0;
-    padding-top: 40px;
     font-size: 200%;
     color: white;
   }
@@ -68,7 +67,7 @@
   .box {
     margin-left: $_icon_size + 20px;
     padding: 8px 12px;
-    border-radius: 5px;
+    border-radius: 3px;
     position: relative;
     background-color: #ebebeb;
 
@@ -115,7 +114,7 @@
 
     img {
       margin-bottom: 0;
-      border-radius: 5px;
+      border-radius: 2px;
       width: $_icon_size;
       height: $_icon_size;
     }

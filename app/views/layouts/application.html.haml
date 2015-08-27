@@ -2,7 +2,7 @@
 %html{ lang: 'ja' }
   %head
     %meta{ charset: 'utf-8' }
-    %title= content_for?(:title) ? content_for(:title) : 'Team::IO'
+    %title= content_for?(:title) ? content_for(:title) : 'RG Portal'
     = content_for(:css)
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = content_for(:javascript)
@@ -11,11 +11,12 @@
   %body
     %nav
       .inner
-        .title Team::IO
+        .title
+          = link_to 'RG Portal', root_path
         - if @current_user
           .user
             .icon= image_tag @current_user.icon_url
-            .name= @current_user.name
+            .name= @current_user.nickname
 
     - if content_for?(:header)
       .header
