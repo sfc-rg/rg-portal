@@ -8,14 +8,21 @@
     color: white;
   }
 
-  .star {
-    background-color: #8B8B8B;
+  .edit {
     padding: 4px 8px;
+    background-color: #8B8B8B;
     font-size: 60%;
+
+    a {
+      color: white;
+    }
   }
 
-  .like_button {
-
+  .star {
+    margin-left: 5px;
+    padding: 4px 8px;
+    background-color: #8B8B8B;
+    font-size: 60%;
   }
 
   .breadcrumb {

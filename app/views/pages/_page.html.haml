@@ -1,6 +1,9 @@
 - content_for(:header) do
   %h1
     = page.title
+    %span.edit
+      = link_to edit_page_path do
+        %i.fa.fa-edit
     %span.star
       %i.fa.fa-star
       = page.likes.count
