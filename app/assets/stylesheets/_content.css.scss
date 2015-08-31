@@ -1,10 +1,15 @@
 .content {
   h1 {
     font-size: 150%;
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 3px;
   }
 
   h2 {
     font-size: 140%;
+    padding: 5px 10px;
+    border-bottom: solid 5px #eee;
   }
 
   h3 {
@@ -23,12 +28,19 @@
     font-size: 100%;
   }
 
-  li {
-    list-style: disc;
+  ul li {
+    padding-left: 10px;
+    list-style-type: disc;
     list-style-position: inside;
   }
 
-  p, ul, table, img {
+  ol li {
+    padding-left: 10px;
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+
+  p, ol, ul, table, img {
     margin-bottom: 20px;
   }
 }
