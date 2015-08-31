@@ -12,6 +12,6 @@ class Page < ActiveRecord::Base
 
   def render_content
     # GitHub::Markdown.render(self.content)
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true).render(self.content)
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true, autolink: true).render(self.content)
   end
 end
