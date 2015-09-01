@@ -17,6 +17,7 @@ nav {
 
   .inner {
     @include row();
+    padding: 0 10px;
   }
 
   .title {
@@ -55,6 +56,6 @@ nav {
 }
 
 .main {
-  padding: 30px;
+  padding: 25px;
   background-color: white;
 }
