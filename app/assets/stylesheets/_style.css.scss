@@ -59,3 +59,21 @@ nav {
   padding: 25px;
   background-color: white;
 }
+
+.search_bar {
+  @include outer-container(600px);
+  margin-top: 25px;
+  margin-bottom: 50px;
+
+  #search_keyword {
+    margin-bottom: 0;
+    display: inline;
+    width: 80%;
+  }
+
+  #search_submit {
+    padding: 10px;
+    display: inline;
+    width: 15%;
+  }
+}
