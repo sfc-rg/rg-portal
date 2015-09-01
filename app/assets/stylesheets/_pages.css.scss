@@ -1,6 +1,11 @@
 .header {
-  padding: 30px;
+  padding: 0 25px;
   background-color: #F93;
+
+  .inner {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.14);
+  }
 
   h1 {
     margin-bottom: 0;

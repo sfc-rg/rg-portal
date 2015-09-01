@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  include MarkdownRender
+
   has_many :comments
   has_many :likes
 
@@ -8,10 +10,5 @@ class Page < ActiveRecord::Base
 
   def like_by(user)
     self.likes.find_by(user: user)
-  end
-
-  def render_content
-    # GitHub::Markdown.render(self.content)
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, tables: true, autolink: true).render(self.content)
   end
 end

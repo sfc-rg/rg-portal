@@ -1,15 +1,17 @@
 .content {
+  $_content_padding: 10px;
+
   h1 {
     font-size: 150%;
-    padding: 10px;
+    padding: $_content_padding;
     background-color: #ddd;
     border-radius: 3px;
   }
 
   h2 {
     font-size: 140%;
-    padding: 5px 10px;
-    border-bottom: solid 5px #eee;
+    padding: 5px $_content_padding;
+    border-bottom: solid 4px #eee;
   }
 
   h3 {
@@ -40,7 +42,8 @@
     list-style-position: inside;
   }
 
-  p, ol, ul, table, img {
+  h3, h4, h5, h6, p, ol, ul, table, img {
     margin-bottom: 20px;
+    padding: 0 $_content_padding;
   }
 }
