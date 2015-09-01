@@ -1,0 +1,4 @@
+slack:
+  client_id: ""
+  client_secret: ""
+  team_id: ""
