@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :comments, only: :create
   resources :likes, only: [:create, :destroy]
   scope :search do
-    # get '/slack' => 'search#slack', as: :slack_search
+    get '/' => 'search#index'
     get '*keyword' => 'search#show', as: :search
   end
 end
