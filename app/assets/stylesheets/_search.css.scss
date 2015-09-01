@@ -1,0 +1,46 @@
+.page_result,
+.slack_result {
+  margin-bottom: 10px;
+  padding: 15px;
+  border: solid 2px #eee;
+  border-bottom: solid 3px #ddd;
+  border-radius: 5px;
+  color: #444;
+}
+
+.page_result {
+  .info {
+    margin-bottom: 5px;
+    color: #111;
+  }
+
+  .title {
+    font-size: 110%;
+    font-weight: bold;
+  }
+
+  .highlight {
+    background-color: #ff9;
+  }
+}
+
+.slack_result {
+  .info {
+    margin-bottom: 5px;
+    color: #111;
+    font-size: 90%;
+  }
+
+  .small {
+    color: #888;
+    font-size: 90%;
+  }
+
+  .user, .room {
+    font-weight: bold;
+  }
+
+  .timestamp {
+    color: #888;
+  }
+}

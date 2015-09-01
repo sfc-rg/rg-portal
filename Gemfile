@@ -28,6 +28,7 @@ gem 'redcarpet', '~> 3.3.1'
 
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-slack', '~> 2.0.0'
+gem 'rsolr'
 
 group :development, :test do
   gem 'byebug'
