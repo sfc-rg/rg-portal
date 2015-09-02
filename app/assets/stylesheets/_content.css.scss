@@ -1,3 +1,15 @@
+.content-outer {
+  @include outer-container(100%);
+}
+
+.left.content {
+  @include span-columns(8);
+}
+
+.right.content {
+  @include span-columns(4);
+}
+
 .content {
   $_content_padding: 10px;
 
