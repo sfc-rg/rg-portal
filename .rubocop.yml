@@ -733,6 +733,7 @@ Metrics/AbcSize:
                  A calculated magnitude based on number of assignments,
                  branches, and conditions.
   Enabled: true
+  Max: 20
 
 Metrics/BlockNesting:
   Description: 'Avoid excessive block nesting'
