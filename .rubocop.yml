@@ -750,10 +750,10 @@ Metrics/CyclomaticComplexity:
   Enabled: true
 
 Metrics/LineLength:
-  Description: 'Limit lines to 120 characters.'
-  StyleGuide: 'https://github.com/manabo-inc/styleguide/blob/master/ruby.ja.md#line-columns'
+  Description: 'Limit lines to 128 characters.'
+  StyleGuide: 'https://github.com/cookpad/styleguide/blob/master/ruby.ja.md#1行の文字数'
   Enabled: true
-  Max: 120
+  Max: 128
 
 Metrics/MethodLength:
   Description: 'Avoid methods longer than 10 lines of code.'
