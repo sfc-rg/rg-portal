@@ -4,6 +4,10 @@ module SearchHelper
 
   def highlight_content(keyword, content)
     i = content.index(keyword)
+    if i.nil?
+      match_content = content[0..HIGHLIGHT_TRANCATE_LENGTH]
+      return "#{match_content}#{content.size > HIGHLIGHT_TRANCATE_LENGTH ? '...' : ''}"
+    end
     min_index = [i - HIGHLIGHT_TRANCATE_LENGTH, 0].max
     max_index = [i + HIGHLIGHT_TRANCATE_LENGTH, content.size - 1].min
     match_content = content[min_index..max_index]
