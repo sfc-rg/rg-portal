@@ -1,3 +1,5 @@
+%h1= "Edit #{@page.path}"
+
 = form_for @page, url: update_page_path, method: :patch do |f|
   = f.hidden_field :path
   = f.text_field :title
