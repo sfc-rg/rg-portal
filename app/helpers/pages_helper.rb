@@ -23,6 +23,6 @@ module PagesHelper
   def term_name
     today = Date.today
     term = 2 < today.month || today.month < 9 ? "s" : "f"
-    return "#{today.year}#{term}"
+    "#{today.year}#{term}"
   end
 end
