@@ -19,11 +19,9 @@ RG Portal
 ```
 $ cp config/oauth.yml.sample config/oauth.yml
 ```
+* Get the oauth information from [Slack RG AuthenticationのOAuth情報](http://portal.gw.sfc.wide.ad.jp/pages/service/portal/oauth) (require slack authentication)
 
-* Create and get Client ID and Client Secret from [Slack Authentication page](https://api.slack.com/docs/oauth)
-  (do not forget to set the redirect URL to `https://localhost:3000/auth/slack/callback`)
-
-* Get the Team ID from [Slack auth test page](https://api.slack.com/methods/auth.test/test)
+* Do not create the own oauth integration, because reaching the limit
 
 ### Library installation
 
