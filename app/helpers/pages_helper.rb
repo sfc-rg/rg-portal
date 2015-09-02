@@ -1,6 +1,7 @@
 module PagesHelper
-  def include_page_content(path)
+  def include_page_content(path, default=nil)
     page = Page.find_by(path: path)
+    return default if page.blank?
     page.render_content
   end
 
