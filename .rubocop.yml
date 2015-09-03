@@ -84,7 +84,7 @@ Style/Blocks:
                 always ugly).
                 Prefer {...} over do...end for single-line blocks.
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#single-line-blocks'
-  Enabled: true
+  Enabled: false
 
 Style/BracesAroundHashParameters:
   Description: 'Enforce braces style inside hash parameters.'
@@ -167,6 +167,7 @@ Style/DotPosition:
   Description: 'Checks the position of the dot in multi-line method calls.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains'
   Enabled: true
+  EnforcedStyle: trailing
 
 Style/DoubleNegation:
   Description: 'Checks for uses of double negation (!!).'
@@ -345,7 +346,7 @@ Style/ModuleFunction:
 Style/MultilineBlockChain:
   Description: 'Avoid multi-line chains of blocks.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#single-line-blocks'
-  Enabled: true
+  Enabled: false
 
 Style/MultilineBlockLayout:
   Description: 'Ensures newlines after multiline block do statements.'
@@ -361,6 +362,7 @@ Style/MultilineOperationIndentation:
                  Checks indentation of binary operations that span more than
                  one line.
   Enabled: true
+  EnforcedStyle: indented
 
 Style/MultilineTernaryOperator:
   Description: >-
@@ -585,7 +587,7 @@ Style/SpaceInsideBlockBraces:
                  For blocks taking parameters, checks that the left brace has
                  or doesn't have trailing space.
   Enabled: true
-  SpaceBeforeBlockParameters: false
+  SpaceBeforeBlockParameters: true
 
 Style/SpaceAroundEqualsInParameterDefault:
   Description: >-
@@ -607,7 +609,7 @@ Style/SpaceBeforeModifierKeyword:
 Style/SpaceInsideBrackets:
   Description: 'No spaces after [ or before ].'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-spaces-braces'
-  Enabled: true
+  Enabled: false
 
 Style/SpaceInsideHashLiteralBraces:
   Description: "Use spaces inside hash literal braces - or don't."
