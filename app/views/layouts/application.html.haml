@@ -2,7 +2,7 @@
 %html{ lang: 'ja' }
   %head
     %meta{ charset: 'utf-8' }
-    %title= content_for?(:title) ? content_for(:title) : 'RG Portal'
+    %title= content_for?(:title) ? "#{content_for(:title)} | RG Portal" : 'RG Portal'
     = content_for(:css)
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = content_for(:javascript)
@@ -15,8 +15,8 @@
           .title
             = link_to 'RG Portal', root_path
           .control
-            = link_to 'WIP/TERM', '#'
-            = link_to 'Thesis', '#'
+            = link_to 'WIP/TERM', wip_term_path
+            = link_to 'Thesis', thesis_path
         - if @current_user
           .inner-right
             .user
