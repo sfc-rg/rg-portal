@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   before_action :set_new_comment, only: :show
 
   def index
-    @recent_pages = Page.recent.limit(10).each
+    @pages = Page.all
   end
 
   def show
