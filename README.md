@@ -21,7 +21,7 @@ $ cp config/oauth.yml.sample config/oauth.yml
 ```
 * Get the oauth information from [Slack RG AuthenticationのOAuth情報](http://portal.gw.sfc.wide.ad.jp/pages/service/portal/oauth) (require slack authentication)
 
-* Do not create the own oauth integration, because reaching the limit
+* Do not create a new authentication yourself. The number of integrations has a limit.
 
 ### Library installation
 
