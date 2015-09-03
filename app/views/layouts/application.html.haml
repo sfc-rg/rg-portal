@@ -11,12 +11,17 @@
   %body
     %nav
       .inner
-        .title
-          = link_to 'RG Portal', root_path
+        .inner-left
+          .title
+            = link_to 'RG Portal', root_path
+          .control
+            = link_to 'WIP/TERM', '#'
+            = link_to 'Thesis', '#'
         - if @current_user
-          .user
-            .icon= image_tag @current_user.icon_url
-            .name= @current_user.nickname
+          .inner-right
+            .user
+              .icon= image_tag @current_user.icon_url
+              .name= @current_user.nickname
 
     - if content_for?(:header)
       .header
