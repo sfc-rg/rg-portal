@@ -48,19 +48,19 @@ nav {
   }
 
   .control {
-    margin-left: 20px;
     font-size: 0;
+    margin-left: 20px;
 
     a {
-      display: inline-block;
       color: $light-gray;
+      display: inline-block;
+      font-size: 1rem;
       height: $_nav_height;
       padding: 0 15px;
-      font-size: 1rem;
 
       &:hover {
-        color: $medium-gray;
         background-color: $dark-gray;
+        color: $medium-gray;
       }
     }
   }
