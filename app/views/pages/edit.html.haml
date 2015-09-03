@@ -1,9 +1,12 @@
+%h1= "Edit #{@page.path}"
+
 = form_for @page, url: update_page_path, method: :patch do |f|
   = f.hidden_field :path
   = f.text_field :title
   = f.text_area :content, rows: 30
   = f.submit 'Save'
   = f.submit 'Draft Save', name: 'draft'
+  = link_to 'Cancel', page_path(@page.path)
 
 - if params[:draft]
   %h1= @page.title

@@ -1,7 +1,15 @@
 module PagesHelper
-  def include_page_content(path)
+  def include_page_content(path, default = nil)
     page = Page.find_by(path: path)
+    return default if page.blank?
     page.render_content
+  end
+
+  def include_or_create_page_content(path, message)
+    include_page_content(
+      path,
+      "<div><a href='#{edit_page_path(path)}'>#{message}</a></div>"
+    )
   end
 
   def page_breadcrumb_links(page)
@@ -10,5 +18,11 @@ module PagesHelper
       link = link_to(path, page_path(paths.take(index + 1).join('/')))
       "<div class='link'>#{link}</div>"
     end.join
+  end
+
+  def term_name
+    today = Date.today
+    term = 2 < today.month || today.month < 9 ? 's' : 'f'
+    "#{today.year}#{term}"
   end
 end
