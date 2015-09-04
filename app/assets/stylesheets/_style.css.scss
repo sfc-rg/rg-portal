@@ -20,21 +20,53 @@ nav {
     padding: 0 10px;
   }
 
-  .title {
+  .inner-left {
     @include span-columns(1 of 2);
     height: $_nav_height;
     line-height: $_nav_height;
+
+    >div {
+      display: inline-block;
+    }
+  }
+
+  .inner-right {
+    @include span-columns(1 of 2);
+    height: $_nav_height;
+    line-height: $_nav_height;
+    text-align: right;
+
+    >div {
+      display: inline-block;
+    }
+  }
+
+  .title {
     a {
       color: white;
     }
   }
 
+  .control {
+    font-size: 0;
+    margin-left: 20px;
+
+    a {
+      color: $light-gray;
+      display: inline-block;
+      font-size: 1rem;
+      height: $_nav_height;
+      padding: 0 15px;
+
+      &:hover {
+        background-color: $dark-gray;
+        color: $medium-gray;
+      }
+    }
+  }
+
   .user {
     $_icon_size: 36px;
-    @include span-columns(1 of 2);
-    text-align: right;
-    height: $_nav_height;
-    line-height: $_nav_height;
 
     .icon {
       display: inline;

@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   get '/auth/slack/callback' => 'session#slack_callback'
 
-  root 'pages#index'
+  root 'pre_built_pages#top'
+  get '/wip_term' => 'pre_built_pages#wip_term'
+  get '/thesis' => 'pre_built_pages#thesis'
+
   scope :pages do
-    get   '*path/edit' => 'pages#edit', as: :edit_page
+    get '/' => 'pages#index', as: :pages
+    get '*path/edit' => 'pages#edit', as: :edit_page
     patch '*path' => 'pages#update', as: :update_page
-    get   '*path' => 'pages#show', as: :page
+    get '*path' => 'pages#show', as: :page
   end
 
   resources :comments, only: :create
