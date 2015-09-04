@@ -136,6 +136,7 @@ GEM
     neat (1.7.2)
       bourbon (>= 4.0)
       sass (>= 3.3)
+    net-ldap (0.11)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -296,6 +297,7 @@ DEPENDENCIES
   json_expressions (~> 0.8.3)
   mysql2 (= 0.3.18)
   neat
+  net-ldap
   omniauth (~> 1.2.2)
   omniauth-slack (~> 2.0.0)
   pry-doc
