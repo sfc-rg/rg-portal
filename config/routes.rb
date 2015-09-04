@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get '/thesis' => 'pre_built_pages#thesis'
 
   scope :pages do
-    get   '/' => 'pages#index', as: :pages
-    get   '*path/edit' => 'pages#edit', as: :edit_page
+    get '/' => 'pages#index', as: :pages
+    get '*path/edit' => 'pages#edit', as: :edit_page
     patch '*path' => 'pages#update', as: :update_page
-    get   '*path' => 'pages#show', as: :page
+    get '*path' => 'pages#show', as: :page
   end
 
   resources :comments, only: :create
