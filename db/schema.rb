@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905024738) do
+ActiveRecord::Schema.define(version: 20150905135019) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20150905024738) do
     t.string   "path"
     t.text     "title"
     t.text     "content"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "pages", ["content"], name: "index_pages_on_content"
-  add_index "pages", ["users_id"], name: "index_pages_on_users_id"
+  add_index "pages", ["user_id"], name: "index_pages_on_user_id"
 
   create_table "renamed_pages", force: :cascade do |t|
     t.string   "before_path"
@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 20150905024738) do
   end
 
   create_table "slack_credentials", force: :cascade do |t|
-    t.integer  "users_id"
-    t.string   "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.string   "slack_user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "slack_credentials", ["users_id"], name: "index_slack_credentials_on_users_id"
+  add_index "slack_credentials", ["user_id"], name: "index_slack_credentials_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
