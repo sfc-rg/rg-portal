@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :require_current_user
+  before_action :require_active_current_user
   before_action :set_like
 
   def create

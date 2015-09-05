@@ -28,4 +28,6 @@
         .inner= content_for(:header)
 
     .main
+      - flash.each do |level, message|
+        .flash{ class: level }= message
       = yield

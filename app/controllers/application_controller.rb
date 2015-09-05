@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
   def require_current_user
     redirect_to '/auth/slack' if @current_user.blank?
   end
+
+  def require_active_current_user
+    require_current_user
+    redirect_to edit_profile_path if @current_user.present? && !@current_user.active?
+  end
 end

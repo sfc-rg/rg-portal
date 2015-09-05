@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  before_action :require_current_user
+  before_action :require_active_current_user
   before_action :set_keyword, except: :index
   before_action :set_page_results, only: [:show, :pages]
   before_action :set_slack_results, only: [:show, :slack]
