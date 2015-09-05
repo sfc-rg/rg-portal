@@ -1,8 +1,6 @@
 class SettingsController < ApplicationController
   before_action :require_current_user
 
-  STUDENT_ID_PATTERN = /7\d{7}/
-
   def edit_profile
   end
 
@@ -15,16 +13,7 @@ class SettingsController < ApplicationController
     end
 
     info = LdapSupport.ldap_info(ldap[:username])
-    credential = LdapCredential.new(
-      user: @current_user,
-      uid: info[:uid],
-      uid_number: info[:uidnumber],
-      gid_number: info[:gidnumber],
-      gecos: info[:gecos],
-      student_id: info[:gecos].match(STUDENT_ID_PATTERN).to_s,
-    )
-
-    unless credential.save
+    unless LdapCredential.import(user: @current_user, info: info).save
       flash[:error] = '認証情報の保存で問題が発生しました'
       return redirect_to edit_profile_path
     end

@@ -11,6 +11,7 @@
 @import "font-awesome";
 
 // Customize
+@import "color";
 @import "content";
 @import "style";
 
@@ -24,7 +25,7 @@
   padding: 10px;
 
   &.error {
-    border: solid 1px #f99;
-    background-color: #fdd;
+    background-color: $light-red;
+    border: solid 1px $dark-red;
   }
 }

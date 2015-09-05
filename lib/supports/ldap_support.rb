@@ -1,5 +1,4 @@
 module LdapSupport
-
   LDAP_CONFIG = YAML.load(File.open(Rails.root.join('config', 'ldap.yml')))
   LDAP_HOST = LDAP_CONFIG['host']
   LDAP_BASE = LDAP_CONFIG['base']
@@ -19,13 +18,7 @@ module LdapSupport
 
     INFO_EXTRACT_KEYS.each_with_object({}) do |key, object|
       value = info.try(key)
-      next if value.nil?
-
-      if value.size == 1
-        object[key] = value.first
-      else
-        object[key] = value
-      end
+      object[key] = value.size == 1 ? value.first : value
     end
   end
 end
