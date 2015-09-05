@@ -10,12 +10,12 @@ RSpec.describe SettingsController, type: :controller do
     let(:student_id) { 71349640 }
     let(:ldap_bind_result) { true }
     let(:ldap_info_result) {
-      double(:hash, {
-        uid: [username],
+      double(:hash,
+        uid: [ username ],
         gecos: ["Yusei Yamanaka, SFC, #{student_id}, t13964yy@sfc.keio.ac.jp"],
         uidnumber: ['11032'],
         gidnumber: ['1000'],
-      })
+      )
     }
     before do
       session[:user_id] = user.id # logged in
@@ -27,12 +27,12 @@ RSpec.describe SettingsController, type: :controller do
     context 'when correct credential' do
       context 'and receive valid old ldap user result' do
         let(:ldap_info_result) {
-          double(:hash, {
-            uid: [username],
+          double(:hash,
+            uid: [ username ],
             gecos: ['miyukki,,,'],
             uidnumber: ['11032'],
             gidnumber: ['1000'],
-          })
+          )
         }
 
         it 'saves ldap credential' do
@@ -80,5 +80,4 @@ RSpec.describe SettingsController, type: :controller do
       end
     end
   end
-
 end
