@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_current_user
+  before_action :require_active_current_user
 
   def create
     @comment = Comment.create(comment_params)

@@ -13,5 +13,18 @@
 // Customize
 @import "content";
 @import "style";
+
+// Controller
 @import "pages";
 @import "search";
+@import "settings";
+
+.flash {
+  margin: 0 10px 20px 10px;
+  padding: 10px;
+}
+
+.flash.error {
+  border: solid 1px #f99;
+  background-color: #fdd;
+}

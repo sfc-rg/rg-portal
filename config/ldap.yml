@@ -1,0 +1,2 @@
+host: ldap1.sfc.wide.ad.jp
+base: ou=People,dc=sfc,dc=wide,dc=ad,dc=jp

@@ -1,0 +1,17 @@
+.content
+  %h2
+    rg-net のアカウント
+    = "(#{@current_user.ldap_credential.present? ? '認証済み' : '未認証'})"
+  - if @current_user.ldap_credential.present?
+    .ldap_form
+      %label Username
+      = text_field :ldap, :username, disabled: true, value: @current_user.ldap_credential.uid
+      %label Student Id
+      = text_field :ldap, :username, disabled: true, value: @current_user.ldap_credential.student_id
+  - else
+    = form_tag update_profile_path, method: :patch, class: 'ldap_form' do
+      %label Username
+      = text_field :ldap, :username, placeholder: 'username'
+      %label Password
+      = password_field :ldap, :password, placeholder: 'password'
+      = submit_tag '設定'
