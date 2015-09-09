@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'bourbon'
 gem 'neat'
 gem 'font-awesome-sass', '~> 4.3.0'
+gem 'nested_form'
 
 gem 'mysql2', '0.3.18'
 gem 'bcrypt', '3.1.10'

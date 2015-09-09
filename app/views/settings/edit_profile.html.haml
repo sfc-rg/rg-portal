@@ -1,17 +1,29 @@
 .content
   %h2
-    rg-net のアカウント
+    rg-net アカウント連携
     = "(#{@current_user.ldap_credential.present? ? '認証済み' : '未認証'})"
   - if @current_user.ldap_credential.present?
-    .ldap-form
+    .setting-form
       %label Username
       = text_field :ldap, :username, disabled: true, value: @current_user.ldap_credential.uid
       %label Student Id
       = text_field :ldap, :username, disabled: true, value: @current_user.ldap_credential.student_id
+    %p この情報が間違っている場合は #coordinator まで連絡してください。
   - else
-    = form_tag update_profile_path, method: :patch, class: 'ldap-form' do
+    = form_tag update_ldap_path, method: :patch, class: 'setting-form' do
       %label Username
       = text_field :ldap, :username, placeholder: 'username'
       %label Password
       = password_field :ldap, :password, placeholder: 'password'
-      = submit_tag '設定'
+      = submit_tag 'アカウント連携をする'
+
+  %h2
+    KG設定
+  = nested_form_for @current_user, url: update_profile_path, class: 'setting-form' do |f|
+    .setting-form
+      = f.fields_for :group_users do |group_form|
+        = group_form.link_to_remove do
+          %i.fa.fa-trash
+        = group_form.select :group_id, group_list
+      = f.link_to_add '追加', :group_users
+      = f.submit 'KG設定を更新する'

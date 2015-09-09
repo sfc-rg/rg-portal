@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope :settings do
     get '/profile' => 'settings#edit_profile', as: :edit_profile
     patch '/profile' => 'settings#update_profile', as: :update_profile
+    patch '/profile/ldap' => 'settings#update_ldap', as: :update_ldap
   end
 
   scope :search do

@@ -1,4 +1,24 @@
-.ldap-form {
+.setting-form {
   margin: 0 auto;
   max-width: 400px;
+}
+
+.fields {
+  position: relative;
+}
+
+.remove_nested_fields {
+  position: absolute;
+  left: 410px;
+  top: 6px;
+}
+
+select {
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  width: 100%;
+  height: 36px;
 }
