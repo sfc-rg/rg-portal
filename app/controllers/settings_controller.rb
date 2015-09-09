@@ -30,6 +30,6 @@ class SettingsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:group_users_attributes => [:group_id, :_destroy])
+    params.require(:user).permit(group_users_attributes: [:group_id, :_destroy])
   end
 end
