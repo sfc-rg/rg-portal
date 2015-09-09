@@ -1,6 +1,5 @@
 module SettingsHelper
   def group_list
-    # Group.all.map{ |t| [t.name, t.id] }
-    [ ['ARCH', 1], ['HOGE', 2] ]
+    Group.all.map{ |t| [t.name, t.id] }
   end
 end

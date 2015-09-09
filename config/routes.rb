@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/wip_term' => 'pre_built_pages#wip_term'
   get '/thesis' => 'pre_built_pages#thesis'
 
+  resources :groups, only: [:index, :create]
+
   scope :settings do
     get '/profile' => 'settings#edit_profile', as: :edit_profile
     patch '/profile' => 'settings#update_profile', as: :update_profile
