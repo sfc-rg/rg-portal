@@ -4,7 +4,7 @@ RSpec.describe SettingsController, type: :controller do
   render_views
   let(:user) { FactoryGirl.create(:user) }
 
-  describe '#update_profile' do
+  describe '#update_ldap' do
     let(:username) { 'miyukki' }
     let(:password) { 'p@ssw0rd' }
     let(:student_id) { 71349640 }
@@ -21,7 +21,7 @@ RSpec.describe SettingsController, type: :controller do
       session[:user_id] = user.id # logged in
       allow_any_instance_of(Net::LDAP).to receive(:bind).and_return(ldap_bind_result)
       allow_any_instance_of(Net::LDAP).to receive_message_chain(:search, :first).and_return(ldap_info_result)
-      patch :update_profile, ldap: { username: username, password: password }
+      patch :update_ldap, ldap: { username: username, password: password }
     end
 
     context 'when correct credential' do

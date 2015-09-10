@@ -19,9 +19,11 @@
             = link_to 'Thesis', thesis_path
         - if @current_user
           .inner-right
-            .user
-              .icon= image_tag @current_user.icon_url
-              .name= @current_user.nickname
+            .control
+              = link_to edit_profile_path do
+                .user
+                  .icon= image_tag @current_user.icon_url
+                  .name= @current_user.nickname
 
     - if content_for?(:header)
       .header

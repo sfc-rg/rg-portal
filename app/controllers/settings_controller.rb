@@ -4,7 +4,7 @@ class SettingsController < ApplicationController
   def edit_profile
   end
 
-  def update_profile
+  def update_ldap
     ldap = params.require(:ldap).permit(:username, :password)
 
     unless LdapSupport.ldap_bind(ldap[:username], ldap[:password])
@@ -19,5 +19,17 @@ class SettingsController < ApplicationController
     end
 
     redirect_to edit_profile_path
+  end
+
+  def update_profile
+    @current_user.group_users.destroy_all
+    @current_user.update(user_params)
+    redirect_to edit_profile_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(group_users_attributes: [:group_id, :_destroy])
   end
 end
