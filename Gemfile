@@ -32,6 +32,8 @@ gem 'omniauth-slack', '~> 2.0.0'
 gem 'rsolr'
 gem 'net-ldap'
 
+gem 'gemoji'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
