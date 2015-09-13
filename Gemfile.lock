@@ -322,3 +322,6 @@ DEPENDENCIES
   unicorn (= 4.8.3)
   web-console (~> 2.0)
   yajl-ruby (~> 1.2.1)
+
+BUNDLED WITH
+   1.10.6
