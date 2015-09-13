@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
+  include Emojifier
   include MarkdownRender
 
   has_many :comments

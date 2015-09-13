@@ -3,6 +3,7 @@ module MarkdownRender
   HTML_RENDER_OPTIONS = { hard_wrap: true }
 
   def render_content
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(HTML_RENDER_OPTIONS), MARKDOWN_RENDER_OPTIONS).render(self.content)
+    content = self.class.include?(Emojifier) ? emojify : self.content
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(HTML_RENDER_OPTIONS), MARKDOWN_RENDER_OPTIONS).render(content)
   end
 end
