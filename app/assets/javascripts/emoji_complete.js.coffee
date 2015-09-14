@@ -12,5 +12,5 @@ ready = ->
         "$1:#{value}:"
     ], maxCount: 5)
 
-$ ready
+$(ready)
 $(document).on('page:load', ready)
