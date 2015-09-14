@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def edit
+    gon.emojis = Emoji.send(:names_index).map { |name, emoji| [name, emoji.image_filename] }.to_h
     @page = Page.new(path: params[:path]) if @page.blank?
   end
 
