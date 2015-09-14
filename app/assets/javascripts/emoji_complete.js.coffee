@@ -1,5 +1,4 @@
 ready = ->
-  console.log "loaded!"
   emojiCompletions = $('textarea.emoji-complete')
   if emojiCompletions.length > 0
     emojiAliases = Object.keys(gon.emojis)
