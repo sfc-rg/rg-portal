@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
+  include EmojiComplete
   before_action :require_active_current_user
   before_action :set_page, only: [:show, :edit, :update]
   before_action :set_new_comment, only: :show
+  before_action :set_emoji_completion, only: [:show, :edit]
 
   def index
     @pages = Page.all
@@ -11,7 +13,6 @@ class PagesController < ApplicationController
   end
 
   def edit
-    gon.emojis = Emoji.send(:names_index).map { |name, emoji| [name, emoji.image_filename] }.to_h
     @page = Page.new(path: params[:path]) if @page.blank?
   end
 
