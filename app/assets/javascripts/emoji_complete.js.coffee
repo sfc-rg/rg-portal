@@ -1,4 +1,5 @@
-jQuery ($) ->
+ready = ->
+  console.log "loaded!"
   emojiCompletions = $('textarea.emoji-complete')
   if emojiCompletions.length > 0
     emojiAliases = Object.keys(gon.emojis)
@@ -11,3 +12,6 @@ jQuery ($) ->
       replace: (value) ->
         "$1:#{value}:"
     ], maxCount: 5)
+
+$ ready
+$(document).on('page:load', ready)
