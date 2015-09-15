@@ -22,7 +22,6 @@ class SettingsController < ApplicationController
   end
 
   def update_profile
-    @current_user.group_users.destroy_all
     @current_user.update(user_params)
     redirect_to edit_profile_path
   end
@@ -30,6 +29,6 @@ class SettingsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(group_users_attributes: [:group_id, :_destroy])
+    params.require(:user).permit(group_users_attributes: [:id, :group_id, :_destroy])
   end
 end
