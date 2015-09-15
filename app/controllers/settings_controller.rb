@@ -22,7 +22,9 @@ class SettingsController < ApplicationController
   end
 
   def update_profile
-    @current_user.update(user_params)
+    unless @current_user.update(user_params)
+      return render 'edit_profile'
+    end
     redirect_to edit_profile_path
   end
 
