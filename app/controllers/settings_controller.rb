@@ -22,14 +22,17 @@ class SettingsController < ApplicationController
   end
 
   def update_profile
-    @current_user.group_users.destroy_all
-    @current_user.update(user_params)
+    unless @current_user.update(user_params)
+      flash[:error] = 'ユーザー情報が正しくありません'
+      return action: :edit_profile
+    end
+
     redirect_to edit_profile_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(group_users_attributes: [:group_id, :_destroy])
+    params.require(:user).permit(group_users_attributes: [:id, :group_id, :_destroy])
   end
 end

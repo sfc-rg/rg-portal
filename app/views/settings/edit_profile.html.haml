@@ -20,10 +20,15 @@
   %h2
     KG設定
   = nested_form_for @current_user, url: update_profile_path, class: 'setting-form' do |f|
+    - if @current_user.errors.any?
+      .flash.error
+        - @current_user.errors.full_messages.each do |msg|
+          %div= msg
     .setting-form
       = f.fields_for :group_users do |group_form|
         = group_form.link_to_remove do
           %i.fa.fa-trash
+        = group_form.hidden_field :id
         = group_form.select :group_id, group_list
       = f.link_to_add '追加', :group_users
       = f.submit 'KG設定を更新する'
