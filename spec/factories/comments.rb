@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :comment do
-    user nil
-post nil
-content "MyText"
+    content 'This is a comment.'
+    association :user
+    association :page
   end
-
 end
