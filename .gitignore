@@ -18,3 +18,5 @@
 
 /config/oauth.yml
 bundle/
+public/images/emoji
+vendor/assets/bower_components

@@ -1,4 +1,7 @@
 class Comment < ActiveRecord::Base
+  include Emojifier
+  include MarkdownRender
+
   belongs_to :user
   belongs_to :page
 
@@ -7,10 +10,6 @@ class Comment < ActiveRecord::Base
   validates :content, presence: true
 
   MENTION_USER_REGEX = /@[A-z0-9]+/
-
-  def render_content
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(self.content)
-  end
 
   private
 
