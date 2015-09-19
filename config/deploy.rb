@@ -37,7 +37,7 @@ namespace :gemoji do
   task :install do
     on roles(:web) do
       within release_path do
-        execute :rake, 'emoji'
+        execute :rake, 'gemoji'
       end
     end
   end
