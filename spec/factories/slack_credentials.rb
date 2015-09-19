@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :slack_credential do
-    sequence(:slack_user_id) { |n| "U03AE1H0U#{n}" }
+    user_id 'U03AE1H0U'
   end
 end

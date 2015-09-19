@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require turbolinks
-//= require jquery-textcomplete/dist/jquery.textcomplete
 //= require_tree .

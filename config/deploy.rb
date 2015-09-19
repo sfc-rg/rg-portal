@@ -20,25 +20,3 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
-
-before 'deploy:compile_assets', 'bower:install'
-namespace :bower do
-  task :install do
-    on roles(:web) do
-      within release_path do
-        execute :rake, 'bower:install CI=true'
-      end
-    end
-  end
-end
-
-before 'deploy:compile_assets', 'gemoji:install'
-namespace :gemoji do
-  task :install do
-    on roles(:web) do
-      within release_path do
-        execute :rake, 'gemoji'
-      end
-    end
-  end
-end

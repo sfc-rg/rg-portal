@@ -7,7 +7,6 @@ RG Portal
 
 * Ruby 2.2.1
 * Bundler
-* Bower
 
 ### Recommends
 
@@ -24,7 +23,7 @@ $ cp config/oauth.yml.sample config/oauth.yml
 
 * Do not create a new authentication yourself. The number of integrations has a limit.
 
-### Gem installation
+### Library installation
 
 ```
 $ bundle install --path=vendor/bundle
@@ -35,18 +34,6 @@ If you have a error like `Failed to build gem native extension.` during installa
 ```
 $ bundle config build.libv8 --with-system-v8
 $ bundle config build.therubyracer --with-v8-dir
-```
-
-### Copy emoji files to public directory
-
-```
-$ rake emoji
-```
-
-### JavaScript library installation
-
-```
-rake bower:install
 ```
 
 ### Database creation
