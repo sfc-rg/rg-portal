@@ -3,7 +3,7 @@ module Emojifier
     self.content.gsub(/:([\w+-]+):/) do |match|
       name = Regexp.last_match(1)
       emoji = Emoji.find_by_alias(name)
-      return match unless emoji
+      next match unless emoji
       ActionController::Base.helpers.image_tag(
         ActionController::Base.helpers.image_path("emoji/#{emoji.image_filename}"),
         alt: name, class: 'emoji'
