@@ -15,8 +15,6 @@ class Meeting < ActiveRecord::Base
 
   def validate_datetime
     return if start_at.blank? || end_at.blank?
-    if start_at > end_at
-      errors.add(:end_at, 'must be greater than start_at')
-    end
+    errors.add(:end_at, 'must be greater than start_at') if start_at > end_at
   end
 end
