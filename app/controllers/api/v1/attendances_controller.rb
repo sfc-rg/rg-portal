@@ -5,7 +5,7 @@ class Api::V1::AttendancesController < Api::V1::BaseController
 
   def create
     if MeetingAttendance.exists?(user: @user, meeting: @meeting)
-      return render json: { error: 'Not found meeting at current time.' }, status: 500
+      return render json: { error: 'Duplicated attendance.' }, status: 500
     end
 
     MeetingAttendance.create!(user: @user, meeting: @meeting)
