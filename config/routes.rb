@@ -28,4 +28,10 @@ Rails.application.routes.draw do
 
   resources :comments, only: :create
   resources :likes, only: [:create, :destroy]
+
+  namespace :api do
+    namespace :v1, format: :json do
+      resources :attendances
+    end
+  end
 end

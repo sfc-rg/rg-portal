@@ -2,12 +2,14 @@ class Meeting < ActiveRecord::Base
   has_many :meeting_attendances
   has_many :attendances, through: :meeting_attendances, source: :user
 
-  scope :current, -> { find_by('start_at > ? AND end_at < ?', Time.now, Time.now) }
-
   validates :name, presence: true
   validates :start_at, presence: true
   validates :end_at, presence: true
   validate :validate_datetime
+
+  def self.current
+    self.where('start_at < ? AND end_at > ?', Time.now, Time.now).first
+  end
 
   private
 
