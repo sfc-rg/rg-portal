@@ -1,0 +1,23 @@
+.content
+  %h1 ミーティング一覧
+  %table
+    %tr
+      %th #
+      %th Name
+      %th Start At
+      %th End At
+      %th Attendance Count
+    - @meetings.each do |meeting|
+      %tr
+        %td= meeting.id
+        %td= meeting.name
+        %td= meeting.start_at
+        %td= meeting.end_at
+        %td= meeting.attendances.count
+
+  %h1 ミーティング追加
+  = form_for Meeting.new do |f|
+    = f.text_field :name
+    = f.datetime_field :start_at
+    = f.datetime_field :end_at
+    = f.submit

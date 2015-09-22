@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/thesis' => 'pre_built_pages#thesis'
 
   resources :groups, only: [:index, :create]
+  resources :meetings, only: [:index, :create]
 
   scope :settings do
     get '/profile' => 'settings#edit_profile', as: :edit_profile
