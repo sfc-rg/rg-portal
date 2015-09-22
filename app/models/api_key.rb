@@ -3,7 +3,7 @@ class ApiKey < ActiveRecord::Base
 
   belongs_to :user
 
-  def generate_access_token
+  def generate_access_token!
     self.access_token = SecureRandom.hex(ACCESS_TOKEN_LENGTH)
   end
 end

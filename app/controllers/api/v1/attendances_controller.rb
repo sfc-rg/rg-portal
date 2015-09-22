@@ -9,7 +9,6 @@ class Api::V1::AttendancesController < Api::V1::BaseController
     end
 
     MeetingAttendance.create!(user: @user, meeting: @meeting)
-    render json: { info: 'Success!' }
   rescue
     render json: { error: 'Internal server error.' }, status: 500
   end
@@ -22,7 +21,7 @@ class Api::V1::AttendancesController < Api::V1::BaseController
   end
 
   def set_user_by_student_id
-    @user = LdapCredential.find_by(student_id: student_id).try(:user)
+    @user = LdapCredential.find_by(student_id: params[:student_id]).try(:user)
     render json: { error: 'Not found user with student id.' }, status: 500 if @user.blank?
   end
 end
