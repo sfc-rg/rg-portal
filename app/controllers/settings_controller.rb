@@ -24,7 +24,7 @@ class SettingsController < ApplicationController
   def update_profile
     unless @current_user.update(user_params)
       flash[:error] = 'ユーザー情報が正しくありません'
-      return action: :edit_profile
+      return render action: :edit_profile
     end
 
     redirect_to edit_profile_path
