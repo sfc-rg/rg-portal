@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922074008) do
+ActiveRecord::Schema.define(version: 20150922100055) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150922074008) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "ldap_credentials", ["student_id"], name: "index_ldap_credentials_on_student_id", unique: true
   add_index "ldap_credentials", ["user_id"], name: "index_ldap_credentials_on_user_id"
 
   create_table "likes", force: :cascade do |t|
