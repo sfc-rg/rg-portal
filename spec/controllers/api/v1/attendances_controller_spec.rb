@@ -5,12 +5,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
   let!(:meeting) { FactoryGirl.create(:meeting) }
   let(:user) { FactoryGirl.create(:user) }
   let(:student_id) { FactoryGirl.create(:ldap_credential, user: user).student_id }
-  let(:access_token) do
-    ApiKey.new.tap do |api_key|
-      api_key.generate_access_token!
-      api_key.save!
-    end.access_token
-  end
+  let(:access_token) { FactoryGirl.create(:api_key).access_token }
 
   describe '#create' do
     before do
@@ -18,7 +13,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
     end
 
     it 'returns success response' do
-      expect(response).to be_ok
+      expect(response).to have_http_status(:ok)
       expect(response).to render_template('create')
     end
 
@@ -26,7 +21,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
       let!(:meeting) { FactoryGirl.create(:meeting, start_at: 30.minutes.since) }
 
       it 'returns error response' do
-        expect(response).to be_error
+        expect(response).to have_http_status(:forbidden)
         expect(response.body).to eq({ error: 'Not found meeting at current time.' }.to_json)
       end
     end
@@ -35,7 +30,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
       let(:student_id) { '12345678' }
 
       it 'returns error response' do
-        expect(response).to be_error
+        expect(response).to have_http_status(:forbidden)
         expect(response.body).to eq({ error: 'Not found user with student id.' }.to_json)
       end
     end
@@ -46,7 +41,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
       end
 
       it 'returns error response' do
-        expect(response).to be_error
+        expect(response).to have_http_status(:conflict)
         expect(response.body).to eq({ error: 'Duplicated attendance.' }.to_json)
       end
     end
