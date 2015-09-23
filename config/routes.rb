@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/thesis' => 'pre_built_pages#thesis'
 
   resources :groups, only: [:index, :create]
+  resources :meetings, only: [:index, :create]
 
   scope :settings do
     get '/profile' => 'settings#edit_profile', as: :edit_profile
@@ -27,4 +28,10 @@ Rails.application.routes.draw do
 
   resources :comments, only: :create
   resources :likes, only: [:create, :destroy]
+
+  namespace :api do
+    namespace :v1, format: :json do
+      resources :attendances
+    end
+  end
 end

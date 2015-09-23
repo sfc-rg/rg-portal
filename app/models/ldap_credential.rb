@@ -3,6 +3,7 @@ class LdapCredential < ActiveRecord::Base
 
   validates :uid, uniqueness: true
   validates :uid_number, uniqueness: true
+  validates :student_id, uniqueness: true
 
   STUDENT_ID_PATTERN = /\d{8}/
 

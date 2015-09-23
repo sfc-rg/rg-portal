@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906015824) do
+ActiveRecord::Schema.define(version: 20150922100055) do
+
+  create_table "api_keys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "access_token", limit: 32
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "api_keys", ["access_token"], name: "index_api_keys_on_access_token"
+  add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -49,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150906015824) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "ldap_credentials", ["student_id"], name: "index_ldap_credentials_on_student_id", unique: true
   add_index "ldap_credentials", ["user_id"], name: "index_ldap_credentials_on_user_id"
 
   create_table "likes", force: :cascade do |t|
@@ -60,6 +72,24 @@ ActiveRecord::Schema.define(version: 20150906015824) do
 
   add_index "likes", ["page_id"], name: "index_likes_on_page_id"
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
+  create_table "meeting_attendances", force: :cascade do |t|
+    t.integer  "meeting_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "meeting_attendances", ["meeting_id"], name: "index_meeting_attendances_on_meeting_id"
+  add_index "meeting_attendances", ["user_id"], name: "index_meeting_attendances_on_user_id"
+
+  create_table "meetings", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "start_at",   null: false
+    t.datetime "end_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pages", force: :cascade do |t|
     t.string   "path"
