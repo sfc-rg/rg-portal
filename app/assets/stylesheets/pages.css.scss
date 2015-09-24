@@ -49,10 +49,14 @@
   }
 }
 
-.likes .title,
-.comments .title {
-  font-size: 140%;
-  margin-bottom: 10px;
+.likes ,
+.comments {
+  margin: 10px;
+  
+  .title {
+    font-size: 140%;
+    margin-bottom: 10px;
+  }
 }
 
 .comment {
