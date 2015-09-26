@@ -7,18 +7,18 @@ shared_examples_for 'emojifier' do
 
   subject { object.emojify }
 
-  context 'contents does not include any emojis' do
+  context 'content does not include any emojis' do
     let(:content) { 'Example content' }
     it { should eq(object.content) }
   end
 
-  context 'contents includes some emojis' do
+  context 'content includes some emojis' do
     let(:content) { 'Example content :smile: :+1:' }
     it { should_not match(/:[\w+-]+:/) }
     it { should match(/<img/) }
   end
 
-  context 'contents includes invalid emojis' do
+  context 'content includes invalid emojis' do
     let(:content) { 'Example content :--: | :sfc:' }
     it { should eq(object.content) }
   end
