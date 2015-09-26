@@ -9,7 +9,7 @@
     = include_gon
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
+  %body{ class: css_namespace }
     %nav
       .inner
         .inner-left

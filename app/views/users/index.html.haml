@@ -1,0 +1,22 @@
+.content
+  %h1 ユーザー一覧
+  %table
+    %thead
+      %tr
+        %th #
+        %th Name
+        %th Nickname
+        %th Student Number
+        %th Active
+        %th Role
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.id
+          %td= user.name
+          %td= user.nickname
+          %td= user.ldap_credential.try(:student_id)
+          %td= user.active?
+          %td
+            = form_for user do |f|
+              = f.select :role, User.roles.keys, selected: user.role
