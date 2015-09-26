@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/8b20b8afc5a36ed37689fe7ada9b7d82/m "wercker status")](https://app.wercker.com/project/bykey/8b20b8afc5a36ed37689fe7ada9b7d82)
+
 RG Portal
 =====
 
