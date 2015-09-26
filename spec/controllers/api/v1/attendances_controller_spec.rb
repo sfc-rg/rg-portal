@@ -4,7 +4,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
   render_views
   let!(:meeting) { FactoryGirl.create(:meeting) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:student_id) { FactoryGirl.create(:ldap_credential, user: user).student_id }
+  let(:student_id) { user.ldap_credential.student_id }
   let(:access_token) { FactoryGirl.create(:api_key).access_token }
 
   describe '#create' do
