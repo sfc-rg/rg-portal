@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/wip_term' => 'pre_built_pages#wip_term'
   get '/thesis' => 'pre_built_pages#thesis'
 
+  resources :users, only: [:index, :update]
   resources :groups, only: [:index, :create]
   resources :meetings, only: [:index, :create]
 

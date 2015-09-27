@@ -22,10 +22,16 @@
 @import "pages";
 @import "search";
 @import "settings";
+@import "users";
 
 .flash {
   margin: 0 10px 20px;
   padding: 10px;
+
+  &.success {
+    background-color: $light-green;
+    border: solid 1px $dark-green;
+  }
 
   &.error {
     background-color: $light-red;

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SettingsController, type: :controller do
   render_views
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user, ldap_credential: nil) }
 
   describe '#update_ldap' do
     let(:username) { 'miyukki' }
@@ -22,6 +22,7 @@ RSpec.describe SettingsController, type: :controller do
       allow_any_instance_of(Net::LDAP).to receive(:bind).and_return(ldap_bind_result)
       allow_any_instance_of(Net::LDAP).to receive_message_chain(:search, :first).and_return(ldap_info_result)
       patch :update_ldap, ldap: { username: username, password: password }
+      user.reload
     end
 
     context 'when correct credential' do
