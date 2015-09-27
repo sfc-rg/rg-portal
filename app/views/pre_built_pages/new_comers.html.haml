@@ -1,0 +1,6 @@
+- content_for :title, 'WIP/TERM'
+
+.content-outer
+  .content
+    = raw include_or_create_page_content("#{term_name}/NewComers", '今学期の新人向け情報を載せる')
+    = raw include_or_create_page_content('NewComers', '新人向けの説明をつくる')
