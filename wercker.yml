@@ -1,0 +1,61 @@
+box: wercker/rvm
+services:
+  - wercker/mysql
+build:
+  steps:
+    - rvm-use:
+        version: 2.2.1
+    - bundle-install:
+        jobs: 4
+    - rails-database-yml
+    - create-file:
+        name: write oauth.yml
+        filename: $WERCKER_SOURCE_DIR/config/oauth.yml
+        overwrite: true
+        hide-from-log: true
+        content: $CONFIG_OAUTH_YML
+    - script:
+        name: setup bower
+        code: sudo npm install bower -g
+    - script:
+        name: setup database
+        code: RAILS_ENV=test bin/rake db:migrate
+    - script:
+        name: setup emoji
+        code: bin/rake emoji
+    - script:
+        name: setup bower component
+        code: bin/rake bower:install
+    - script:
+        name: rspec
+        code: bundle exec rspec
+  after-steps:
+    - wantedly/pretty-slack-notify:
+        webhook_url: $SLACK_WEBHOOK_URL
+deploy:
+  steps:
+    - rvm-use:
+        version: 2.2.1
+    - bundle-install:
+        jobs: 4
+    - script:
+        name: create .ssh directory
+        code: mkdir -p "$HOME/.ssh"
+    - create-file:
+        name: write ssh key
+        filename: $HOME/.ssh/id_rsa
+        overwrite: true
+        hide-from-log: true
+        content: $WERCKER_SSH_KEY_PRIVATE
+    - script:
+        name: set permissions for ssh key
+        code: chmod 0400 $HOME/.ssh/id_rsa
+    - script:
+        name: create ssh proxy
+        code: ssh -fN -L "61022:[2001:200:0:889c:216:3eff:feca:71c6]:2022" wercker@gw.sfc.wide.ad.jp -p 2022 -oStrictHostKeyChecking=no
+    - cap:
+        stage: $WERCKER_DEPLOYTARGET_NAME
+        tasks: deploy
+  after-steps:
+    - wantedly/pretty-slack-notify:
+        webhook_url: $SLACK_WEBHOOK_URL
