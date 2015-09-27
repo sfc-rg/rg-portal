@@ -29,6 +29,7 @@ gem 'yajl-ruby', '~> 1.2.1'
 gem 'github-markdown', '~> 0.6.8'
 gem 'redcarpet', '~> 3.3.1'
 gem 'gemoji'
+gem 'diffy'
 
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-slack', '~> 2.0.0'
