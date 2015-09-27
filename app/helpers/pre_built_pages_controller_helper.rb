@@ -14,7 +14,7 @@ module PreBuiltPagesControllerHelper
 
   def term_name
     today = Date.today
-    term = 2 < today.month || today.month < 9 ? 's' : 'f'
+    term = 2 < today.month && today.month < 9 ? 's' : 'f'
     "#{today.year}#{term}"
   end
 end
