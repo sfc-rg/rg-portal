@@ -15,6 +15,9 @@ build:
         hide-from-log: true
         content: $CONFIG_OAUTH_YML
     - script:
+        name: setup bower
+        code: sudo npm install bower -g
+    - script:
         name: setup database
         code: RAILS_ENV=test bin/rake db:migrate
     - script:
@@ -47,12 +50,12 @@ deploy:
     - script:
         name: set permissions for ssh key
         code: chmod 0400 $HOME/.ssh/id_rsa
+    - script:
+        name: create ssh proxy
+        code: ssh -fN -L "61022:[2001:200:0:889c:216:3eff:feca:71c6]:2022" wercker@gw.sfc.wide.ad.jp -p 2022 -oStrictHostKeyChecking=no
     - cap:
         stage: $WERCKER_DEPLOYTARGET_NAME
         tasks: deploy
-    - script:
-        name: create ssh proxy
-        code: ssh -fN wercker@gw.sfc.wide.ad.jp -p 2022
   after-steps:
     - wantedly/pretty-slack-notify:
         webhook_url: $SLACK_WEBHOOK_URL
