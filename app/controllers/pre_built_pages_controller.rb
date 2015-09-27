@@ -1,5 +1,5 @@
 class PreBuiltPagesController < ApplicationController
-  before_action :require_active_current_user, except: [:new_comers]
+  before_action :require_active_current_user, except: :new_comers
 
   def top
     @recent_pages = Page.recent.limit(10).each
