@@ -12,4 +12,12 @@ class Page < ActiveRecord::Base
   def like_by(user)
     self.likes.find_by(user: user)
   end
+
+  def paths
+    self.path.split('/')
+  end
+
+  def subpages
+    self.class.where('path LIKE ?', "#{self.path}/%")
+  end
 end
