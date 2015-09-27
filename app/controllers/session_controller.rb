@@ -11,16 +11,19 @@ class SessionController < ApplicationController
     # >> auth.info.user_id
     # => "U03AE1H0U"
 
-    credential = SlackCredential.find_or_initialize_by(slack_user_id: auth.info.user_id)
-    user = if credential.new_record?
-      User.create(email: auth.info.email,
-                  name: auth.info.name,
-                  nickname: auth.info.nickname,
-                  icon_url: auth.extra.user_info.user.profile.image_192,
-                  slack_credential: credential)
-    else
-      credential.user
-    end
+    slack_credential = SlackCredential.find_or_initialize_by(slack_user_id: auth.info.user_id)
+    user = if slack_credential.new_record?
+        ldap_info = LdapSupport.ldap_info(auth.info.email.split('@').first)
+        ldap_credential = LdapCredential.import(user: nil, info: ldap_info) if ldap_info.present?
+        User.create(email: auth.info.email,
+                    name: auth.info.name,
+                    nickname: auth.info.nickname,
+                    icon_url: auth.extra.user_info.user.profile.image_192,
+                    slack_credential: slack_credential,
+                    ldap_credential: ldap_credential)
+      else
+        slack_credential.user
+      end
 
     session[:user_id] = user.id
     redirect_to root_path
