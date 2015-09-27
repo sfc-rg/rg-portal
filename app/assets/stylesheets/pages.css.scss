@@ -52,7 +52,7 @@
 .likes,
 .comments {
   margin: 10px;
-  
+
   .title {
     font-size: 140%;
     margin-bottom: 10px;
@@ -146,4 +146,10 @@
 .new_like {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.pages.edit {
+  .action_link {
+    margin-left: 10px;
+  }
 }
