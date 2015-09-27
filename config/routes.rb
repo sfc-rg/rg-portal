@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'pre_built_pages#top'
   get '/wip_term' => 'pre_built_pages#wip_term'
   get '/thesis' => 'pre_built_pages#thesis'
+  get '/newcomer' => 'pre_built_pages#newcomer'
 
   resources :users, only: [:index, :update]
   resources :groups, only: [:index, :create]
