@@ -9,6 +9,9 @@ class PagesController < ApplicationController
     @pages = Page.all
   end
 
+  def show
+  end
+
   def edit
     @page = Page.new(path: params[:path]) if @page.blank?
   end
@@ -27,10 +30,10 @@ class PagesController < ApplicationController
 
   def set_page
     @page = Page.find_by(path: params[:path])
-    if @page.blank?
-      @renamed_page = RenamedPage.find_page(params[:path])
-      redirect_to page_path(path: @renamed_page.path) if @renamed_page.present?
-    end
+    return if @page.present?
+
+    @renamed_page = RenamedPage.find_page(params[:path])
+    redirect_to page_path(path: @renamed_page.path) if @renamed_page.present?
   end
 
   def set_new_comment

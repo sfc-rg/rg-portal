@@ -1,5 +1,5 @@
 .content
-  %h1= "Rename #{@page.path}"
+  %h1 Rename #{@page.path}
 
   = form_for @page, url: update_page_path, method: :patch do |f|
     = f.text_field :path

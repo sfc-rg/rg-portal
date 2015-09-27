@@ -1,7 +1,6 @@
 class Page < ActiveRecord::Base
   include Emojifier
   include MarkdownRender
-  include ActiveModel::Dirty
 
   has_many :comments
   has_many :likes

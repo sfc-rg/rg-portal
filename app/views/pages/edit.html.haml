@@ -1,7 +1,7 @@
 = include_gon
 
 .content
-  %h1= "Edit #{@page.path}"
+  %h1 Edit #{@page.path}
 
   = form_for @page, url: update_page_path, method: :patch do |f|
     = f.hidden_field :path
@@ -10,7 +10,3 @@
     = f.submit 'Save'
     = link_to 'Cancel', page_path(@page.path), class: 'action_link'
     = link_to 'Rename page', rename_page_path(@page.path), class: 'action_link'
-
-  - if params[:draft]
-    %h1= @page.title
-    = raw @page.render_content
