@@ -48,7 +48,7 @@ $ rake emoji
 ### JavaScript library installation
 
 ```
-rake bower:install
+$ rake bower:install
 ```
 
 ### Database creation
