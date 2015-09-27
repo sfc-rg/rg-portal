@@ -1,14 +1,12 @@
 = include_gon
 
-%h1= "Edit #{@page.path}"
+.content
+  %h1 Edit #{@page.path}
 
-= form_for @page, url: update_page_path, method: :patch do |f|
-  = f.hidden_field :path
-  = f.text_field :title
-  = f.text_area :content, rows: 30, class: 'emoji-complete'
-  = f.submit 'Save'
-  = link_to 'Cancel', page_path(@page.path)
-
-- if params[:draft]
-  %h1= @page.title
-  = raw @page.render_content
+  = form_for @page, url: update_page_path, method: :patch do |f|
+    = f.hidden_field :path
+    = f.text_field :title
+    = f.text_area :content, rows: 30, class: 'emoji-complete'
+    = f.submit 'Save'
+    = link_to 'Cancel', page_path(@page.path), class: 'action_link'
+    = link_to 'Rename page', rename_page_path(@page.path), class: 'action_link'

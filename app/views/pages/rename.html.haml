@@ -1,0 +1,7 @@
+.content
+  %h1 Rename #{@page.path}
+
+  = form_for @page, url: update_page_path, method: :patch do |f|
+    = f.text_field :path
+    = f.submit 'Rename'
+    = link_to 'Cancel', page_path(@page.path)

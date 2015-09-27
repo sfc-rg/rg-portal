@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   scope :pages do
     get '/' => 'pages#index', as: :pages
     get '/*path/edit' => 'pages#edit', as: :edit_page
+    get '/*path/rename' => 'pages#rename', as: :rename_page
     patch '/*path' => 'pages#update', as: :update_page
     get '/*path' => 'pages#show', as: :page
   end
