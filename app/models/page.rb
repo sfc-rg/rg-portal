@@ -6,6 +6,7 @@ class Page < ActiveRecord::Base
   has_many :likes
   scope :recent, -> { order('pages.created_at DESC') }
 
+  validates :path, presence: true, uniqueness: true
   validates :content, presence: true
 
   before_save :create_renamed_page, if: :renamed?
