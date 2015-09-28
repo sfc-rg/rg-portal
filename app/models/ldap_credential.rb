@@ -1,9 +1,9 @@
 class LdapCredential < ActiveRecord::Base
   belongs_to :user
 
-  validates :uid, uniqueness: true
-  validates :uid_number, uniqueness: true
-  validates :student_id, uniqueness: true
+  validates :uid, presence: true, uniqueness: true
+  validates :uid_number, presence: true, uniqueness: true
+  validates :student_id, uniqueness: true, allow_nil: true
 
   STUDENT_ID_PATTERN = /\d{8}/
 
