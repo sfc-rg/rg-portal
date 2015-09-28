@@ -3,7 +3,7 @@
 .content-outer
   .left.content
     = raw include_or_create_page_content('TopPage', 'トップページをつくる')
-    = raw include_or_create_page_content("#{term_name}/TopPage", '今学期の授業情報を載せる')
+    = raw include_or_create_page_content(term_name, '今学期の授業情報を載せる')
 
   .right.content
     %h2
