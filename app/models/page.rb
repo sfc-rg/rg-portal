@@ -11,8 +11,8 @@ class Page < ActiveRecord::Base
   validates :path, presence: true, uniqueness: true
   validates :content, presence: true
 
-  before_save :create_renamed_page, if: :renamed?
-  before_save :create_page_history, if: :changed?
+  after_save :create_renamed_page, if: :renamed?
+  after_save :create_page_history, if: :changed?
 
   def like_by(user)
     self.likes.find_by(user: user)
