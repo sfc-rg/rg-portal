@@ -5,4 +5,8 @@ module PagesHelper
       "<div class='link'>#{link}</div>"
     end.join
   end
+
+  def diff_html(method, source, target)
+    Diffy::Diff.new(source.send(method), target.send(method)).to_s(:html).html_safe
+  end
 end

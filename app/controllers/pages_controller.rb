@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   include EmojiComplete
   before_action :require_active_current_user
-  before_action :set_page, only: [:show, :edit, :update, :rename]
+  before_action :set_page, except: :index
   before_action :set_new_comment, only: :show
   before_action :set_emoji_completion, only: [:show, :edit]
 
@@ -26,6 +26,20 @@ class PagesController < ApplicationController
     redirect_to page_path(path: @page.path)
   end
 
+  def rename
+  end
+
+  def history
+    @histories = PageHistory.where(page: @page).order('created_at DESC')
+  end
+
+  def diff
+    @before_history = PageHistory.find(params[:before])
+    @after_history = PageHistory.find(params[:after])
+  rescue
+    redirect_to page_path(path: @page.path)
+  end
+
   private
 
   def set_page
@@ -41,6 +55,6 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:path, :title, :content)
+    params.require(:page).permit(:path, :title, :content).merge(user: @current_user)
   end
 end
