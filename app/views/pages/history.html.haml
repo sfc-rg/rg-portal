@@ -7,5 +7,6 @@
       - after = pair.first
       - before = pair.last
       %li
-        = link_to diff_page_path(path: @page.path, before: before.id, after: after.id) do
-          Rev: #{after.id} edited by #{after.user.nickname} at #{l(after.created_at)}
+        = link_to diff_page_path(before: before.id, after: after.id) do
+          Rev: #{after.id}
+          edited by #{after.user.nickname} at #{l(after.created_at)}

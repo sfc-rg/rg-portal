@@ -2,7 +2,9 @@
 
 .content
   %h1 Diff of #{@page.path} #{@before_history.id}..#{@after_history.id}
-  %p Rev: #{@after_history.id} edited by #{@after_history.user.nickname} at #{l(@after_history.created_at)}
+  %p
+    Rev: #{@after_history.id}
+    edited by #{@after_history.user.nickname} at #{l(@after_history.created_at)}
 
   - if @before_history.path != @after_history.path
     %h2 Path
