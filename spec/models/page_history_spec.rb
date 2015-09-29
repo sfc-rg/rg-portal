@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe PageHistory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:page_history) { FactoryGirl.create(:page_history) }
 end
