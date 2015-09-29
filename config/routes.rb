@@ -25,8 +25,11 @@ Rails.application.routes.draw do
     get '/' => 'pages#index', as: :pages
     get '/*path/edit' => 'pages#edit', as: :edit_page
     get '/*path/rename' => 'pages#rename', as: :rename_page
-    patch '/*path' => 'pages#update', as: :update_page
+    get '/*path/history' => 'pages#history', as: :history_page
+    get '/*path/diff' => redirect('/pages/%{path}/history')
+    get '/*path/diff/*before..*after' => 'pages#diff', as: :diff_page
     get '/*path' => 'pages#show', as: :page
+    patch '/*path' => 'pages#update', as: :update_page
   end
 
   resources :comments, only: :create

@@ -13,7 +13,10 @@
     color: white;
   }
 
-  .edit {
+  .edit,
+  .star,
+  .history {
+    margin-right: 6px;
     padding: 4px 8px;
     background-color: #8B8B8B;
     font-size: 60%;
@@ -21,13 +24,6 @@
     a {
       color: white;
     }
-  }
-
-  .star {
-    margin-left: 5px;
-    padding: 4px 8px;
-    background-color: #8B8B8B;
-    font-size: 60%;
   }
 
   .breadcrumb {
