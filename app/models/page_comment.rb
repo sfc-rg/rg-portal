@@ -1,0 +1,2 @@
+class PageComment < Comment
+end

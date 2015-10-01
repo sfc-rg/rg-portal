@@ -1,0 +1,7 @@
+= form_for [@meeting, @presentation] do |f|
+  = f.text_field :title
+  = fields_for :slide, @presentation.slide do |slide_f|
+    = slide_f.file_field :file
+  = fields_for :handout, @presentation.handout do |handout_f|
+    = handout_f.file_field :file
+  = f.submit

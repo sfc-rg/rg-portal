@@ -1,6 +1,7 @@
 class Meeting < ActiveRecord::Base
   has_many :meeting_attendances
   has_many :attendances, through: :meeting_attendances, source: :user
+  has_many :presentations
 
   validates :name, presence: true
   validates :start_at, presence: true

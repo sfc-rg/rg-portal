@@ -1,0 +1,16 @@
+.content
+  %h1 #{@meeting.name}のプレゼン一覧
+  %table
+    %tr
+      %th #
+      %th タイトル
+      %th スライド
+      %th 予稿
+    - @presentations.each do |presentation|
+      %tr
+        %td= presentation.number
+        %td= presentation.title
+        %td= link_to 'リンク', @presentation.slide.file_url
+        %td= link_to 'リンク', @presentation.handout.file_url
+
+  = link_to 'プレゼン登録', new_meeting_presentation_path(@meeting)

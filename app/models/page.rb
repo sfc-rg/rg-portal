@@ -2,7 +2,7 @@ class Page < ActiveRecord::Base
   include Emojifier
   include MarkdownRender
 
-  has_many :comments
+  has_many :comments, class: PageComment
   has_many :likes
   scope :recent, -> { order('pages.created_at DESC') }
 

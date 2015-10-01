@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926073136) do
+ActiveRecord::Schema.define(version: 20151001201631) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150926073136) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "type"
   end
 
   add_index "comments", ["page_id"], name: "index_comments_on_page_id"
@@ -103,6 +104,18 @@ ActiveRecord::Schema.define(version: 20150926073136) do
   add_index "pages", ["content"], name: "index_pages_on_content"
   add_index "pages", ["user_id"], name: "index_pages_on_user_id"
 
+  create_table "presentations", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "number"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "meeting_id"
+  end
+
+  add_index "presentations", ["meeting_id"], name: "index_presentations_on_meeting_id"
+  add_index "presentations", ["user_id"], name: "index_presentations_on_user_id"
+
   create_table "renamed_pages", force: :cascade do |t|
     t.string   "before_path"
     t.string   "after_path"
@@ -118,6 +131,14 @@ ActiveRecord::Schema.define(version: 20150926073136) do
   end
 
   add_index "slack_credentials", ["user_id"], name: "index_slack_credentials_on_user_id"
+
+  create_table "upload_files", force: :cascade do |t|
+    t.string   "file"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "attached_object_id"
+    t.string   "attached_object_type"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
