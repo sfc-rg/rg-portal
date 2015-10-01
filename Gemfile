@@ -23,6 +23,7 @@ gem 'nested_form'
 gem 'mysql2', '0.3.18'
 gem 'bcrypt', '3.1.10'
 gem 'unicorn', '4.8.3'
+gem 'carrierwave'
 
 gem 'jbuilder', '~> 2.2.12'
 gem 'yajl-ruby', '~> 1.2.1'

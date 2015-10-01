@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001144140) do
+ActiveRecord::Schema.define(version: 20151001171802) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -129,6 +129,12 @@ ActiveRecord::Schema.define(version: 20151001144140) do
   end
 
   add_index "slack_credentials", ["user_id"], name: "index_slack_credentials_on_user_id"
+
+  create_table "upload_files", force: :cascade do |t|
+    t.string   "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
