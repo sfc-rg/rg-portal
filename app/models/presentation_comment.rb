@@ -1,0 +1,2 @@
+class PresentationComment < Comment
+end
