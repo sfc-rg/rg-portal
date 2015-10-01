@@ -23,10 +23,17 @@ Rails.application.routes.draw do
 
   scope :pages do
     get '/' => 'pages#index', as: :pages
-    get '/*path/edit' => 'pages#edit', as: :edit_page
-    get '/*path/rename' => 'pages#rename', as: :rename_page
-    patch '/*path' => 'pages#update', as: :update_page
-    get '/*path' => 'pages#show', as: :page
+    scope '/*path' do
+      get '/edit' => 'pages#edit', as: :edit_page
+      get '/rename' => 'pages#rename', as: :rename_page
+      resources :histories, as: :page_histories, controller: :page_histories, only: [:index, :show] do
+        member do
+          get :diff
+        end
+      end
+      get '/' => 'pages#show', as: :page
+      patch '/' => 'pages#update', as: :update_page
+    end
   end
 
   resources :comments, only: :create

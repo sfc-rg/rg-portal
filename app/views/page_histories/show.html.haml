@@ -1,0 +1,12 @@
+- content_for(:title) { "#{@page.title} - History" }
+
+.content
+  %h1 Rev. #{@history.id} History of #{@page.path}
+  %p Edited by #{@history.user.nickname} at #{l(@history.created_at)}
+
+  %h2 Path
+  %p= @history.path
+  %h2 Title
+  %p= @history.title
+  %h2 Content
+  = raw @history.render_content
