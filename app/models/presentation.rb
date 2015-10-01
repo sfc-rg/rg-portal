@@ -4,5 +4,6 @@ class Presentation < ActiveRecord::Base
   accepts_nested_attributes_for :slide
   has_one :handout, class: UploadFile, as: :attached_object
   accepts_nested_attributes_for :handout
+  belongs_to :meeting
   belongs_to :user
 end
