@@ -1,0 +1,15 @@
+.content
+  %h1 #{@presentation.meeting.name}
+  %table
+    %tr
+      %th 発表順
+      %td= @presentation.number
+    %tr
+      %th タイトル
+      %td= @presentation.title
+    %tr
+      %th スライド
+      %td= link_to 'リンク', @presentation.slide.file_url
+    %tr
+      %th 予稿
+      %td= link_to 'リンク', @presentation.handout.file_url
