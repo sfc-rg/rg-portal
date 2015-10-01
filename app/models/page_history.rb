@@ -14,9 +14,4 @@ class PageHistory < ActiveRecord::Base
     @previous ||=
       PageHistory.where(page: page).where('id < ?', id).order('id DESC').first
   end
-
-  def next
-    @next ||=
-      PageHistory.where(page: page).where('id > ?', id).order('id ASC').first
-  end
 end

@@ -3,5 +3,6 @@ FactoryGirl.define do
     path 'sample'
     title 'sample'
     content 'This is a page.'
+    association :user
   end
 end

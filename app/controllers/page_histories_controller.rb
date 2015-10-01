@@ -16,7 +16,7 @@ class PageHistoriesController < ApplicationController
   private
 
   def set_history
-    @history = PageHistory.find_by(id: params[:id])
-    redirect_to root_path if @history.blank?
+    @history = PageHistory.find_by(id: params[:id], page: @page)
+    redirect_to page_histories_path if @history.blank?
   end
 end

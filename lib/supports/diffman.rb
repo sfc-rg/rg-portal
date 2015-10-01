@@ -6,7 +6,7 @@ class Diffman
   def diff(string1, string2)
     files = [tempfile(string1), tempfile(string2)]
     params = files.map(&:path)
-    Open3.popen3(diff_bin, *params) { |i, o, e, w| o.read }
+    Open3.popen3(diff_bin, *params) { |_, o, _, _| o.read }
   ensure
     remove_tempfiles!
   end
@@ -15,7 +15,7 @@ class Diffman
     files = [tempfile(string), tempfile(patch)]
     params = files.map(&:path)
     params << '-R' if reverse
-    return nil if Open3.popen3(patch_bin, *params) { |i, o, e, w | w.value } != 0
+    return nil if Open3.popen3(patch_bin, *params) { |_, _, _, w| w.value } != 0
     files.first.open
     str = files.first.read
     files.first.close
@@ -27,13 +27,13 @@ class Diffman
   private
 
   def diff_bin
-    diffs = ['diff', 'ldiff']
-    diffs.find { |name| system('which', '-s', name) }
+    diffs = %w(diff ldiff)
+    diffs.find { |name| Open3.popen3(name, '-v') { |_, _, _, w| w.value } == 0 }
   end
 
   def patch_bin
-    patches = ['patch']
-    patches.find { |name| system('which', '-s', name) }
+    patches = %w(patch)
+    patches.find { |name| Open3.popen3(name, '-v') { |_, _, _, w| w.value } == 0 }
   end
 
   def tempfile(string)
