@@ -46,6 +46,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
   gem 'json_expressions', '~> 0.8.3'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'timecop'
 end
 
 group :development do
