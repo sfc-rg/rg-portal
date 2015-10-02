@@ -15,4 +15,5 @@
 //= require jquery_nested_form
 //= require turbolinks
 //= require jquery-textcomplete/dist/jquery.textcomplete
+//= require prism/prism
 //= require_tree .
