@@ -1,6 +1,7 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "jquery-textcomplete": "latest"
+    "jquery-textcomplete": "latest",
+    "prism": "latest"
   }
 }
