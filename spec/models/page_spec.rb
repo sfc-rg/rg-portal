@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Page, type: :model do
-  let(:page) { FactoryGirl.create(:page, path: 'A') }
+  let(:page) { FactoryGirl.create(:page, path: 'A', content: 'A') }
   it_behaves_like 'emojifier'
 
   describe '#renamed?' do
@@ -29,6 +29,17 @@ describe Page, type: :model do
 
       it 'creates renamed page model with before_path' do
         is_expected.to eq('A')
+      end
+    end
+  end
+
+  describe '#create_page_history' do
+    context 'when content change' do
+      subject { page.send(:create_page_history).content }
+      before { page.content = 'B' }
+
+      it 'creates page history with content' do
+        is_expected.to eq('B')
       end
     end
   end

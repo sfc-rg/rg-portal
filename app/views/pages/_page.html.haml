@@ -7,6 +7,10 @@
     %span.star
       %i.fa.fa-star
       = page.likes.count
+    %span.history
+      = link_to page_histories_path do
+        %i.fa.fa-history
+        = page.histories.count
   .breadcrumb= raw page_breadcrumb_links(page)
 
 .content

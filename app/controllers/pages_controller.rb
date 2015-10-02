@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
   include EmojiComplete
+  include PageSetter
   before_action :require_active_current_user
-  before_action :set_page, only: [:show, :edit, :update, :rename]
+  before_action :set_page, except: :index
   before_action :set_new_comment, only: :show
   before_action :set_emoji_completion, only: [:show, :edit]
 
@@ -26,21 +27,16 @@ class PagesController < ApplicationController
     redirect_to page_path(path: @page.path)
   end
 
-  private
-
-  def set_page
-    @page = Page.find_by(path: params[:path])
-    return if @page.present?
-
-    @renamed_page = RenamedPage.find_page(params[:path])
-    redirect_to page_path(path: @renamed_page.path) if @renamed_page.present?
+  def rename
   end
+
+  private
 
   def set_new_comment
     @comment = Comment.new(page: @page) if @page.present?
   end
 
   def page_params
-    params.require(:page).permit(:path, :title, :content)
+    params.require(:page).permit(:path, :title, :content).merge(user: @current_user)
   end
 end

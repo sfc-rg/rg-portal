@@ -1,0 +1,11 @@
+- content_for(:title) { "#{@page.title} - Histories" }
+
+.content
+  %h1 Histories of #{@page.path}
+  %ul
+    - @histories.each do |history|
+      %li
+        Rev. #{history.id}
+        Edited by #{history.user.nickname} at #{l(history.created_at)}
+        = link_to '(Show)', page_history_path(id: history.id)
+        = link_to '(Diff)', diff_page_history_path(id: history.id)
