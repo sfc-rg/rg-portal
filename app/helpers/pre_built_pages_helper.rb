@@ -1,4 +1,4 @@
-module PreBuiltPagesControllerHelper
+module PreBuiltPagesHelper
   def include_page_content(path, default = nil)
     page = Page.find_by(path: path)
     return default if page.blank?
@@ -14,7 +14,12 @@ module PreBuiltPagesControllerHelper
 
   def term_name
     today = Date.today
-    term = 2 < today.month && today.month < 9 ? 's' : 'f'
-    "#{today.year}#{term}"
+    if today.month < 3
+      "#{today.year - 1}f"
+    elsif today.month > 8
+      "#{today.year}f"
+    else
+      "#{today.year}s"
+    end
   end
 end
