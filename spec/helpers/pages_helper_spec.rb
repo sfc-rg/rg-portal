@@ -1,15 +1,18 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the PostsHelper. For example:
-#
-# describe PostsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe PagesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#page_breadcrumb_links' do
+    let(:page) { FactoryGirl.create(:page) }
+    let(:paths) { ['A'] }
+    subject { helper.page_breadcrumb_links(page) }
+    before do
+      allow(page).to receive(:paths).and_return(paths)
+    end
+
+    context 'when have one child' do
+      it 'includes one child' do
+        is_expected.to include('A')
+      end
+    end
+  end
 end
