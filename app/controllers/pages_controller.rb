@@ -6,8 +6,10 @@ class PagesController < ApplicationController
   before_action :set_new_comment, only: :show
   before_action :set_emoji_completion, only: [:show, :edit]
 
+  NUM_OF_RECENT_PAGES = 30
+
   def index
-    @pages = Page.all
+    @recent_pages = Page.recent.limit(NUM_OF_RECENT_PAGES)
   end
 
   def show
