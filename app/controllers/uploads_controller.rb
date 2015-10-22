@@ -15,6 +15,11 @@ class UploadsController < ApplicationController
   end
 
   def show
+    @upload = Upload.find_by(id: params[:id])
+    return render nothing: true if @upload.blank?
+
+    send_data File.open(@upload.file.current_path).read,
+      type: @upload.content_type, disposition: :inline
   end
 
   private
