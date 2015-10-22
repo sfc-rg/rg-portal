@@ -5,16 +5,6 @@ RSpec.describe PreBuiltPagesController, type: :controller do
   let(:user) { FactoryGirl.create(:user) }
   before { session[:user_id] = user.id }
 
-  describe '#top' do
-    before do
-      get :top
-    end
-
-    it 'renders top action' do
-      expect(response).to render_template(:top)
-    end
-  end
-
   describe '#wip_term' do
     before do
       get :wip_term

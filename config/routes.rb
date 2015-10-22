@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/auth/slack/callback' => 'session#slack_callback'
 
-  root 'pre_built_pages#top'
+  root 'pages#index'
   get '/wip_term' => 'pre_built_pages#wip_term'
   get '/thesis' => 'pre_built_pages#thesis'
   get '/newcomer' => 'pre_built_pages#newcomer'
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   scope :pages do
-    get '/' => 'pages#index', as: :pages
+    get '/' => redirect('/')
     scope '/*path' do
       get '/edit' => 'pages#edit', as: :edit_page
       get '/rename' => 'pages#rename', as: :rename_page
