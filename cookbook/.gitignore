@@ -1,0 +1,2 @@
+app/shared_files/*
+!app/shared_files/.keep

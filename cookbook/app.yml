@@ -1,0 +1,18 @@
+app:
+  name: rg-portal
+mysql:
+  install: true
+  host: localhost
+  username: rails
+  password: password
+  database: rg_portal
+nginx:
+  host: portal.gw.sfc.wide.ad.jp
+  name: rg-portal
+rbenv:
+  global:
+    2.2.1
+  versions:
+    - 2.2.1
+  gems:
+    - bundler
