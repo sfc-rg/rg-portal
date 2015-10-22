@@ -9,8 +9,8 @@ preload_app true
 
 working_directory "#{app_path}/current/"
 
-stdout_path "#{app_shared_path}/log/unicorn.stdout.log"
-stderr_path "#{app_shared_path}/log/unicorn.stderr.log"
+stdout_path "#{app_shared_path}/tmp/unicorn.stdout.log"
+stderr_path "#{app_shared_path}/tmp/unicorn.stderr.log"
 
 before_exec do |server|
   ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"

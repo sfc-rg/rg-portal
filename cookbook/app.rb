@@ -1,0 +1,6 @@
+include_recipe 'selinux::disabled'
+include_recipe 'nginx/default.rb'
+include_recipe 'mysql/default.rb'
+include_recipe 'rbenv/default.rb'
+include_recipe 'app/default.rb'
+include_recipe 'ssh/default.rb'
