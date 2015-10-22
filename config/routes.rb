@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :update]
   resources :groups, only: [:index, :create]
   resources :meetings, only: [:index, :create]
-  resources :uploads, only: [:index, :create]
+  resources :uploads, only: [:index, :create, :show]
 
   scope :settings do
     get '/profile' => 'settings#edit_profile', as: :edit_profile
