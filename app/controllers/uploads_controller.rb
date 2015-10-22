@@ -10,7 +10,7 @@ class UploadsController < ApplicationController
 
   def create
     @upload = Upload.new(upload_params)
-    @upload.save
+    @upload.save # implement this
     redirect_to action: :index
   end
 
