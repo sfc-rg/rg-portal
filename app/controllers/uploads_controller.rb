@@ -2,7 +2,7 @@ class UploadsController < ApplicationController
   before_action :require_active_current_user
   before_action :set_page, only: :index
 
-  NUM_OF_UPLOADS_PER_PAGE = 2
+  NUM_OF_UPLOADS_PER_PAGE = 10
 
   def index
     @uploads = Upload.order('created_at DESC').page(@page).per(NUM_OF_UPLOADS_PER_PAGE)
