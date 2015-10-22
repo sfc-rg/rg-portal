@@ -1,0 +1,20 @@
+.content
+  %h1 ファイルをアップロード
+  = form_for Upload.new do |f|
+    = f.file_field :file
+    = f.submit
+
+  %h1 アップロードされたファイル
+  %table
+    %tr
+      %th #
+      %th Image
+      %th File Url
+    - @uploads.each do |upload|
+      %tr
+        %td= upload.id
+        - if upload.image?
+          %td= image_tag upload.file_url
+        - else
+          %td -
+        %td= text_field_tag nil, upload.file_url
