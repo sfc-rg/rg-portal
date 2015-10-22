@@ -46,6 +46,16 @@ Rails.application.routes.draw do
   resources :presentation_comments, type: 'PresentationComment', only: [:index, :create]
   resources :likes, only: [:create, :destroy]
 
+  scope :blogs do
+    get '/new' => 'blogs#new', as: :new_blog
+    scope '/:nickname' do
+      get '/' => 'blogs#index', as: :blogs
+      post '/' => 'blogs#update', as: :update_blog
+      get '/:timestamp' => 'blogs#show', as: :blog
+    end
+  end
+  resources :blog_comments, only: :create
+
   namespace :api do
     namespace :v1, format: :json do
       resources :attendances
