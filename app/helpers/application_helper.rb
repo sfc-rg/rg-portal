@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def render_title
-    content_for?(:title) ? "#{content_for(:title)} | RG Portal(仮)" : 'RG Portal(仮)'
+    content_for?(:title) ? "#{content_for(:title)} | RG Portal" : 'RG Portal'
   end
 end
