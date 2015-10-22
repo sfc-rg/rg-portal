@@ -22,6 +22,7 @@ gem 'mysql2', '0.3.18'
 gem 'bcrypt', '3.1.10'
 gem 'unicorn', '4.8.3'
 
+gem 'kaminari'
 gem 'nested_form'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'http_accept_language'
@@ -37,6 +38,7 @@ gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-slack', '~> 2.0.0'
 gem 'rsolr'
 gem 'net-ldap'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'byebug'
