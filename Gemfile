@@ -22,6 +22,7 @@ gem 'mysql2', '0.3.18'
 gem 'bcrypt', '3.1.10'
 gem 'unicorn', '4.8.3'
 
+gem 'kaminari'
 gem 'nested_form'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'http_accept_language'
