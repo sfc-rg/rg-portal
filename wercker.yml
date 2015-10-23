@@ -51,9 +51,6 @@ deploy:
     - script:
         name: set permissions for ssh key
         code: chmod 0400 $HOME/.ssh/id_rsa
-    - script:
-        name: create ssh proxy
-        code: ssh -fN -L "61022:[2001:200:0:889c:216:3eff:feca:71c6]:2022" wercker@gw.sfc.wide.ad.jp -p 2022 -oStrictHostKeyChecking=no
     - cap:
         stage: $WERCKER_DEPLOYTARGET_NAME
         tasks: deploy
