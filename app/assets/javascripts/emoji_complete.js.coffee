@@ -1,8 +1,8 @@
-ready = ->
-  emojiCompletions = $('textarea.emoji-complete')
-  if emojiCompletions.length > 0
+jQuery ($) ->
+  $emojiCompletions = $('textarea.emoji-complete')
+  if $emojiCompletions.length > 0
     emojiAliases = Object.keys(gon.emojis)
-    emojiCompletions.textcomplete([
+    $emojiCompletions.textcomplete([
       match: /(^|\s):([\w+-]*)$/,
       search: (term, callback) ->
         callback(emojiAliases.filter (e) -> e.indexOf(term) != -1)
@@ -11,6 +11,3 @@ ready = ->
       replace: (value) ->
         "$1:#{value}:"
     ], maxCount: 5)
-
-$(ready)
-$(document).on('page:load', ready)
