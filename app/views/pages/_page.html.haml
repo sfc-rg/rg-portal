@@ -11,10 +11,10 @@
       = link_to page_histories_path do
         %i.fa.fa-history
         = page.histories.count
-  .breadcrumb= raw page_breadcrumb_links(page)
+  .breadcrumb= page_breadcrumb_links(page).html_safe
 
 .content
-  = raw page.render_content
+  = page.render_content.html_safe
 
   - if page.subpages.present?
     %h1 Subpages
