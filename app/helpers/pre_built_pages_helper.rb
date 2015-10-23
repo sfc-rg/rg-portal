@@ -1,8 +1,8 @@
 module PreBuiltPagesHelper
   def include_or_create_page_content(path, message, options = {})
-    options.reverse_merge!({
+    options.reverse_merge!(
       edit_link: true
-    })
+    )
 
     page = Page.find_by(path: path)
     return "<div><a href='#{edit_page_path(path)}'>#{message}</a></div>" if page.blank?
