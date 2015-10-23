@@ -1,16 +1,13 @@
 module PreBuiltPagesHelper
-  def include_page_content(path, default = nil, postfix = '')
-    page = Page.find_by(path: path)
-    return default if page.blank?
-    page.render_content + postfix
-  end
-
   def include_or_create_page_content(path, message, options = {})
-    include_page_content(
-      path,
-      "<div><a href='#{edit_page_path(path)}'>#{message}</a></div>",
-      options[:edit_link] ? "<div class=edit_link><a href='#{edit_page_path(path)}'>このページを編集</a></div>" : ''
-    )
+    options.reverse_merge!({
+      edit_link: true
+    })
+
+    page = Page.find_by(path: path)
+    return "<div><a href='#{edit_page_path(path)}'>#{message}</a></div>" if page.blank?
+    edit_button = options[:edit_link] ? "<div class=edit_link><a href='#{edit_page_path(path)}'>このページを編集</a></div>" : ''
+    page.render_content + edit_button
   end
 
   def term_name
