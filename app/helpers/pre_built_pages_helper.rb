@@ -1,5 +1,5 @@
 module PreBuiltPagesHelper
-  def include_page_content(path, default = nil, postfix = "")
+  def include_page_content(path, default = nil, postfix = '')
     page = Page.find_by(path: path)
     return default if page.blank?
     page.render_content + postfix
@@ -9,7 +9,7 @@ module PreBuiltPagesHelper
     include_page_content(
       path,
       "<div><a href='#{edit_page_path(path)}'>#{message}</a></div>",
-      options[:edit_link] ? "<div class=edit_link><a href='#{edit_page_path(path)}'>このページを編集</a></div>" : ""
+      options[:edit_link] ? "<div class=edit_link><a href='#{edit_page_path(path)}'>このページを編集</a></div>" : ''
     )
   end
 
