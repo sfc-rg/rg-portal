@@ -9,4 +9,4 @@
   %h2 Title
   %p= @history.title
   %h2 Content
-  = raw @history.render_content
+  = @history.render_content.html_safe

@@ -8,7 +8,7 @@
       .page_result
         .info
           %span.title= result.title
-        .text= raw highlight_content(@keyword, result.content)
+        .text= highlight_content(@keyword, result.content).html_safe
 
 
   %h2= "Slackの検索結果 #{@slack_results.size}件"

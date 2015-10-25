@@ -2,6 +2,5 @@
 
 .content-outer
   .content
-    = raw include_or_create_page_content('WipTerm', 'WIP/TERMの説明をつくる')
-    = raw include_or_create_page_content("#{term_name}/WipTerm",
-                                         '今学期のWIP/TERM情報を載せる')
+    = include_or_create_page_content('WipTerm', 'WIP/TERMの説明をつくる').html_safe
+    = include_or_create_page_content("#{term_name}/WipTerm", '今学期のWIP/TERM情報を載せる').html_safe

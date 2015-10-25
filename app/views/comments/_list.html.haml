@@ -10,7 +10,7 @@
       .box
         .info
           .nickname= comment.user.nickname
-        .content= raw comment.render_content
+        .content= comment.render_content.html_safe
 
   = form_for Comment.new(page: page) do |f|
     = f.hidden_field :page_id

@@ -2,5 +2,5 @@
 
 .content-outer
   .content
-    = raw include_or_create_page_content('Thesis', '卒論の説明をつくる')
-    = raw include_or_create_page_content("#{term_name}/Thesis", '今学期の卒論情報を載せる')
+    = include_or_create_page_content('Thesis', '卒論の説明をつくる').html_safe
+    = include_or_create_page_content("#{term_name}/Thesis", '今学期の卒論情報を載せる').html_safe

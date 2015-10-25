@@ -144,6 +144,25 @@
   margin-bottom: 10px;
 }
 
+.content .edit_link {
+  font-size: 60%;
+  padding: 0;
+  text-align: right;
+  width: 100%;
+
+  a {
+    border: solid 1px lightgray;
+    border-radius: 3px;
+    color: gray;
+    padding: 5px 10px;
+
+    &:hover {
+      border-color: gray;
+      color: black;
+    }
+  }
+}
+
 .pages.edit {
   .action_link {
     margin-left: 10px;
