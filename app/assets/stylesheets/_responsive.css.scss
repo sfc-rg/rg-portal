@@ -1,0 +1,30 @@
+@media screen and (max-width: 640px) {
+  nav {
+    padding: 0 5px;
+  }
+
+  nav .inner-left {
+    @include span-columns(3 of 5);
+
+    .control {
+      display: none;
+    }
+  }
+
+  nav .inner-right {
+    @include span-columns(2 of 5);
+
+    .user .name {
+      display: none;
+    }
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .left.content,
+  .right.content {
+    @include span-columns(12);
+  }
+}
