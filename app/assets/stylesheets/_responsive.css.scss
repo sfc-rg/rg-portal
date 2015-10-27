@@ -23,7 +23,8 @@
     padding: 10px;
   }
 
-  .left.content, .right.content {
+  .left.content,
+  .right.content {
     @include span-columns(12);
   }
 }
