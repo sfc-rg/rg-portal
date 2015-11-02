@@ -1,4 +1,5 @@
 class MeetingsController < ApplicationController
+  before_action :require_active_current_user
   before_action :set_meeting, only: :show
 
   def index

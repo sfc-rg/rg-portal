@@ -1,4 +1,5 @@
 class PresentationsController < ApplicationController
+  before_action :require_active_current_user
   before_action :set_meeting, only: [:new, :create]
 
   def new
