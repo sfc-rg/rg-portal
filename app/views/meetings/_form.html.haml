@@ -1,0 +1,13 @@
+= include_gon
+= form_for @meeting do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :start_at
+  .datetime_select
+    = f.datetime_select :start_at, default: Time.now
+  = f.label :end_at
+  .datetime_select
+    = f.datetime_select :end_at, default: Time.now + 3.hours
+  = f.text_area :content, rows: 20, class: 'emoji-complete'
+  = f.submit
+  = link_to 'Cancel', meetings_path

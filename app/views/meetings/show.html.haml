@@ -30,3 +30,5 @@
               %br
             = link_to handout.file_identifier.truncate(20), handout.file.url
   = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting)
+  .edit_link
+    = link_to 'このミーティングを編集', edit_meeting_path(@meeting)

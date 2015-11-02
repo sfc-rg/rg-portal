@@ -1,6 +1,8 @@
 class MeetingsController < ApplicationController
+  include EmojiComplete
   before_action :require_active_current_user
-  before_action :set_meeting, only: :show
+  before_action :set_meeting, only: [:show, :edit, :update]
+  before_action :set_emoji_completion, only: [:new, :edit]
 
   def index
     @meetings = Meeting.order(created_at: :desc).page(params[:page]).per(10)
@@ -16,6 +18,17 @@ class MeetingsController < ApplicationController
   def create
     Meeting.new(meeting_params).save
     redirect_to meetings_path
+  end
+
+  def edit
+  end
+
+  def update
+    if @meeting.update(meeting_params)
+      redirect_to meeting_path(@meeting)
+    else
+      render :edit
+    end
   end
 
   private
