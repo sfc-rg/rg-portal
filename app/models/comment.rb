@@ -3,7 +3,6 @@ class Comment < ActiveRecord::Base
   include MarkdownRender
 
   belongs_to :user
-  belongs_to :page
 
   after_save :notify_mentions
 

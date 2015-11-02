@@ -39,7 +39,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :comments, only: :create
+  resources :page_comments, controller: :comments, type: 'PageComment', only: :create
+  resources :presentation_comments, controller: :comments, type: 'PresentationComment', only: :create
   resources :likes, only: [:create, :destroy]
 
   namespace :api do

@@ -10,7 +10,6 @@ class PresentationsController < ApplicationController
 
   def create
     @presentation = @meeting.presentations.build(presentation_params)
-    @presentation.user = @current_user
     if @presentation.save
       redirect_to meeting_path(@meeting)
     else
@@ -48,6 +47,6 @@ class PresentationsController < ApplicationController
   def presentation_params
     params.require(:presentation).permit(
       :title, handouts_attributes: [:id, :file, :_destroy]
-    )
+    ).merge({ user: @current_user })
   end
 end

@@ -3,7 +3,7 @@
 .comments
   .title Comments
 
-  - page.comments.each do |comment|
+  - comments.each do |comment|
     .comment
       .user
         .icon= image_tag comment.user.icon_url
@@ -12,8 +12,9 @@
           .nickname= comment.user.nickname
         .content= comment.render_content.html_safe
 
-  = form_for Comment.new(page: page) do |f|
+  = form_for new_comment do |f|
     = f.hidden_field :page_id
+    = f.hidden_field :presentation_id
     .comment
       .user
         .icon= image_tag @current_user.icon_url

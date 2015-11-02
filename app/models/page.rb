@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   include MarkdownRender
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, class_name: 'PageComment'
   has_many :likes
   has_many :histories, class_name: PageHistory
   scope :recent, -> { order('pages.created_at DESC') }
