@@ -13,7 +13,16 @@
       %th Handouts
     - @meeting.presentations.each do |presentation|
       %tr
-        %td= presentation.user.nickname
+        %td
+          - if @current_user && (presentation.user_id == @current_user.id)
+            %span
+              = link_to edit_presentation_path(presentation) do
+                %i.fa.fa-edit
+            %span
+              = link_to presentation_path(presentation), method: :delete,
+                data: { confirm: '削除すると元に戻せませんが、本当に削除しますか?' } do
+                %i.fa.fa-trash
+          = presentation.user.nickname
         %td= presentation.title
         %td
           - presentation.handouts.each.with_index(1) do |handout, i|

@@ -2,16 +2,4 @@
   %h1
     = @meeting.name
   %h2 プレゼンテーションの登録
-  = nested_form_for [@meeting, @presentation] do |f|
-    = f.label :title
-    = f.text_field :title
-    = f.fields_for :handouts do |handout_form|
-      - if handout_form.object.persisted? && handout_form.object.file?
-        = handout_form.object.file
-        = handout_form.link_to_remove do
-          %i.fa.fa-trash
-      - else
-        = handout_form.file_field :file
-    = f.link_to_add '資料を追加', :handouts
-    = f.submit
-    = link_to 'Cancel', meeting_path(@meeting)
+  = render 'form', cancel_path: meeting_path(@meeting)
