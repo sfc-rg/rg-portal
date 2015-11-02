@@ -7,8 +7,14 @@
     %tr
       %th Presenter
       %th Title
+      %th Handouts
     - @meeting.presentations.each do |presentation|
       %tr
         %td= presentation.user.nickname
         %td= presentation.title
+        %td
+          - presentation.handouts.each.with_index(1) do |handout, i|
+            - if i > 1
+              %br
+            = link_to handout.file_identifier.truncate(20), handout.file.url
   = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting)

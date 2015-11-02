@@ -3,6 +3,7 @@ class PresentationsController < ApplicationController
 
   def new
     @presentation = @meeting.presentations.build
+    @presentation.presentation_handouts.build
   end
 
   def create
@@ -22,6 +23,8 @@ class PresentationsController < ApplicationController
   end
 
   def meeting_params
-    params.require(:presentation).permit(:title)
+    params.require(:presentation).permit(
+      :title, handouts_attributes: [:file, :_destroy]
+    )
   end
 end
