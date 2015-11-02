@@ -1,7 +1,12 @@
 class PresentationsController < ApplicationController
+  include EmojiComplete
   before_action :require_active_current_user
   before_action :set_meeting, only: [:new, :create]
-  before_action :set_presentation, only: [:edit, :update, :destroy]
+  before_action :set_presentation, only: [:show, :edit, :update, :destroy]
+  before_action :set_emoji_completion, only: [:show]
+
+  def show
+  end
 
   def new
     @presentation = @meeting.presentations.build

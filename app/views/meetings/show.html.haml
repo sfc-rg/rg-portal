@@ -23,7 +23,7 @@
                 data: { confirm: '削除すると元に戻せませんが、本当に削除しますか?' } do
                 %i.fa.fa-trash
           = presentation.user.nickname
-        %td= presentation.title
+        %td= link_to presentation.title, presentation_path(presentation)
         %td
           - presentation.handouts.each.with_index(1) do |handout, i|
             - if i > 1
