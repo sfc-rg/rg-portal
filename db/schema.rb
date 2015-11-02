@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102062205) do
+ActiveRecord::Schema.define(version: 20151102083734) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20151102062205) do
     t.datetime "end_at",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "content"
   end
 
   create_table "page_histories", force: :cascade do |t|

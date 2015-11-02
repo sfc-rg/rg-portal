@@ -1,3 +1,5 @@
+= include_gon
+
 .content
   %h1 ミーティングの作成
   = form_for @meeting do |f|
@@ -9,5 +11,6 @@
     = f.label :end_at
     .datetime_select
       = f.datetime_select :end_at, default: Time.now + 3.hours
+    = f.text_area :content, rows: 20, class: 'emoji-complete'
     = f.submit
     = link_to 'Cancel', meetings_path

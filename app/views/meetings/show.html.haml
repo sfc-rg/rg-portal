@@ -1,7 +1,10 @@
 .content
   %h1
     = @meeting.name
-
+  %p
+    = @meeting.start_at.strftime('%Y/%m/%d %H:%M ~')
+    = @meeting.end_at.strftime('%Y/%m/%d %H:%M')
+  = @meeting.render_content.html_safe
   %h2 登録プレゼンテーション一覧
   %table
     %tr
