@@ -21,7 +21,7 @@ nav {
   }
 
   .inner-left {
-    @include span-columns(1 of 2);
+    @include span-columns(3 of 4);
     height: $_nav_height;
     line-height: $_nav_height;
 
@@ -31,7 +31,7 @@ nav {
   }
 
   .inner-right {
-    @include span-columns(1 of 2);
+    @include span-columns(1 of 4);
     height: $_nav_height;
     line-height: $_nav_height;
     text-align: right;
