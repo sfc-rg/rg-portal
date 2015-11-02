@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(type.underscore.to_sym).permit(
       :page_id, :presentation_id, :content
-    ).merge({ user: @current_user })
+    ).merge(user: @current_user)
   end
 end

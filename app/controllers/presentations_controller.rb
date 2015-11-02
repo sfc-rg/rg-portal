@@ -47,6 +47,6 @@ class PresentationsController < ApplicationController
   def presentation_params
     params.require(:presentation).permit(
       :title, handouts_attributes: [:id, :file, :_destroy]
-    ).merge({ user: @current_user })
+    ).merge(user: @current_user)
   end
 end
