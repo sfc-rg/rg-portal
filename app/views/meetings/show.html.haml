@@ -1,9 +1,16 @@
 .content
+  .breadcrumb
+    .link= link_to 'ミーティング一覧', meetings_path
+    .link= link_to @meeting.name, meeting_path(@meeting)
+
   %h1
     = @meeting.name
   %p
     = @meeting.start_at.strftime('%Y/%m/%d %H:%M ~')
     = @meeting.end_at.strftime('%Y/%m/%d %H:%M')
+  %p
+    現在の出席者数:
+    = @meeting.attendances.count
   = @meeting.render_content.html_safe
   %h2 登録プレゼンテーション一覧
   %table
@@ -25,10 +32,11 @@
           = presentation.user.nickname
         %td= link_to presentation.title, presentation_path(presentation)
         %td
-          - presentation.handouts.each.with_index(1) do |handout, i|
-            - if i > 1
-              %br
-            = link_to handout.file_identifier.truncate(20), handout.file.url
+          - presentation.handouts.each do |handout|
+            .handout_link
+              = link_to handout.file.url, target: '_blank' do
+                = handout.file_identifier.truncate(20)
+                %i.fa.fa-external-link
   = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting)
   .edit_link
     = link_to 'このミーティングを編集', edit_meeting_path(@meeting)
