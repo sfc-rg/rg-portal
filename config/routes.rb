@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :update]
   resources :groups, only: [:index, :create]
-  resources :meetings, only: [:index, :show, :new, :create]
+  resources :meetings, only: [:index, :show, :new, :create], shallow: true do
+    resources :presentations, only: [:new, :create]
+  end
   resources :uploads, only: [:index, :create, :show]
 
   scope :settings do

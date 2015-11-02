@@ -1,3 +1,14 @@
 .content
   %h1
     = @meeting.name
+
+  %h2 登録プレゼンテーション一覧
+  %table
+    %tr
+      %th Presenter
+      %th Title
+    - @meeting.presentations.each do |presentation|
+      %tr
+        %td= presentation.user.nickname
+        %td= presentation.title
+  = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting)

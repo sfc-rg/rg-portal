@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022102413) do
+ActiveRecord::Schema.define(version: 20151102055218) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -115,6 +115,17 @@ ActiveRecord::Schema.define(version: 20151022102413) do
 
   add_index "pages", ["content"], name: "index_pages_on_content"
   add_index "pages", ["user_id"], name: "index_pages_on_user_id"
+
+  create_table "presentations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "meeting_id"
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "presentations", ["meeting_id"], name: "index_presentations_on_meeting_id"
+  add_index "presentations", ["user_id"], name: "index_presentations_on_user_id"
 
   create_table "renamed_pages", force: :cascade do |t|
     t.string   "before_path"

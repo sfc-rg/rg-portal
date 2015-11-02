@@ -1,0 +1,11 @@
+.content
+  %h1 プレゼンテーションの登録
+  %p
+    「
+    = @meeting.name
+    」へプレゼンテーションを登録します
+  = form_for [@meeting, @presentation] do |f|
+    = f.label :title
+    = f.text_field :title
+    = f.submit
+    = link_to 'Cancel', meeting_path(@meeting)
