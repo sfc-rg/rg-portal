@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MeetingsController, type: :controller do
   render_views
-  let(:user) { FactoryGirl.create(:user) }
-  before { session[:user_id] = user.id }
+  before { login_as_user }
 
   describe '#index' do
     before do

@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe PagesController, type: :controller do
   render_views
-  let(:user) { FactoryGirl.create(:user) }
-  let(:page) { FactoryGirl.create(:page, user: user) }
-  before { session[:user_id] = user.id }
+  let(:page) { FactoryGirl.create(:page) }
+  before { login_as_user }
 
   describe '#index' do
     before do
@@ -54,7 +53,7 @@ RSpec.describe PagesController, type: :controller do
     end
 
     context 'when given created page params' do
-      let(:page) { FactoryGirl.create(:page, user: user) }
+      let(:page) { FactoryGirl.create(:page) }
       let(:page_params) { FactoryGirl.attributes_for(:page) }
       before do
         patch :update, path: page.path, page: page_params

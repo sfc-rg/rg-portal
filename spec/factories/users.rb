@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    name 'Yusei Yamanaka'
-    email 'sfc@example.com'
+    name 'Test User'
+    email 'email@example.com'
     icon_url 'placehold.it/128x128'
     role :general
     association :slack_credential
