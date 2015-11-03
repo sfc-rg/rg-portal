@@ -37,7 +37,7 @@ RGの教員の卒業プロジェクトを履修する場合は前学期までに
 学事の規定する期限までに論文を提出して受理され、学期末に最終成果の発表を行って合格をもらう必要があります。
 EOS
 
-pages["#{term_name}"] = <<"EOS"
+pages[term_name] = <<"EOS"
 # #{term_name}授業情報
 
 | 回 | 日付 | 授業内容 |
@@ -46,12 +46,12 @@ EOS
 
 Meeting.order(:start_at).each.with_index(1) do |meeting, i|
   main = meeting.presentations.first
-  content = main ? main.title : "未定"
-  pages["#{term_name}"] += "| #{i} | #{meeting.start_at.strftime("%Y/%m/%d")} | #{content} |\n"
+  content = main ? main.title : '未定'
+  pages[term_name] += "| #{i} | #{meeting.start_at.strftime('%Y/%m/%d')} | #{content} |\n"
 end
 
-today = Time.now
-if term_name[-1, 1] == "s"
+today = Time.zone.now
+if term_name[-1, 1] == 's'
   mid_term = "#{today.year}6月上旬"
   term = "#{today.year}7月下旬"
 else

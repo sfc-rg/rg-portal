@@ -6,7 +6,7 @@ comments = %w(素晴らしいプレゼンだった:+1: 最後の方が少し難�
 meetings = Meeting.all
 users = User.all
 meetings.each_with_index do |meeting, i|
-  if i % 2 == 0
+  if i.even?
     Presentation.create!(
       user: User.first,
       meeting: meeting,

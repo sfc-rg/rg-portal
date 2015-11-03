@@ -3,7 +3,7 @@ SlackCredential.delete_all
 LdapCredential.delete_all
 GroupUser.delete_all
 
-slack_user_id = ENV["SLACK_USER_ID"] || 'U03AA0BC0'
+slack_user_id = ENV['SLACK_USER_ID'] || 'U03AA0BC0'
 
 user = User.create!(
   email: 'email@exsample.com',
