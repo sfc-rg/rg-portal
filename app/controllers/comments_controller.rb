@@ -3,12 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = comment_class.create(comment_params)
-
-    if @comment.page_id.present?
-      redirect_to page_path(path: @comment.page.path)
-    else
-      redirect_to presentation_path(@comment.presentation)
-    end
+    redirect_to show_path(@comment)
   end
 
   private
