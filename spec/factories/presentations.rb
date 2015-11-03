@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :presentation do
-    user nil
-    meeting nil
-    title 'MyString'
+    title 'sample'
+    association :user
+    association :meeting
   end
 end

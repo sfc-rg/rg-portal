@@ -3,6 +3,7 @@ class PresentationsController < ApplicationController
   before_action :require_active_current_user
   before_action :set_meeting, only: [:new, :create]
   before_action :set_presentation, only: [:show, :edit, :update, :destroy]
+  before_action :require_ownership, except: [:show, :new, :create]
   before_action :set_emoji_completion, only: [:show]
 
   def show
@@ -47,6 +48,10 @@ class PresentationsController < ApplicationController
 
   def set_presentation
     @presentation = Presentation.find(params[:id])
+  end
+
+  def require_ownership
+    redirect_to meeting_path(@presentation.meeting) unless @presentation.user.id == @current_user.id
   end
 
   def presentation_params
