@@ -11,7 +11,8 @@
   %p
     現在の出席者数:
     = @meeting.attendances.count
-  = @meeting.render_content.html_safe
+  - if @meeting.content
+    = @meeting.render_content.html_safe
   %h2 登録プレゼンテーション一覧
   %table
     %tr
