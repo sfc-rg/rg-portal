@@ -21,7 +21,7 @@
     - @meeting.presentations.each do |presentation|
       %tr
         %td
-          - if @current_user && (presentation.user_id == @current_user.id)
+          - if presentation.user_id == @current_user.id
             = link_to edit_presentation_path(presentation) do
               %i.fa.fa-edit
             = link_to presentation_path(presentation), method: :delete,
