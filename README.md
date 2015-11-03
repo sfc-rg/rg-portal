@@ -58,3 +58,12 @@ $ bundle exec rake db:migrate RAILS_ENV=development
 ```
 
 It will create database file like `db/development.sqlite3`
+
+### Generate test data
+
+```
+$ SLACK_USER_ID=<your slack user ID here> rake db:seed
+```
+
+You can run the seed task to generate test data.
+If you provide your slack ID via environment variable, you can login as one of the test users.
