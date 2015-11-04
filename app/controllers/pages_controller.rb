@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   NUM_OF_RECENT_PAGES = 30
 
   def index
-    @recent_pages = Page.recent.limit(NUM_OF_RECENT_PAGES)
+    @recent_pages = Page.order(updated_at: :desc).limit(NUM_OF_RECENT_PAGES)
   end
 
   def show
