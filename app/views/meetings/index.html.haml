@@ -2,14 +2,12 @@
   %h1 ミーティング一覧
   %table
     %tr
-      %th #
       %th Name
       %th Start At
       %th End At
       %th Attendance Count
     - @meetings.each do |meeting|
       %tr
-        %td= meeting.id
         %td= link_to meeting.name, meeting_path(meeting)
         %td= meeting.start_at.strftime('%Y/%m/%d %H:%M')
         %td= meeting.end_at.strftime('%Y/%m/%d %H:%M')

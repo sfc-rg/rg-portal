@@ -5,7 +5,7 @@ class MeetingsController < ApplicationController
   before_action :set_emoji_completion, only: [:new, :edit]
 
   def index
-    @meetings = Meeting.order(created_at: :desc).page(params[:page]).per(10)
+    @meetings = Meeting.order(start_at: :desc).page(params[:page]).per(10)
   end
 
   def show
