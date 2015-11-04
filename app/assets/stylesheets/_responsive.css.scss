@@ -6,8 +6,34 @@
   nav .inner-left {
     @include span-columns(3 of 5);
 
+    .mobile-control {
+      cursor: pointer;
+      display: inline-block;
+      padding-right: 10px;
+    }
+
     .control {
-      display: none;
+      background-color: #3c3c3c;
+      bottom: 100%;
+      left: 0;
+      margin: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+
+      &.shown {
+        opacity: 1;
+        bottom: auto;
+        top: $nav_height;
+      }
+
+      a {
+        display: block;
+        border-top: 1px solid $light-gray;
+        padding-left: 20px;
+      }
     }
   }
 
