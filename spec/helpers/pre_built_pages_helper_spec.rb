@@ -34,19 +34,19 @@ RSpec.describe PreBuiltPagesHelper, type: :helper do
     subject { helper.term_name }
 
     context 'when 2015-02-28' do
-      before { Timecop.travel(2015, 2, 28) }
+      before { Timecop.travel(2015, 2, 28, 9, 0) }
       it { is_expected.to eq('2014f') }
     end
     context 'when 2015-03-01' do
-      before { Timecop.travel(2015, 3, 1) }
+      before { Timecop.travel(2015, 3, 1, 9, 0) }
       it { is_expected.to eq('2015s') }
     end
     context 'when 2015-08-31' do
-      before { Timecop.travel(2015, 8, 31) }
+      before { Timecop.travel(2015, 8, 31, 9, 0) }
       it { is_expected.to eq('2015s') }
     end
     context 'when 2015-09-01' do
-      before { Timecop.travel(2015, 9, 1) }
+      before { Timecop.travel(2015, 9, 1, 9, 0) }
       it { is_expected.to eq('2015f') }
     end
   end

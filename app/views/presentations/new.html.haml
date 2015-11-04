@@ -1,0 +1,5 @@
+.content
+  %h1
+    = @meeting.name
+  %h2 プレゼンテーションの登録
+  = render 'form', cancel_path: meeting_path(@meeting)

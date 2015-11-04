@@ -1,0 +1,41 @@
+.content
+  .breadcrumb
+    .link= link_to 'ミーティング一覧', meetings_path
+    .link= link_to @meeting.name, meeting_path(@meeting)
+
+  %h1
+    = @meeting.name
+  %p
+    = @meeting.start_at.strftime('%Y/%m/%d %H:%M ~')
+    = @meeting.end_at.strftime('%Y/%m/%d %H:%M')
+  %p
+    現在の出席者数:
+    = @meeting.attendances.count
+  - if @meeting.content
+    = @meeting.render_content.html_safe
+  %h2 登録プレゼンテーション一覧
+  %table
+    %tr
+      %th Presenter
+      %th Title
+      %th Handouts
+    - @meeting.presentations.each do |presentation|
+      %tr
+        %td
+          - if presentation.user_id == @current_user.id
+            = link_to edit_presentation_path(presentation) do
+              %i.fa.fa-edit
+            = link_to presentation_path(presentation), method: :delete,
+              data: { confirm: '削除すると元に戻せませんが、本当に削除しますか?' } do
+              %i.fa.fa-trash
+          = presentation.user.nickname
+        %td= link_to presentation.title, presentation_path(presentation)
+        %td
+          - presentation.handouts.each do |handout|
+            .handout_link
+              = link_to handout.file.url, target: '_blank' do
+                = handout.file_identifier.truncate(20)
+                %i.fa.fa-external-link
+  = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting)
+  .edit_link
+    = link_to 'このミーティングを編集', edit_meeting_path(@meeting)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022102413) do
+ActiveRecord::Schema.define(version: 20151102153107) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,11 +28,14 @@ ActiveRecord::Schema.define(version: 20151022102413) do
     t.integer  "user_id"
     t.integer  "page_id"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "type"
+    t.integer  "presentation_id"
   end
 
   add_index "comments", ["page_id"], name: "index_comments_on_page_id"
+  add_index "comments", ["presentation_id"], name: "index_comments_on_presentation_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "group_users", force: :cascade do |t|
@@ -89,6 +92,7 @@ ActiveRecord::Schema.define(version: 20151022102413) do
     t.datetime "end_at",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "content"
   end
 
   create_table "page_histories", force: :cascade do |t|
@@ -115,6 +119,27 @@ ActiveRecord::Schema.define(version: 20151022102413) do
 
   add_index "pages", ["content"], name: "index_pages_on_content"
   add_index "pages", ["user_id"], name: "index_pages_on_user_id"
+
+  create_table "presentation_handouts", force: :cascade do |t|
+    t.integer  "presentation_id"
+    t.integer  "upload_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "presentation_handouts", ["presentation_id"], name: "index_presentation_handouts_on_presentation_id"
+  add_index "presentation_handouts", ["upload_id"], name: "index_presentation_handouts_on_upload_id"
+
+  create_table "presentations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "meeting_id"
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "presentations", ["meeting_id"], name: "index_presentations_on_meeting_id"
+  add_index "presentations", ["user_id"], name: "index_presentations_on_user_id"
 
   create_table "renamed_pages", force: :cascade do |t|
     t.string   "before_path"

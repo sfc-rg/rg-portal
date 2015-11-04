@@ -62,4 +62,23 @@
   table {
     border-collapse: separate;
   }
+
+  .breadcrumb {
+    .link {
+      display: inline;
+      font-size: 90%;
+      margin-right: 10px;
+      padding: 0;
+
+      a {
+        color: #666;
+      }
+
+      &:before {
+        padding-right: 6px;
+        content: '≫';
+        color: #666;
+      }
+    }
+  }
 }

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :update]
   resources :groups, only: [:index, :create]
-  resources :meetings, only: [:index, :create]
+  resources :meetings, except: :destroy, shallow: true do
+    resources :presentations, except: :index
+  end
   resources :uploads, only: [:index, :create, :show]
 
   scope :settings do
@@ -37,7 +39,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :comments, only: :create
+  resources :page_comments, type: 'PageComment', only: :create
+  resources :presentation_comments, type: 'PresentationComment', only: :create
   resources :likes, only: [:create, :destroy]
 
   namespace :api do

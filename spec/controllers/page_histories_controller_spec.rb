@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PageHistoriesController, type: :controller do
   render_views
-  let(:user) { FactoryGirl.create(:user, ldap_credential: nil) }
-  let(:page) { FactoryGirl.create(:page, user: user) }
-  let(:page_history) { FactoryGirl.create(:page_history, page: page, user: user) }
-  before { session[:user_id] = user.id }
+  let(:page) { FactoryGirl.create(:page) }
+  let(:page_history) { FactoryGirl.create(:page_history, page: page) }
+  before { login_as_user }
 
   describe '#index' do
     before do

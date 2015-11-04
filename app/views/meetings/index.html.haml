@@ -10,14 +10,9 @@
     - @meetings.each do |meeting|
       %tr
         %td= meeting.id
-        %td= meeting.name
-        %td= meeting.start_at
-        %td= meeting.end_at
+        %td= link_to meeting.name, meeting_path(meeting)
+        %td= meeting.start_at.strftime('%Y/%m/%d %H:%M')
+        %td= meeting.end_at.strftime('%Y/%m/%d %H:%M')
         %td= meeting.attendances.count
-
-  %h1 ミーティング追加
-  = form_for Meeting.new do |f|
-    = f.text_field :name
-    = f.datetime_field :start_at
-    = f.datetime_field :end_at
-    = f.submit
+  = paginate @meetings
+  = link_to 'ミーティング追加', new_meeting_path

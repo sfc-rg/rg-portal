@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :ldap_credential do
-    uid 'miyukki'
-    uid_number 11032
+    sequence(:uid) { |n| "testuser_#{n}" }
+    sequence(:uid_number) { |n| 12345 + n }
     gid_number 1000
-    gecos 'Yusei Yamanaka, SFC, 71349640, t13964yy@sfc.keio.ac.jp'
-    student_id 71349640
+    gecos 'Test User, SFC, 71234567, t12345ut@sfc.keio.ac.jp'
+    sequence(:student_id) { |n| 71234567 + n }
   end
 end

@@ -4,10 +4,10 @@ RSpec.describe UsersController, type: :controller do
   render_views
   let(:user) { FactoryGirl.create(:user, role: role) }
   let(:role) { :admin }
+  before { login_as_user(user) }
 
   describe '#index' do
     before do
-      session[:user_id] = user.id # logged in
       get :index
     end
 
@@ -25,9 +25,8 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe '#update' do
-    let(:another_user) { FactoryGirl.create(:user, role: :general, ldap_credential: nil, slack_credential: nil) }
+    let(:another_user) { FactoryGirl.create(:user, role: :general) }
     before do
-      session[:user_id] = user.id # logged in
       patch :update, id: another_user.id, user: { role: :admin }
       another_user.reload
     end
