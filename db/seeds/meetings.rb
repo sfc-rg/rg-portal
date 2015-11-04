@@ -16,9 +16,8 @@ base_end_at = Time.zone.local(base_day.year, base_day.month, base_day.day, 18, 0
 end
 
 Meeting.all.each do |meeting|
-  if meeting.start_at < Time.zone.now
-    User.all.each do |user|
-      meeting.meeting_attendances.build(user: user).save! if rand.round == 0
-    end
+  next if meeting.start_at > Time.zone.now
+  User.all.each do |user|
+    meeting.meeting_attendances.build(user: user).save! if rand.round == 0
   end
 end
