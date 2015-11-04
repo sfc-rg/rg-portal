@@ -9,8 +9,7 @@ nav > .inner,
 }
 
 nav {
-  $_nav_height: 50px;
-  height: $_nav_height;
+  height: $nav_height;
   padding: 0 30px;
   color: white;
   background-color: #3c3c3c;
@@ -22,18 +21,22 @@ nav {
 
   .inner-left {
     @include span-columns(3 of 4);
-    height: $_nav_height;
-    line-height: $_nav_height;
+    height: $nav_height;
+    line-height: $nav_height;
 
     >div {
       display: inline-block;
+    }
+
+    .mobile-control {
+      display: none;
     }
   }
 
   .inner-right {
     @include span-columns(1 of 4);
-    height: $_nav_height;
-    line-height: $_nav_height;
+    height: $nav_height;
+    line-height: $nav_height;
     text-align: right;
 
     >div {
@@ -55,7 +58,7 @@ nav {
       color: $light-gray;
       display: inline-block;
       font-size: 1rem;
-      height: $_nav_height;
+      height: $nav_height;
       padding: 0 15px;
 
       &:hover {
@@ -66,17 +69,15 @@ nav {
   }
 
   .user {
-    $_icon_size: 36px;
-
     .icon {
       display: inline;
 
       img {
-        margin-top: ($_nav_height - $_icon_size) / 2;
+        margin-top: ($nav_height - $icon_size) / 2;
         margin-right: 5px;
         border-radius: 3px;
-        width: $_icon_size;
-        height: $_icon_size;
+        width: $icon_size;
+        height: $icon_size;
       }
     }
 

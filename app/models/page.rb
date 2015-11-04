@@ -6,7 +6,6 @@ class Page < ActiveRecord::Base
   has_many :comments, class_name: 'PageComment'
   has_many :likes
   has_many :histories, class_name: PageHistory
-  scope :recent, -> { order('pages.created_at DESC') }
 
   validates :path, presence: true, uniqueness: true
   validates :content, presence: true
