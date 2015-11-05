@@ -1,12 +1,12 @@
-Meeting.delete_all
-
 include PreBuiltPagesHelper
 
 base_day = 6.weeks.ago
 base_start_at = Time.zone.local(base_day.year, base_day.month, base_day.day, 14, 45)
 base_end_at = Time.zone.local(base_day.year, base_day.month, base_day.day, 18, 00)
 
-14.times do |i|
+meeting_num = (ENV['MEETING_NUM'] || 14).to_i
+
+meeting_num.times do |i|
   Meeting.create!(
     name: "#{term_name}第#{i + 1}回授業",
     start_at: base_start_at + i.weeks,

@@ -1,5 +1,3 @@
-Page.delete_all
-
 include PreBuiltPagesHelper
 
 pages = {}

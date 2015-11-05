@@ -1,8 +1,3 @@
-User.delete_all
-SlackCredential.delete_all
-LdapCredential.delete_all
-GroupUser.delete_all
-
 slack_user_id = ENV['SLACK_USER_ID'] || 'U03AA0BC0'
 
 user = User.create!(
@@ -24,7 +19,9 @@ user.group_users.build(group: Group.first).save!
 
 groups = Group.all
 
-50.times do |i|
+user_num = (ENV['USER_NUM'] || 50).to_i
+
+user_num.times do |i|
   user = User.create!(
     email: "email#{i}@exsample.com",
     name: "Test User #{i}",

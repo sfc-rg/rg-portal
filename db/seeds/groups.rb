@@ -1,5 +1,3 @@
-Group.delete_all
-
 Group.create!(name: 'AQUA', kind: :kg)
 Group.create!(name: 'Arch', kind: :kg)
 Group.create!(name: 'Auto-ID', kind: :kg)
