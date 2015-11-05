@@ -52,11 +52,11 @@ end
 
 today = Time.zone.now
 if term_name[-1, 1] == 's'
-  mid_term = "#{today.year}6月上旬"
-  term = "#{today.year}7月下旬"
+  mid_term = "#{today.year}年6月上旬"
+  term = "#{today.year}年7月下旬"
 else
-  mid_term = "#{today.year}12月上旬"
-  term = "#{today.year + 1}2月上旬"
+  mid_term = "#{today.year}年12月上旬"
+  term = "#{today.year + 1}年2月上旬"
 end
 
 pages["#{term_name}/WipTerm"] = <<"EOS"
