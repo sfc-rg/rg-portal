@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   end
 
   resources :page_comments, type: 'PageComment', only: :create
-  resources :presentation_comments, type: 'PresentationComment', only: :create
+  resources :presentation_comments, type: 'PresentationComment', only: [:index, :create]
   resources :likes, only: [:create, :destroy]
 
   namespace :api do
