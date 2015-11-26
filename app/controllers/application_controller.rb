@@ -4,6 +4,17 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  protected
+
+  def store_forwarding_url
+    session[:forwarding_url] = request.url if request.get?
+  end
+
+  def load_forwarding_url(default_url)
+    redirect_to(session[:forwarding_url] || default_url)
+    session.delete(:forwarding_url)
+  end
+
   private
 
   def set_locale
@@ -15,6 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
+    store_forwarding_url
     redirect_to '/auth/slack' if @current_user.blank?
   end
 
