@@ -4,7 +4,7 @@ class SearchController < ApplicationController
   before_action :set_page_results, only: [:show, :pages]
   before_action :set_slack_results, only: [:show, :slack]
 
-  SLACK_SOLR_SERVER_ADDR = 'http://localhost:58983/solr/rg_slack'
+  SLACK_SOLR_SERVER_ADDR = 'http://rg-slack-solr.sfc.widead.jp:8983/solr/rg_slack'
   SLACK_ALLOW_FILTER_OPTIONS = [ 'room', 'user', 'mention_user' ].freeze
 
   def index
