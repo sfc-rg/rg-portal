@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user_judgment do
-    presentation nil
-    user nil
+    association :presentation
+    association :user
     passed false
   end
 end

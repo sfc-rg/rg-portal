@@ -2,6 +2,7 @@ class UserJudgmentsController < ApplicationController
   before_action :require_active_current_user
   before_action :set_presentation, only: [:index, :create]
   before_action :set_user_judgment, only: :destroy
+  before_action :require_ownership, only: :destroy
 
   def index
     @user_judgments = @presentation.user_judgments
@@ -24,6 +25,10 @@ class UserJudgmentsController < ApplicationController
 
   def set_user_judgment
     @user_judgment = UserJudgment.find(params[:id])
+  end
+
+  def require_ownership
+    head :forbidden unless @user_judgment.user.id == @current_user.id
   end
 
   def user_judgment_params
