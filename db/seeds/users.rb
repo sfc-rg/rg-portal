@@ -15,7 +15,7 @@ user.build_ldap_credential(
   gecos: 'Test User, SFC, 71234567, t12345ut@sfc.keio.ac.jp',
   student_id: 71234567
 ).save!
-user.group_users.build(group: Group.first).save!
+user.group_users.create!(group: Group.first)
 
 groups = Group.all
 
@@ -37,5 +37,5 @@ user_num.times do |i|
     gecos: "Test User #{i}, SFC, 7123457#{i}, t1234#{i}ut@sfc.keio.ac.jp",
     student_id: 71234570 + i
   ).save!
-  user.group_users.build(group: groups.sample).save!
+  user.group_users.create!(group: groups.sample)
 end

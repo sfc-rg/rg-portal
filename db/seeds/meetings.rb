@@ -19,6 +19,6 @@ end
 Meeting.all.each do |meeting|
   next if meeting.start_at > Time.zone.now
   User.all.each do |user|
-    meeting.meeting_attendances.build(user: user).save! if rand.round == 0
+    meeting.meeting_attendances.create!(user: user) if rand.round == 0
   end
 end
