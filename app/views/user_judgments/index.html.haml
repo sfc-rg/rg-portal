@@ -1,0 +1,17 @@
+.content
+  %h1 評価一覧
+  %p
+    発表者:
+    = @presentation.user.nickname
+  %p
+    発表タイトル:
+    = link_to @presentation.title , presentation_path(@presentation)
+  %h2 評価
+  %table
+    %tr
+      %th Name
+      %th Judgment
+    - @user_judgments.each do |user_judgment|
+      %tr
+        %td= user_judgment.user.nickname
+        %td= user_judgment.stringify

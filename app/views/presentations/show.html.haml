@@ -14,6 +14,10 @@
       = link_to handout.file.url, target: '_blank' do
         = handout.file_identifier
         %i.fa.fa-external-link
+  - if @presentation.juried
+    %h2 判定
+    .judgment-field
+      = render 'judgment_field', presentation: @presentation
 
 .refreshable-comments{ data: { refresh_url: presentation_comments_path(presentation_id: @presentation.id) } }
   = render 'comments/show', comments: @presentation.comments,

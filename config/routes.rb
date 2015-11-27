@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :update]
   resources :groups, only: [:index, :create]
   resources :meetings, except: :destroy, shallow: true do
-    resources :presentations, except: :index
+    resources :presentations, except: :index, shallow: true do
+      resources :user_judgments, only: [:index, :create, :destroy]
+    end
   end
   resources :uploads, only: [:index, :create, :show]
 
