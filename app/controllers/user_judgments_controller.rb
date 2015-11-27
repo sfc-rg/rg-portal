@@ -27,6 +27,6 @@ class UserJudgmentsController < ApplicationController
   end
 
   def user_judgment_params
-    params.require(:user_judgment).permit(:passed).merge({ user: @current_user })
+    params.require(:user_judgment).permit(:passed).merge(user: @current_user)
   end
 end

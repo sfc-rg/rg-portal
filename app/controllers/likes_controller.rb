@@ -23,6 +23,6 @@ class LikesController < ApplicationController
   end
 
   def like_params
-    params.require(:like).permit(:page_id).merge({ user: @current_user })
+    params.require(:like).permit(:page_id).merge(user: @current_user)
   end
 end
