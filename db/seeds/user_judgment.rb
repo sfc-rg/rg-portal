@@ -1,5 +1,4 @@
 presentations = Presentation.all
-users = User.all
 presentations.each do |presentation|
   next unless presentation.juried
   User.all.each do |user|

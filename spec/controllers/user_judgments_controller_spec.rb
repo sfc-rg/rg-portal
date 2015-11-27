@@ -13,7 +13,9 @@ RSpec.describe UserJudgmentsController, type: :controller do
 
   describe '#create' do
     subject do
-      post :create, format: :js, presentation_id: presentation.id,
+      post :create,
+           format: :js,
+           presentation_id: presentation.id,
            user_judgment: FactoryGirl.attributes_for(:user_judgment)
     end
     it { is_expected.to render_template :create }
