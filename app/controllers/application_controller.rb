@@ -26,8 +26,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
+    return unless @current_user.blank?
     store_forwarding_url
-    redirect_to '/auth/slack' if @current_user.blank?
+    redirect_to '/auth/slack'
   end
 
   def require_active_current_user
