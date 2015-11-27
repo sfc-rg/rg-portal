@@ -29,7 +29,7 @@ if ENV['DELETE_ALL'] == 'true'
   Page.delete_all
 end
 
-%w(groups users meetings presentations pages).each do |path|
+%w(groups users meetings presentations user_judgment pages).each do |path|
   Dir.glob(File.join(Rails.root, 'db', 'seeds', "#{path}.rb")) do |file|
     load(file)
   end

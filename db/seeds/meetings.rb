@@ -11,7 +11,8 @@ meeting_num.times do |i|
     name: "#{term_name}第#{i + 1}回授業",
     start_at: base_start_at + i.weeks,
     end_at: base_end_at + i.weeks,
-    content: "第#{i + 1}回目の授業です。"
+    content: "第#{i + 1}回目の授業です。",
+    juried: rand.round == 0
   )
 end
 
