@@ -26,6 +26,6 @@ class SessionController < ApplicationController
       end
 
     session[:user_id] = user.id
-    redirect_to root_path
+    load_forwarding_url root_path
   end
 end
