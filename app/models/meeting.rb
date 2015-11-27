@@ -2,7 +2,7 @@ class Meeting < ActiveRecord::Base
   include Emojifier
   include MarkdownRender
 
-  has_many :meeting_attendances
+  has_many :meeting_attendances, dependent: :destroy
   has_many :attendances, through: :meeting_attendances, source: :user
   has_many :presentations
 
