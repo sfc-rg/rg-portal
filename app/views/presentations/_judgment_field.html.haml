@@ -1,12 +1,13 @@
 - user_judgment = presentation.judgment_by(@current_user)
 - if user_judgment.present?
-  .judgment= user_judgment.stringify
+  - judgment = user_judgment.stringify
+  %div{ class: "judgment #{judgment.downcase}" }= judgment
   = link_to 'RESET', user_judgment_path(user_judgment),
-    method: :delete, remote: true, class: 'reset-judgment-button'
+    method: :delete, remote: true, class: 'button reset'
 - else
   = link_to 'PASS',
     presentation_user_judgments_path(presentation, user_judgment: { passed: true }),
-    method: :post, remote: true, class: 'pass-button'
+    method: :post, remote: true, class: 'button pass'
   = link_to 'FAIL',
     presentation_user_judgments_path(presentation, user_judgment: { passed: false }),
-    method: :post, remote: true, class: 'fail-button'
+    method: :post, remote: true, class: 'button fail'

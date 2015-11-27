@@ -1,0 +1,39 @@
+.judgment-field {
+  .button.pass {
+    background-color: $medium-green;
+    &:hover,
+    &:focus {
+      background-color: darken($medium-green, 15%);
+    }
+  }
+
+  .button.fail {
+    background-color: $medium-red;
+    &:hover,
+    &:focus {
+      background-color: darken($medium-red, 15%);
+    }
+  }
+
+  .button.reset {
+    background-color: $medium-gray;
+    &:hover,
+    &:focus {
+      background-color: darken($medium-gray, 15%);
+    }
+  }
+
+  .judgment {
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-weight: 600;
+
+    &.pass {
+      color: $medium-green;
+    }
+
+    &.fail {
+      color: $medium-red;
+    }
+  }
+}
