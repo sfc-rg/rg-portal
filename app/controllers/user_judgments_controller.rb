@@ -5,7 +5,7 @@ class UserJudgmentsController < ApplicationController
   before_action :require_ownership, only: :destroy
 
   def index
-    @user_judgments = @presentation.user_judgments
+    @user_judgments = @presentation.user_judgments.includes(:user)
   end
 
   def create
