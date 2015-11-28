@@ -18,9 +18,6 @@ if ENV['DELETE_ALL'] == 'true'
   Group.destroy_all
   # users
   User.destroy_all
-  SlackCredential.destroy_all
-  LdapCredential.destroy_all
-  GroupUser.destroy_all
   # meetings
   Meeting.destroy_all
   # presentation

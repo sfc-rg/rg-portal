@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_one :slack_credential
-  has_one :ldap_credential
-  has_many :group_users
+  has_one :slack_credential, dependent: :destroy
+  has_one :ldap_credential, dependent: :destroy
+  has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
   enum role: { general: 0, manager: 10, admin: 20 }
