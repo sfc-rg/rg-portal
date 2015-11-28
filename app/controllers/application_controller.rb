@@ -35,4 +35,9 @@ class ApplicationController < ActionController::Base
     require_current_user
     redirect_to edit_profile_path if @current_user.present? && !@current_user.active?
   end
+
+  def require_privilege
+    return if @current_user.has_privilege?(controller_name, action_name)
+    render text: '403 Forbidden', layout: true, status: :forbidden
+  end
 end

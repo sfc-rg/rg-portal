@@ -1,5 +1,6 @@
 class UserJudgmentsController < ApplicationController
   before_action :require_active_current_user
+  before_action :require_privilege, only: :index
   before_action :set_presentation, only: [:index, :create]
   before_action :set_user_judgment, only: :destroy
   before_action :require_ownership, only: :destroy
