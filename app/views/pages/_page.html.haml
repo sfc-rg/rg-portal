@@ -23,4 +23,4 @@
         %li= link_to subpage.title, page_path(path: subpage.path)
 
 = render 'likes/list', page: page
-= render 'comments/list', comments: page.comments, new_comment: PageComment.new(page: page)
+= render 'comments/show', comments: page.comments, new_comment: PageComment.new(page: page)

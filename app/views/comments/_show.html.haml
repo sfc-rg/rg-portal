@@ -1,0 +1,10 @@
+= include_gon
+
+.comments
+  .title Comments
+
+  .comment-list
+    = render 'comments/list', comments: comments
+
+  .comment-new
+    = render 'comments/new', new_comment: new_comment

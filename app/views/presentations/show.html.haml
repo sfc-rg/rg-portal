@@ -15,5 +15,6 @@
         = handout.file_identifier
         %i.fa.fa-external-link
 
-= render 'comments/list', comments: @presentation.comments,
-  new_comment: PresentationComment.new(presentation: @presentation)
+.refreshable-comments{ data: { refresh_url: presentation_comments_path(presentation_id: @presentation.id) } }
+  = render 'comments/show', comments: @presentation.comments,
+    new_comment: PresentationComment.new(presentation: @presentation)
