@@ -2,6 +2,7 @@ class PresentationCommentsController < CommentsController
   before_action :set_presentation, only: :index
 
   def index
+    return render json: { html: nil }, status: 404 if @presentation.blank?
     html = render_to_string(
       partial: 'comments/list',
       locals: {
