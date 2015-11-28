@@ -4,12 +4,15 @@
   %h1 Rev. #{@history.id} Diff of #{@page.path}
   %p Edited by #{@history.user.nickname} at #{l(@history.created_at)}
 
-  - if @history.path != @history.previous.path
-    %h2 Path
-    = diff_html(:path, @history.previous, @history)
-  - if @history.title != @history.previous.title
-    %h2 Title
-    = diff_html(:title, @history.previous, @history)
-  - if @history.content != @history.previous.content
-    %h2 Content
-    = diff_html(:content, @history.previous, @history)
+  - if @history.previous.blank?
+    %p This is a first history.
+  - else
+    - if @history.path != @history.previous.path
+      %h2 Path
+      = diff_html(:path, @history.previous, @history)
+    - if @history.title != @history.previous.title
+      %h2 Title
+      = diff_html(:title, @history.previous, @history)
+    - if @history.content != @history.previous.content
+      %h2 Content
+      = diff_html(:content, @history.previous, @history)
