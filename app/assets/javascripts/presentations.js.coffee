@@ -1,11 +1,13 @@
-jQuery ($) ->
-  return if $('.presentations.show').size() == 0
+COMMENT_REFRESH_INTERVAL = 10000
 
-  setInterval( ->
-    $.ajax(
-      url: $('.refreshable-comments').data('refresh-url')
-      dataType: 'json'
-      success: (data) ->
-        $('.comment-list').html(data.html)
-    )
-  , 10000)
+jQuery ($) ->
+  $('.presentations.show').each( ->
+    setInterval( ->
+      $.ajax(
+        url: $('.refreshable-comments').data('refresh-url')
+        dataType: 'json'
+        success: (data) ->
+          $('.comment-list').html(data.html)
+      )
+    , COMMENT_REFRESH_INTERVAL)
+  )
