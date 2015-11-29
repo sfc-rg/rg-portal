@@ -7,8 +7,16 @@ RSpec.describe UserJudgmentsController, type: :controller do
   before { login_as_user(user) }
 
   describe '#index' do
-    before { get :index, presentation_id: presentation.id }
-    it { is_expected.to render_template(:index) }
+    subject { get :index, presentation_id: presentation.id }
+
+    context 'with privilege' do
+      before { FactoryGirl.create(:privilege, user: user, model: 'user_judgments', action: 'index') }
+      it { is_expected.to render_template :index }
+    end
+
+    context 'without privilege' do
+      it { is_expected.to be_forbidden }
+    end
   end
 
   describe '#create' do

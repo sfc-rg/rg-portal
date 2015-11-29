@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :privilege do
-    model 'MyString'
-    action 'MyString'
+    model 'model'
+    action 'action'
     association :user
   end
 end
