@@ -15,6 +15,7 @@ class Diffman
     files = [tempfile(string), tempfile(patch)]
     params = files.map(&:path)
     params << '-R' if reverse
+    params << '--binary'
     return nil if Open3.popen3(patch_bin, *params) { |_, _, _, w| w.value } != 0
     files.first.open
     str = files.first.read
