@@ -8,7 +8,7 @@
             %div= msg
     %select#privilege
       - @current_user.privileges.each do |p|
-        %option{ data: { model: p.model, action: p.action }}= p.stringify
+        %option{ data: { model: p.model, action: p.action } }= p.stringify
     = f.hidden_field :model
     = f.hidden_field :action
     = f.collection_select :user_id, User.all, :id, :nickname

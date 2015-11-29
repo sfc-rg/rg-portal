@@ -7,13 +7,13 @@ class PrivilegesController < ApplicationController
 
   def create
     @privilege = Privilege.new(privilege_params)
-    unless @current_user.has_privilege?(@privilege.model, @privilege.action)
-      @privilege.errors.add(:action, '自分が許可されていない権限は共有出来ません')
-    else
+    if @current_user.has_privilege?(@privilege.model, @privilege.action)
       if @privilege.save
         message = "#{@privilege.user.nickname}に#{@privilege.stringify}の権限を共有しました"
         flash.now[:success] = message
       end
+    else
+      @privilege.errors.add(:action, '自分が許可されていない権限は共有出来ません')
     end
     render :new
   end
