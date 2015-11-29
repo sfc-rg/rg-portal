@@ -156,9 +156,6 @@ pages.each do |name, content|
   )
 
   comments.sample(rand(3)).each do |comment|
-    page.comments.build(
-      user: users.sample,
-      content: comment
-    ).save!
+    page.comments.create!(user: users.sample, content: comment)
   end
 end

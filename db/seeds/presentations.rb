@@ -20,10 +20,7 @@ meetings.each_with_index do |meeting, i|
     )
 
     comments.sample(rand(3)).each do |comment|
-      presentation.comments.build(
-        user: users.sample,
-        content: comment
-      ).save!
+      presentation.comments.create!(user: users.sample, content: comment)
     end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102153107) do
+ActiveRecord::Schema.define(version: 20151127101959) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -88,11 +88,12 @@ ActiveRecord::Schema.define(version: 20151102153107) do
 
   create_table "meetings", force: :cascade do |t|
     t.string   "name"
-    t.datetime "start_at",   null: false
-    t.datetime "end_at",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "start_at",                   null: false
+    t.datetime "end_at",                     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.text     "content"
+    t.boolean  "juried",     default: false, null: false
   end
 
   create_table "page_histories", force: :cascade do |t|
@@ -166,6 +167,18 @@ ActiveRecord::Schema.define(version: 20151102153107) do
   end
 
   add_index "uploads", ["user_id"], name: "index_uploads_on_user_id"
+
+  create_table "user_judgments", force: :cascade do |t|
+    t.integer  "presentation_id"
+    t.integer  "user_id"
+    t.boolean  "passed"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "user_judgments", ["presentation_id", "user_id"], name: "index_user_judgments_on_presentation_id_and_user_id", unique: true
+  add_index "user_judgments", ["presentation_id"], name: "index_user_judgments_on_presentation_id"
+  add_index "user_judgments", ["user_id"], name: "index_user_judgments_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
