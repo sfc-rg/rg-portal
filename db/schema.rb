@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20151127101959) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.text     "content"
-    t.boolean  "juried",     default: false
+    t.boolean  "juried",     default: false, null: false
   end
 
   create_table "page_histories", force: :cascade do |t|
