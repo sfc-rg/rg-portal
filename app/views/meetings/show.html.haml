@@ -37,5 +37,6 @@
                 = handout.file_identifier.truncate(20)
                 %i.fa.fa-external-link
   = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting)
-  .edit_link
-    = link_to 'このミーティングを編集', edit_meeting_path(@meeting)
+  - if @current_user.has_privilege?('meetings', 'update')
+    .edit_link
+      = link_to 'このミーティングを編集', edit_meeting_path(@meeting)
