@@ -6,8 +6,8 @@ RSpec.describe MeetingsController, type: :controller do
   before { login_as_user }
 
   describe '#index' do
-    before { get :index }
-    it { is_expected.to render_template(:index) }
+    subject { get :index }
+    it { is_expected.to render_template :index }
   end
 
   describe '#show' do
