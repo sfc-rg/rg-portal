@@ -1,10 +1,8 @@
 class ChangeRoleToPrivilege < ActiveRecord::Migration
   def up
-    User.find_each do |user|
-      if user.admin?
-        user.privileges.create!(model: 'user_judgments', action: 'index')
-        user.privileges.create!(model: 'meetings', action: 'update')
-      end
+    User.where(role: 20).each do |user|
+      user.privileges.create!(model: 'user_judgments', action: 'index')
+      user.privileges.create!(model: 'meetings', action: 'update')
     end
   end
 
