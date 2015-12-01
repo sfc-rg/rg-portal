@@ -4,8 +4,7 @@ user = User.create!(
   email: 'email@exsample.com',
   name: 'Test User',
   nickname: 'testuser',
-  icon_url: 'http://placehold.it/128x128',
-  role: :admin
+  icon_url: 'http://placehold.it/128x128'
 )
 user.build_slack_credential(slack_user_id: slack_user_id).save!
 user.build_ldap_credential(
@@ -26,8 +25,7 @@ user_num.times do |i|
     email: "email#{i}@exsample.com",
     name: "Test User #{i}",
     nickname: "testuser_#{i}",
-    icon_url: 'http://placehold.it/128x128',
-    role: :general
+    icon_url: 'http://placehold.it/128x128'
   )
   user.build_slack_credential(slack_user_id: "U03AA0BD#{i}").save!
   user.build_ldap_credential(

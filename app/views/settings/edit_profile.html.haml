@@ -32,3 +32,13 @@
         = group_form.select :group_id, group_list
       = f.link_to_add '追加', :group_users
       = f.submit 'KG設定を更新する'
+
+  %h2
+    アクセス権限
+  - if @current_user.privileges.any?
+    %ul
+      - @current_user.privileges.each do |privilege|
+        %li= privilege.stringify
+    = link_to '他のユーザへの権限共有', new_privilege_path
+  - else
+    %p 特別に許可されたアクセス権限はありません

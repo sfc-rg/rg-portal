@@ -18,9 +18,6 @@ if ENV['DELETE_ALL'] == 'true'
   Group.destroy_all
   # users
   User.destroy_all
-  SlackCredential.destroy_all
-  LdapCredential.destroy_all
-  GroupUser.destroy_all
   # meetings
   Meeting.destroy_all
   # presentation
@@ -29,7 +26,7 @@ if ENV['DELETE_ALL'] == 'true'
   Page.destroy_all
 end
 
-%w(groups users meetings presentations user_judgment pages).each do |path|
+%w(groups users privileges meetings presentations user_judgment pages).each do |path|
   Dir.glob(File.join(Rails.root, 'db', 'seeds', "#{path}.rb")) do |file|
     load(file)
   end

@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe MeetingsController, type: :controller do
   render_views
   let(:meeting) { FactoryGirl.create(:meeting) }
-  before { login_as_user }
+  let(:user) { FactoryGirl.create(:user) }
+  before { login_as_user(user) }
 
   describe '#index' do
-    before { get :index }
-    it { is_expected.to render_template(:index) }
+    subject { get :index }
+    it { is_expected.to render_template :index }
   end
 
   describe '#show' do
@@ -32,6 +33,14 @@ RSpec.describe MeetingsController, type: :controller do
 
   describe '#update' do
     subject { patch :update, id: meeting.id, meeting: FactoryGirl.attributes_for(:meeting) }
-    it { is_expected.to redirect_to meeting_path(meeting) }
+
+    context 'with privilege' do
+      before { FactoryGirl.create(:privilege, user: user, model: 'meetings', action: 'update') }
+      it { is_expected.to redirect_to meeting_path(meeting) }
+    end
+
+    context 'without privilege' do
+      it { is_expected.to be_forbidden }
+    end
   end
 end

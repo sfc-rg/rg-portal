@@ -1,0 +1,15 @@
+.content
+  %h1 アクセス権限の共有
+  = form_for @privilege, url: privileges_path, method: :post do |f|
+    - if @privilege.errors.any?
+      .flash.error
+        - @privilege.errors.messages.each do |_, msgs|
+          - msgs.each do |msg|
+            %div= msg
+    %select#privilege
+      - @current_user.privileges.each do |p|
+        %option{ data: { model: p.model, action: p.action } }= p.stringify
+    = f.hidden_field :model
+    = f.hidden_field :action
+    = f.collection_select :user_id, User.all, :id, :nickname
+    = f.submit
