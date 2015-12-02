@@ -15,7 +15,7 @@ class PageCommentsController < CommentsController
     usernames = @comment.content.scan(MENTION_USER_REGEX).map { |mention| mention[0] }
     mention_users = usernames.map { |username| User.find_by(nickname: username) }.compact
     mention_users.each do |mention_user|
-      message = "New mention on #{@comment.page.title} by #{@comment.user.nickname}\n#{@comment.content}\n#{page_url(@comment.page)}"
+      message = "New mention on #{@comment.page.title} by #{@comment.user.nickname} #{page_url(@comment.page)}\n#{@comment.content}"
       slack_notify(from: @comment.user, to: mention_user, message: message)
     end
   end
