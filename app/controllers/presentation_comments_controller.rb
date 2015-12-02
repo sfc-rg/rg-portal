@@ -31,7 +31,8 @@ class PresentationCommentsController < CommentsController
 
   def notify_new_comment
     return if @comment.user == @comment.presentation.user
-    message = "New comment on #{@comment.presentation.title} by #{@comment.user.nickname} #{presentation_url(@comment.presentation)}\n#{@comment.content}"
+    url = presentation_url(@comment.presentation)
+    message = "New comment on #{@comment.presentation.title} by #{@comment.user.nickname} #{url}\n#{@comment.content}"
     slack_notify(from: @comment.user, to: @comment.presentation.user, message: message)
   end
 
@@ -39,7 +40,8 @@ class PresentationCommentsController < CommentsController
     usernames = @comment.content.scan(MENTION_USER_REGEX).map { |mention| mention[0] }
     mention_users = usernames.map { |username| User.find_by(nickname: username) }.compact
     mention_users.each do |mention_user|
-      message = "New mention on #{@comment.presentation.title} by #{@comment.user.nickname} #{presentation_url(@comment.presentation)}\n#{@comment.content}"
+      url = presentation_url(@comment.presentation)
+      message = "New mention on #{@comment.presentation.title} by #{@comment.user.nickname} #{url}\n#{@comment.content}"
       slack_notify(from: @comment.user, to: mention_user, message: message)
     end
   end
