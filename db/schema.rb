@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129164519) do
+ActiveRecord::Schema.define(version: 20151202082349) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -165,6 +165,8 @@ ActiveRecord::Schema.define(version: 20151129164519) do
     t.string   "slack_user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "username"
+    t.string   "access_token"
   end
 
   add_index "slack_credentials", ["user_id"], name: "index_slack_credentials_on_user_id"
