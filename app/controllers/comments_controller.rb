@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  MENTION_USER_REGEX = /@([A-z0-9]+)/
+
   before_action :require_active_current_user
 
   def create
