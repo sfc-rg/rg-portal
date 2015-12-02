@@ -3,7 +3,7 @@ require 'rails_helper'
 shared_examples_for 'emojifier' do
   let(:model) { described_class }
   let(:factory) { model.to_s.underscore.to_sym }
-  let(:object) { FactoryGirl.create(factory, content: content, user: nil) }
+  let(:object) { FactoryGirl.create(factory, content: content) }
 
   subject { object.emojify }
 
