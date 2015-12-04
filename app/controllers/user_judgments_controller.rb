@@ -1,20 +1,20 @@
-class UserJudgmentsController < ApplicationController
+class UserJudgementsController < ApplicationController
   before_action :require_active_current_user
   before_action :require_privilege, only: :index
   before_action :set_presentation, only: [:index, :create]
-  before_action :set_user_judgment, only: :destroy
+  before_action :set_user_judgement, only: :destroy
   before_action :require_ownership, only: :destroy
 
   def index
-    @user_judgments = @presentation.user_judgments.includes(:user)
+    @user_judgements = @presentation.user_judgements.includes(:user)
   end
 
   def create
-    @user_judgment = @presentation.user_judgments.create!(user_judgment_params)
+    @user_judgement = @presentation.user_judgements.create!(user_judgement_params)
   end
 
   def destroy
-    @user_judgment.destroy
+    @user_judgement.destroy
     render :create
   end
 
@@ -24,15 +24,15 @@ class UserJudgmentsController < ApplicationController
     @presentation = Presentation.find(params[:presentation_id])
   end
 
-  def set_user_judgment
-    @user_judgment = UserJudgment.find(params[:id])
+  def set_user_judgement
+    @user_judgement = UserJudgement.find(params[:id])
   end
 
   def require_ownership
-    head :forbidden unless @user_judgment.user.id == @current_user.id
+    head :forbidden unless @user_judgement.user.id == @current_user.id
   end
 
-  def user_judgment_params
-    params.require(:user_judgment).permit(:passed).merge(user: @current_user)
+  def user_judgement_params
+    params.require(:user_judgement).permit(:passed).merge(user: @current_user)
   end
 end
