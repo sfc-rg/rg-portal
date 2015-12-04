@@ -11,5 +11,5 @@ jQuery ($) ->
       template: (value) ->
         "<img src='/images/emoji/#{gon.emojis[value]}' class=emoji /> #{value}"
       replace: (value) ->
-        "$1:#{value}:"
+        "$1:#{value}: "
     ], maxCount: 5, appendTo: $('body'))

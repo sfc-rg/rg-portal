@@ -25,6 +25,8 @@ class SessionController < ApplicationController
         slack_credential.user
       end
 
+    slack_credential.update(username: auth.info.nickname, access_token: auth.credentials.token)
+
     session[:user_id] = user.id
     load_forwarding_url root_path
   end

@@ -1,10 +1,12 @@
 class PagesController < ApplicationController
   include EmojiComplete
+  include UserComplete
   include PageSetter
   before_action :require_active_current_user
   before_action :set_page, except: :index
   before_action :set_new_comment, only: :show
   before_action :set_emoji_completion, only: [:show, :edit]
+  before_action :set_user_completion, only: [:show, :edit]
 
   NUM_OF_RECENT_PAGES = 30
 
