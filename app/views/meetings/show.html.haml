@@ -14,7 +14,7 @@
   - if @meeting.presentations.any?
     %p
       プレゼンテーション登録者数:
-      = @meeting.presentations.count
+      = @meeting.presentations.size
   - if @meeting.content
     = @meeting.render_content.html_safe
   %h2 登録プレゼンテーション一覧
