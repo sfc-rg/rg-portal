@@ -23,26 +23,21 @@ class PresentationCommentsController < CommentsController
     presentation_path(comment.presentation)
   end
 
+  def show_url(comment)
+    presentation_url(comment.presentation)
+  end
+
+  def notify_new_comment
+    super(from: @comment.user, to: @comment.presentation.user, title: @comment.page.title)
+  end
+
+  def notify_mentions
+    super(from: @comment.user, title: @comment.presentation.title)
+  end
+
   private
 
   def set_presentation
     @presentation = Presentation.find_by(id: params[:presentation_id])
-  end
-
-  def notify_new_comment
-    return if @comment.user == @comment.presentation.user
-    url = presentation_url(@comment.presentation)
-    message = "New comment on #{@comment.presentation.title} by #{@comment.user.nickname} #{url}\n#{@comment.content}"
-    slack_notify(from: @comment.user, to: @comment.presentation.user, message: message)
-  end
-
-  def notify_mentions
-    usernames = @comment.content.scan(MENTION_USER_REGEX).map { |mention| mention[0] }
-    mention_users = usernames.map { |username| User.find_by(nickname: username) }.compact
-    mention_users.each do |mention_user|
-      url = presentation_url(@comment.presentation)
-      message = "New mention on #{@comment.presentation.title} by #{@comment.user.nickname} #{url}\n#{@comment.content}"
-      slack_notify(from: @comment.user, to: mention_user, message: message)
-    end
   end
 end

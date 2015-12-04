@@ -9,15 +9,11 @@ class PageCommentsController < CommentsController
     page_path(path: comment.page.path)
   end
 
-  private
+  def show_url(comment)
+    page_url(path: comment.page.path)
+  end
 
   def notify_mentions
-    usernames = @comment.content.scan(MENTION_USER_REGEX).map { |mention| mention[0] }
-    mention_users = usernames.map { |username| User.find_by(nickname: username) }.compact
-    mention_users.each do |mention_user|
-      url = page_url(path: @comment.page.path)
-      message = "New mention on #{@comment.page.title} by #{@comment.user.nickname} #{url}\n#{@comment.content}"
-      slack_notify(from: @comment.user, to: mention_user, message: message)
-    end
+    super(from: @comment.user, title: @comment.page.title)
   end
 end
