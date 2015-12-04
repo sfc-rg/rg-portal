@@ -1,9 +1,11 @@
 class MeetingsController < ApplicationController
   include EmojiComplete
+  include UserComplete
   before_action :require_active_current_user
   before_action :require_privilege, only: [:update]
   before_action :set_meeting, only: [:show, :edit, :update]
   before_action :set_emoji_completion, only: [:new, :edit]
+  before_action :set_user_completion, only: [:new, :edit]
 
   def index
     @meetings = Meeting.order(start_at: :desc).page(params[:page]).per(10)
