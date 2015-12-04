@@ -11,6 +11,6 @@
         %td= link_to meeting.name, meeting_path(meeting)
         %td= meeting.start_at.strftime('%Y/%m/%d %H:%M')
         %td= meeting.end_at.strftime('%Y/%m/%d %H:%M')
-        %td= meeting.attendances.count
+        %td= meeting.meeting_attendances.size
   = paginate @meetings
   = link_to 'ミーティング追加', new_meeting_path

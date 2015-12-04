@@ -1,5 +1,5 @@
 class MeetingAttendance < ActiveRecord::Base
-  belongs_to :meeting
+  belongs_to :meeting, counter_cache: true
   belongs_to :user
 
   validates :meeting, presence: true
