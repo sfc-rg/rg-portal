@@ -10,8 +10,8 @@
   %table
     %tr
       %th Name
-      %th Judgment
-    - @user_judgments.each do |user_judgment|
+      %th judgement
+    - @user_judgements.each do |user_judgement|
       %tr
-        %td= user_judgment.user.nickname
-        %td= user_judgment.stringify
+        %td= user_judgement.user.nickname
+        %td= user_judgement.stringify
