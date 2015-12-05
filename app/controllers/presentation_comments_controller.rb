@@ -28,7 +28,7 @@ class PresentationCommentsController < CommentsController
   end
 
   def notify_new_comment
-    super(from: @comment.user, to: @comment.presentation.user, title: @comment.page.title)
+    super(from: @comment.user, to: @comment.presentation.user, title: @comment.presentation.title)
   end
 
   def notify_mentions
