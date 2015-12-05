@@ -5,5 +5,6 @@
     .user
       .icon= image_tag @current_user.icon_url
     .box
-      = f.text_area :content, rows: 4, class: 'emoji-complete user-complete'
+      = f.text_area :content, rows: 4, class: 'emoji-complete user-complete',
+        placeholder: 'Let\'s type :smile: and use emojis in your comment!'
       = f.submit 'Comment'

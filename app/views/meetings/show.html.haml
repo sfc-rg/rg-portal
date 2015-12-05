@@ -10,7 +10,11 @@
     = @meeting.end_at.strftime('%Y/%m/%d %H:%M')
   %p
     現在の出席者数:
-    = @meeting.attendances.count
+    = @meeting.meeting_attendances.size
+  - if @meeting.presentations.any?
+    %p
+      プレゼンテーション登録者数:
+      = @meeting.presentations.size
   - if @meeting.content
     = @meeting.render_content.html_safe
   %h2 登録プレゼンテーション一覧

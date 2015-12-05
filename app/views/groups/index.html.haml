@@ -11,7 +11,7 @@
         %td= group.id
         %td= group.kind.to_s
         %td= group.name
-        %td= group.users.count
+        %td= group.users.size
 
   %h1 グループ追加
   = form_for Group.new do |f|

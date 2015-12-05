@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202082349) do
+ActiveRecord::Schema.define(version: 20151202135621) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -88,12 +88,13 @@ ActiveRecord::Schema.define(version: 20151202082349) do
 
   create_table "meetings", force: :cascade do |t|
     t.string   "name"
-    t.datetime "start_at",                   null: false
-    t.datetime "end_at",                     null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "start_at",                                  null: false
+    t.datetime "end_at",                                    null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.text     "content"
-    t.boolean  "juried",     default: false, null: false
+    t.boolean  "juried",                    default: false, null: false
+    t.integer  "meeting_attendances_count", default: 0
   end
 
   create_table "page_histories", force: :cascade do |t|

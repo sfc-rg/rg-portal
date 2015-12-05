@@ -6,11 +6,11 @@
         %i.fa.fa-edit
     %span.star
       %i.fa.fa-star
-      = page.likes.count
+      = page.likes.size
     %span.history
       = link_to page_histories_path do
         %i.fa.fa-history
-        = page.histories.count
+        = page.histories.size
   .breadcrumb= page_breadcrumb_links(page).html_safe
 
 .content

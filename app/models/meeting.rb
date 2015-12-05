@@ -3,7 +3,6 @@ class Meeting < ActiveRecord::Base
   include MarkdownRender
 
   has_many :meeting_attendances, dependent: :destroy
-  has_many :attendances, through: :meeting_attendances, source: :user
   has_many :presentations
 
   validates :name, presence: true
