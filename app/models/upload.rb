@@ -8,6 +8,10 @@ class Upload < ActiveRecord::Base
     self.content_type.include?('image')
   end
 
+  def pdf?
+    self.content_type.include?('pdf')
+  end
+
   private
 
   def set_content_type
