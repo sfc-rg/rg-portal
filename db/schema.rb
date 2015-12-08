@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202135621) do
+ActiveRecord::Schema.define(version: 20151205110000) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -25,14 +25,14 @@ ActiveRecord::Schema.define(version: 20151202135621) do
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
 
   create_table "blogs", force: :cascade do |t|
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.text     "title"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "blogs", ["users_id"], name: "index_blogs_on_users_id"
+  add_index "blogs", ["user_id"], name: "index_blogs_on_user_id"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20151202135621) do
     t.datetime "updated_at",      null: false
     t.string   "type"
     t.integer  "presentation_id"
+    t.integer  "blog_id"
   end
 
   add_index "comments", ["page_id"], name: "index_comments_on_page_id"
