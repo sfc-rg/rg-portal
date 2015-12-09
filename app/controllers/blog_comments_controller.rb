@@ -1,26 +1,19 @@
 class BlogCommentsController < CommentsController
   include SlackNotifier
 
-  before_action :set_blog, only: :index
+  before_action :require_active_current_user
+  before_action :set_blog, only: [:index, :create]
   after_action :notify_new_comment, only: :create
   after_action :notify_mentions, only: :create
-
-  def index
-    return render json: { html: nil }, status: 404 if @blog.blank?
-    html = render_to_string(
-      partial: 'comments/list',
-      locals: {
-        comments: @blog.comments,
-        new_comment: BlogComment.new(blog: @blog),
-      }
-    )
-    render json: { html: html }
-  end
 
   protected
 
   def type
     BlogComment.name
+  end
+
+  def list_comments
+    @blog.comments
   end
 
   def show_path(comment)
@@ -42,6 +35,6 @@ class BlogCommentsController < CommentsController
   private
 
   def set_blog
-    @blog = Blog.find_by(id: params[:blog_id])
+    @blog = Blog.find_by(id: params[:blog_comment][:blog_id])
   end
 end
