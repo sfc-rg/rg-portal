@@ -1,8 +1,12 @@
 class BlogsController < ApplicationController
+  include EmojiComplete
+  include UserComplete
   before_action :require_active_current_user
   before_action :set_page, only: :index
   before_action :set_user, only: [:index, :show, :update, :edit]
   before_action :set_blog, only: [:show, :update, :edit]
+  before_action :set_emoji_completion, only: :show
+  before_action :set_user_completion, only: :show
 
   DEFAULT_BLOGS_PER_PAGE = 10
 
