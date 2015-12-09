@@ -44,17 +44,55 @@ Rails.application.routes.draw do
 
   resources :page_comments, type: 'PageComment', only: :create
   resources :presentation_comments, type: 'PresentationComment', only: [:index, :create]
+  resources :blog_comments, only: :create
   resources :likes, only: [:create, :destroy]
 
   scope :blogs do
+    get '/' => redirect('/'), as: :blogs
+    post '/' => 'blogs#create'
     get '/new' => 'blogs#new', as: :new_blog
     scope '/:nickname' do
-      get '/' => 'blogs#index', as: :blogs
-      post '/' => 'blogs#update', as: :update_blog
-      get '/:timestamp' => 'blogs#show', as: :blog
+      get '/' => 'blogs#index', as: :list_blog
+      scope '/:timestamp', constraints: { timestamp: /\d+/ } do
+        get '/' => 'blogs#show', as: :blog
+        patch '/' => 'blogs#update'
+        get '/edit' => 'blogs#edit', as: :edit_blog
+      end
     end
   end
-  resources :blog_comments, only: :create
+
+  # resources :blogs, type: 'Blog', param: :nickname, only: :new do
+  #   collection do
+  #     get '/:nickname' => 'blogs#index'
+  #     post '/:nickname' => 'blogs#create'
+  #   end
+  #
+  #   member do
+  #     scope '/:timestamp', constraints: { timestamp: /\d/ } do
+  #       get '/' => 'blogs#show'
+  #       patch '/' => 'blogs#update'
+  #       get '/edit' => 'blogs#edit', as: :edit
+  #     end
+  #   end
+  # end
+
+    # resources :blog_articles, type: 'Blog', param: :timestamp, path: '' do
+    # end
+  # scope :blogs do
+  #   resources :blogs, type: 'Blog', param: :timestamp, path: '' do
+  #   end
+  # end
+
+  # scope :blogs do
+    # get '/' => redirect('/')
+    # get '/new' => 'blogs#new', as: :new_blog
+    # scope '/:nickname' do
+      # get '/' => 'blogs#index', as: :blogs
+      # get '/:timestamp' => 'blogs#show', as: :blog
+      # get '/:timestamp/edit' => 'blogs#edit', as: :edit_blog
+      # post '/:timestamp' => 'blogs#update', as: :update_blog
+    # end
+  # end
 
   namespace :api do
     namespace :v1, format: :json do

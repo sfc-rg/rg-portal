@@ -5,12 +5,21 @@ class Blog < ActiveRecord::Base
   belongs_to :user
   has_many :comments
 
+  def header_level
+    2
+  end
+
+  def nickname
+    user.try(:nickname)
+  end
+
   def timestamp
-    created_at.to_i
+    created_at.strftime('%Y%m%d%H%M%S%6N')
   end
 
   def to_param
-    { nickname: user.try(:nickname),
+    # timestamp
+    { nickname: nickname,
       timestamp: timestamp,
     }
   end

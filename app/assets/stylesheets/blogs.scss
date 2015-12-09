@@ -1,3 +1,30 @@
-// Place all the styles related to the Blogs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.blogs {
+  .blog-header {
+    @include clearfix;
+
+    .icon {
+      float: left;
+      width: 64px;
+      height: 64px;
+    }
+
+    .title {
+      float: left;
+      margin-left: 20px;
+      line-height: 60px;
+    }
+  }
+
+  .blog-colophon {
+    margin-bottom: 10px;
+    font-size: 150%;
+    padding: 10px; // Same as $_content_padding
+    background-color: #ddd;
+    border-radius: 3px;
+
+    .title {
+      color: $black;
+      margin-bottom: 0;
+    }
+  }
+}
