@@ -2,7 +2,7 @@ class Presentation < ActiveRecord::Base
   belongs_to :user
   belongs_to :meeting
   delegate :juried, to: :meeting
-  has_many :comments, class_name: 'PresentationComment'
+  has_many :comments, class_name: PresentationComment
   has_many :user_judgments, dependent: :destroy
   has_many :presentation_handouts, dependent: :destroy
   has_many :handouts, through: :presentation_handouts, source: :upload

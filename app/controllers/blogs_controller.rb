@@ -1,10 +1,13 @@
 class BlogsController < ApplicationController
   before_action :require_active_current_user
+  before_action :set_page, only: :index
   before_action :set_user, only: [:index, :show, :update, :edit]
   before_action :set_blog, only: [:show, :update, :edit]
 
+  DEFAULT_BLOGS_PER_PAGE = 10
+
   def index
-    @blogs = Blog.where(user: @user).order('created_at DESC')
+    @blogs = Blog.where(user: @user).order('created_at DESC').page(@page).per(DEFAULT_BLOGS_PER_PAGE)
   end
 
   def new
@@ -35,6 +38,10 @@ class BlogsController < ApplicationController
   end
 
   private
+
+  def set_page
+    @page = [params[:page].to_i, 1].max
+  end
 
   def set_user
     @user = User.find_by!(nickname: params[:nickname])

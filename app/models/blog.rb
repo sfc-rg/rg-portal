@@ -3,7 +3,7 @@ class Blog < ActiveRecord::Base
   include MarkdownRender
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, class_name: BlogComment
 
   def header_level
     2
@@ -18,7 +18,6 @@ class Blog < ActiveRecord::Base
   end
 
   def to_param
-    # timestamp
     { nickname: nickname,
       timestamp: timestamp,
     }

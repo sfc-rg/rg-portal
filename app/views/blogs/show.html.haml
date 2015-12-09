@@ -1,2 +1,5 @@
 = render 'header'
 = render 'blog', blog: @blog
+.refreshable-comments{ data: { refresh_url: blog_comments_path(blog_id: @blog.id) } }
+  = render 'comments/show', comments: @blog.comments,
+    new_comment: BlogComment.new(blog: @blog)

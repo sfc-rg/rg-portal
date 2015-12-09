@@ -27,4 +27,11 @@
       margin-bottom: 0;
     }
   }
+
+  .pagination > span {
+    margin: 0 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: solid 1px gray;
+  }
 }
