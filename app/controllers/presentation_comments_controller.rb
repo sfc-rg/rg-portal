@@ -1,23 +1,15 @@
 class PresentationCommentsController < CommentsController
   include SlackNotifier
 
-  before_action :set_presentation, only: :index
+  before_action :set_presentation, only: [:index, :create]
   after_action :notify_new_comment, only: :create
   after_action :notify_mentions, only: :create
 
-  def index
-    return render json: { html: nil }, status: 404 if @presentation.blank?
-    html = render_to_string(
-      partial: 'comments/list',
-      locals: {
-        comments: @presentation.comments,
-        new_comment: PresentationComment.new(presentation: @presentation),
-      }
-    )
-    render json: { html: html }
-  end
-
   protected
+
+  def list_comments
+    @presentation.comments
+  end
 
   def show_path(comment)
     presentation_path(comment.presentation)
@@ -38,6 +30,6 @@ class PresentationCommentsController < CommentsController
   private
 
   def set_presentation
-    @presentation = Presentation.find_by(id: params[:presentation_id])
+    @presentation = Presentation.find_by(id: params[:presentation_id] || params[:presentation_comment][:presentation_id])
   end
 end

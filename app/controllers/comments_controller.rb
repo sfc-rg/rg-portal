@@ -3,9 +3,26 @@ class CommentsController < ApplicationController
 
   before_action :require_active_current_user
 
+  def index
+    html = render_to_string(
+      partial: 'comments/list',
+      locals: { comments: list_comments }
+    )
+    render json: { html: html }
+  end
+
   def create
     @comment = comment_class.create(comment_params)
-    redirect_to show_path(@comment)
+
+    if request.xhr?
+      html = render_to_string(
+        partial: 'comments/list',
+        locals: { comments: list_comments }
+      )
+      render json: { html: html }
+    else
+      redirect_to show_path(@comment)
+    end
   end
 
   protected

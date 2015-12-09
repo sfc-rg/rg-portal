@@ -1,10 +1,10 @@
-= form_for new_comment do |f|
+= form_for new_comment, html: { class: 'js-comment-form' } do |f|
   = f.hidden_field :page_id
   = f.hidden_field :presentation_id
   .comment
     .user
       .icon= image_tag @current_user.icon_url
     .box
-      = f.text_area :content, rows: 4, class: 'emoji-complete user-complete',
+      = f.text_area :content, rows: 4, class: 'js-comment-content emoji-complete user-complete',
         placeholder: 'Let\'s type :smile: and use emojis in your comment!'
-      = f.submit 'Comment'
+      = f.submit 'Comment (Cmd + Enter)', class: 'js-comment-submit'
