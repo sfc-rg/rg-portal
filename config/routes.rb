@@ -61,39 +61,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :blogs, type: 'Blog', param: :nickname, only: :new do
-  #   collection do
-  #     get '/:nickname' => 'blogs#index'
-  #     post '/:nickname' => 'blogs#create'
-  #   end
-  #
-  #   member do
-  #     scope '/:timestamp', constraints: { timestamp: /\d/ } do
-  #       get '/' => 'blogs#show'
-  #       patch '/' => 'blogs#update'
-  #       get '/edit' => 'blogs#edit', as: :edit
-  #     end
-  #   end
-  # end
-
-    # resources :blog_articles, type: 'Blog', param: :timestamp, path: '' do
-    # end
-  # scope :blogs do
-  #   resources :blogs, type: 'Blog', param: :timestamp, path: '' do
-  #   end
-  # end
-
-  # scope :blogs do
-    # get '/' => redirect('/')
-    # get '/new' => 'blogs#new', as: :new_blog
-    # scope '/:nickname' do
-      # get '/' => 'blogs#index', as: :blogs
-      # get '/:timestamp' => 'blogs#show', as: :blog
-      # get '/:timestamp/edit' => 'blogs#edit', as: :edit_blog
-      # post '/:timestamp' => 'blogs#update', as: :update_blog
-    # end
-  # end
-
   namespace :api do
     namespace :v1, format: :json do
       resources :attendances
