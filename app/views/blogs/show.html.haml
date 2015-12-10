@@ -1,0 +1,4 @@
+= render 'header'
+= render 'blog', blog: @blog
+
+= render 'comments/show', comments: @blog.comments, new_comment: BlogComment.new(blog: @blog)

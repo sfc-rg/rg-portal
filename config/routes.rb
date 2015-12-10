@@ -44,7 +44,22 @@ Rails.application.routes.draw do
 
   resources :page_comments, type: 'PageComment', only: :create
   resources :presentation_comments, type: 'PresentationComment', only: [:index, :create]
+  resources :blog_comments, only: :create
   resources :likes, only: [:create, :destroy]
+
+  scope :blogs do
+    get '/' => redirect('/'), as: :blogs
+    post '/' => 'blogs#create'
+    get '/new' => 'blogs#new', as: :new_blog
+    scope '/:nickname' do
+      get '/' => 'blogs#index', as: :list_blog
+      scope '/:timestamp', constraints: { timestamp: /\d+/ } do
+        get '/' => 'blogs#show', as: :blog
+        patch '/' => 'blogs#update'
+        get '/edit' => 'blogs#edit', as: :edit_blog
+      end
+    end
+  end
 
   namespace :api do
     namespace :v1, format: :json do

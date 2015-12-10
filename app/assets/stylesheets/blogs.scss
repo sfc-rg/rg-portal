@@ -1,0 +1,37 @@
+.blogs {
+  .blog-header {
+    @include clearfix;
+
+    .icon {
+      float: left;
+      width: 64px;
+      height: 64px;
+    }
+
+    .title {
+      float: left;
+      margin-left: 20px;
+      line-height: 60px;
+    }
+  }
+
+  .blog-colophon {
+    margin-bottom: 10px;
+    font-size: 150%;
+    padding: 10px; // Same as $_content_padding
+    background-color: #ddd;
+    border-radius: 3px;
+
+    .title {
+      color: $black;
+      margin-bottom: 0;
+    }
+  }
+
+  .pagination > span {
+    margin: 0 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: solid 1px gray;
+  }
+}

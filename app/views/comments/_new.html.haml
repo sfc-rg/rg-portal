@@ -1,6 +1,7 @@
 = form_for new_comment, html: { class: 'js-comment-form' } do |f|
   = f.hidden_field :page_id
   = f.hidden_field :presentation_id
+  = f.hidden_field :blog_id
   .comment
     .user
       .icon= image_tag @current_user.icon_url

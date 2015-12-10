@@ -1,0 +1,7 @@
+.blog-colophon
+  = link_to blog_path(blog.to_param) do
+    %h1.title
+      #{blog_title_date(blog)} #{blog.title}
+
+.content
+  = blog.render_content.html_safe

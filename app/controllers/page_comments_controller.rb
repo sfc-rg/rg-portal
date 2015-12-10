@@ -1,6 +1,7 @@
 class PageCommentsController < CommentsController
   include SlackNotifier
 
+  before_action :require_active_current_user
   before_action :set_page, only: [:index, :create]
   after_action :notify_mentions, only: :create
 

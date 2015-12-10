@@ -8,10 +8,11 @@ class PagesController < ApplicationController
   before_action :set_emoji_completion, only: [:show, :edit]
   before_action :set_user_completion, only: [:show, :edit]
 
-  NUM_OF_RECENT_PAGES = 30
+  NUM_OF_RECENT_ITEMS = 30
 
   def index
-    @recent_pages = Page.order(updated_at: :desc).limit(NUM_OF_RECENT_PAGES)
+    @recent_pages = Page.order(updated_at: :desc).limit(NUM_OF_RECENT_ITEMS)
+    @recent_blogs = Blog.order(created_at: :desc).limit(NUM_OF_RECENT_ITEMS)
   end
 
   def show

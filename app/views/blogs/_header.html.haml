@@ -1,0 +1,5 @@
+- content_for(:header) do
+  .blog-header
+    .icon= image_tag @user.icon_url
+    = link_to list_blog_path do
+      %h1.title #{@user.nickname}'s blog
