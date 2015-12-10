@@ -1,7 +1,15 @@
 .blog-colophon
   = link_to blog_path(blog.to_param) do
-    %h1.title
-      #{blog_title_date(blog)} #{blog.title}
+    %h1.title= blog.title
+
+  .information
+    Wrote by #{blog.nickname},
+    Created at: #{displayable_datetime(blog.created_at)},
+    Updated at: #{displayable_datetime(blog.updated_at)}
+
+    - if blog.user == @current_user
+      = link_to edit_blog_path(blog.to_param) do
+        %i.fa.fa-edit
 
 .content
   = blog.render_content.html_safe

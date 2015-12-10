@@ -53,8 +53,6 @@ class BlogsController < ApplicationController
   end
 
   def set_blog
-    # date = params[:timestamp]
-    # timeoptions = [date[0...4], date[4...6], date[6...8], date[8...10], date[10...12], date[12...14], date[14...20]]
     @blog = Blog.find_by!(user: @user, timestamp: params[:timestamp])
   end
 
