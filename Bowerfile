@@ -1,2 +1,3 @@
+asset 'async'
 asset 'jquery-textcomplete'
 asset 'prism'

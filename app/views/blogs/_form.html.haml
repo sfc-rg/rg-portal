@@ -2,5 +2,5 @@
 = form_for @blog, url: url do |f|
   = f.hidden_field :id
   = f.text_field :title
-  = f.text_area :content, rows: 30, class: 'emoji-complete user-complete'
+  = f.text_area :content, rows: 30, class: 'emoji-complete user-complete js-smart-uploader'
   = f.submit 'Post'

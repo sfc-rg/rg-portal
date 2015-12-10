@@ -11,7 +11,18 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
     @upload.save # implement this
-    redirect_to action: :index
+
+    if request.xhr?
+      json = {
+        upload: {
+          id: @upload.id,
+          url: upload_url(@upload),
+        }
+      }
+      render json: json
+    else
+      redirect_to action: :index
+    end
   end
 
   def show
