@@ -7,6 +7,9 @@ class Blog < ActiveRecord::Base
   belongs_to :user
   has_many :comments, class_name: BlogComment
 
+  validates :title, presence: true
+  validates :content, presence: true
+
   def header_level
     2
   end

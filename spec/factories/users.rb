@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :user do
     name 'Test User'
-    email 'email@example.com'
+    sequence(:nickname) { |i| "testuser#{i}" }
+    sequence(:email) { |i| "testuser#{i}@example.com" }
     icon_url 'placehold.it/128x128'
     association :slack_credential
     association :ldap_credential

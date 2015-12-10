@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   before_action :set_page, only: :index
   before_action :set_user, only: [:index, :show, :update, :edit]
   before_action :set_blog, only: [:show, :update, :edit]
+  before_action :check_update_permission, only: [:edit, :update]
   before_action :set_emoji_completion, only: :show
   before_action :set_user_completion, only: :show
 
@@ -59,5 +60,9 @@ class BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:title, :content).merge(user: @current_user)
+  end
+
+  def check_update_permission
+    redirect_to root_path if @blog.user != @current_user
   end
 end
