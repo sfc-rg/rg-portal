@@ -2,6 +2,8 @@ class Blog < ActiveRecord::Base
   include Emojifier
   include MarkdownRender
 
+  TIMESTAMP_FORMAT = '%Y%m%d%H%M%S%6N'
+
   belongs_to :user
   has_many :comments, class_name: BlogComment
 
@@ -14,7 +16,7 @@ class Blog < ActiveRecord::Base
   end
 
   def timestamp
-    created_at.strftime('%Y%m%d%H%M%S%6N')
+    created_at.strftime(TIMESTAMP_FORMAT)
   end
 
   def to_param
