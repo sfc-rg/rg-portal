@@ -6,11 +6,11 @@ RSpec.describe Blog, type: :model do
 
     context 'when anytime' do
       subject { blog.timestamp }
-      before { Timecop.freeze(2015, 10, 1, 9, 0, 0, 0) }
+      before { Timecop.freeze(2015, 10, 1, 9, 0, 0) }
       after { Timecop.return }
 
       it 'returns its timestamp' do
-        is_expected.to eq('20151001090000000000')
+        is_expected.to eq('20151001090000')
       end
     end
   end
