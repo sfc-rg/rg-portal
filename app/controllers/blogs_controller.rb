@@ -6,8 +6,8 @@ class BlogsController < ApplicationController
   before_action :set_user, only: [:index, :show, :update, :edit]
   before_action :set_blog, only: [:show, :update, :edit]
   before_action :check_update_permission, only: [:edit, :update]
-  before_action :set_emoji_completion, only: :show
-  before_action :set_user_completion, only: :show
+  before_action :set_emoji_completion, only: [:new, :edit, :show]
+  before_action :set_user_completion, only: [:new, :edit, :show]
 
   DEFAULT_BLOGS_PER_PAGE = 10
 
