@@ -6,6 +6,7 @@ class Blog < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments, class_name: BlogComment
+  delegate :nickname, to: :user, prefix: :author
   after_create :set_timestamp!
 
   validates :title, presence: true
@@ -15,12 +16,8 @@ class Blog < ActiveRecord::Base
     2
   end
 
-  def nickname
-    user.try(:nickname)
-  end
-
   def to_param
-    { nickname: nickname,
+    { nickname: author_nickname,
       timestamp: timestamp,
     }
   end

@@ -23,8 +23,13 @@
     border-radius: 3px;
 
     .title {
+      padding-bottom: 4px;
       color: $black;
       margin-bottom: 0;
+    }
+
+    .information {
+      font-size: 14px;
     }
   }
 

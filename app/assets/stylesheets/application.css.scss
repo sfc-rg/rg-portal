@@ -50,3 +50,11 @@
   background-color: white;
   color: black;
 }
+
+.js-smart-uploader {
+  transition: box-shadow 0.2s linear;
+
+  &.dragover {
+    box-shadow: $dark-green 0 0 5px !important;
+  }
+}

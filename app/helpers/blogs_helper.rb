@@ -1,5 +1,5 @@
 module BlogsHelper
-  def blog_title_date(blog)
-    blog.created_at.strftime('%Y/%m/%d')
+  def displayable_datetime(time)
+    time.strftime('%Y/%m/%d %H:%M:%S')
   end
 end

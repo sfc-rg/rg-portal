@@ -7,15 +7,15 @@
 
   .right.content
     %h2
+      最近追加されたブログ記事
+
+    %ul
+      - @recent_blogs.each do |blog|
+        %li= link_to blog.title, blog_path(blog.to_param)
+
+    %h2
       最近更新されたページ
 
     %ul
       - @recent_pages.each do |page|
         %li= link_to page.title, page_path(path: page.path)
-
-    %h2
-      最近書かれた記事
-
-    %ul
-      - @recent_blogs.each do |blog|
-        %li= link_to blog.title, blog_path(blog.to_param)
