@@ -1,6 +1,4 @@
 class PresentationCommentsController < CommentsController
-  include SlackNotifier
-
   before_action :require_active_current_user
   before_action :set_presentation, only: [:index, :create]
   after_action :notify_new_comment, only: :create

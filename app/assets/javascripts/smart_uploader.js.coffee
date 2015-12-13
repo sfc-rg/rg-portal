@@ -42,7 +42,7 @@ jQuery ($) ->
           success: (data) =>
             placeholder = generatePlaceholder(file)
             currentPos = this.selectionStart
-            $this.val($this.val().replace(placeholder, "<img src=\"#{data.upload.url}\"> "))
+            $this.val($this.val().replace(placeholder, "<img src=\"#{data.upload.url}\" alt=\"#{file.name}\"> "))
             this.setSelectionRange(currentPos + placeholder.length, currentPos + placeholder.length)
             callback(null)
           error: (err) ->
