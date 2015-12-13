@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  include SlackNotifier
   include EmojiComplete
   include UserComplete
   before_action :require_active_current_user
@@ -8,6 +9,7 @@ class BlogsController < ApplicationController
   before_action :check_update_permission, only: [:edit, :update]
   before_action :set_emoji_completion, only: [:new, :edit, :show]
   before_action :set_user_completion, only: [:new, :edit, :show]
+  after_action :notify_new_blog, only: :create
 
   DEFAULT_BLOGS_PER_PAGE = 10
 
@@ -62,5 +64,11 @@ class BlogsController < ApplicationController
 
   def check_update_permission
     redirect_to root_path if @blog.user != @current_user
+  end
+
+  def notify_new_blog
+    return if @blog.new_record?
+    message = "New blog: #{@blog.title} by #{@blog.author_nickname} #{blog_url(@blog.to_param)}"
+    slack_notify(from: @blog.user, message: message)
   end
 end
