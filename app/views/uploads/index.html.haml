@@ -14,8 +14,8 @@
       %tr
         %td= upload.id
         - if upload.image?
-          %td= image_tag upload_url(upload)
+          %td= image_tag file_upload_url(upload.to_param)
         - else
           %td -
-        %td= text_field_tag nil, upload_url(upload)
+        %td= text_field_tag nil, file_upload_url(upload.to_param)
   = paginate @uploads

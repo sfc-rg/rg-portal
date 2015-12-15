@@ -18,7 +18,7 @@ class UploadsController < ApplicationController
       json = {
         upload: {
           id: @upload.id,
-          url: file_upload_url(@upload, filename: @upload.file.file.filename),
+          url: file_upload_url(@upload.to_param),
         }
       }
       render json: json
@@ -28,7 +28,7 @@ class UploadsController < ApplicationController
   end
 
   def show
-    redirect_to file_upload_path(@upload, filename: @upload.file.file.filename)
+    redirect_to file_upload_url(@upload.to_param)
   end
 
   def file
