@@ -49,7 +49,7 @@ class UploadsController < ApplicationController
   def check_filename
     filename = [ params[:filename], params[:format] ].compact.join('.')
     if filename != @upload.file.file.filename
-      return redirect_to file_upload_path(@upload, filename: @upload.file.file.filename)
+      return redirect_to file_upload_path(@upload.to_param)
     end
   end
 
