@@ -3,7 +3,7 @@ FactoryGirl.define do
     content_type 'image/png'
     association :user
     after :create do |upload|
-      upload.update_column(:file, "upload.png")
+      upload.update_column(:file, 'upload.png')
     end
   end
 end
