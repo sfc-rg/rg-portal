@@ -38,20 +38,21 @@ http {
     error_page 500 502 503 504 /500.html;
     client_max_body_size 20M;
 
-    location /upload_files {
-      internal;
-      alias /var/www/<%= node['nginx']['name'] %>/current/public/upload_files;
-    }
-
     location / {
       try_files $uri @application;
+    }
+
+    location /upload_files {
+      internal;
+      alias /var/www/<%= node['nginx']['name'] %>/shared/public/upload_files;
     }
 
     location @application {
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Forwarded-Proto http;
       proxy_set_header X-Forwarded-For $remote_addr;
-      proxy_set_header X-Accel-Mapping /var/www/<%= node['nginx']['name'] %>/current/public/upload_files/=/upload_files/;
+      proxy_set_header X-Sendfile-Type X-Accel-Redirect;
+      proxy_set_header X-Accel-Mapping (/var/www/<%= node['nginx']['name'] %>/current|/var/www/<%= node['nginx']['name'] %>/releases/[\d]+)/public/upload_files=/upload_files;
       proxy_set_header Host $http_host;
       proxy_pass http://application;
     }
