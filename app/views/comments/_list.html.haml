@@ -5,4 +5,5 @@
     .box
       .info
         .nickname= comment.user.nickname
+        .time= displayable_datetime(comment.created_at)
       .content= comment.render_content.html_safe
