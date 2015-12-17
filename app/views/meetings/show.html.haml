@@ -37,7 +37,7 @@
         %td
           - presentation.handouts.each do |handout|
             .handout_link
-              = link_to handout.file.url, target: '_blank' do
+              = link_to file_upload_url(handout.to_param), target: '_blank' do
                 = handout.file_identifier.truncate(20)
                 %i.fa.fa-external-link
   = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting)

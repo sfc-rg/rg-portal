@@ -12,6 +12,13 @@ class Upload < ActiveRecord::Base
     self.content_type.include?('pdf')
   end
 
+  def to_param
+    {
+      id: self.id,
+      filename: self.file.file.filename,
+    }
+  end
+
   private
 
   def set_content_type

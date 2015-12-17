@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       resources :user_judgments, only: [:index, :create, :destroy]
     end
   end
-  resources :uploads, only: [:index, :create, :show]
+  resources :uploads, only: [:index, :create, :show] do
+    member do
+      get '/*filename' => 'uploads#file', as: :file
+    end
+  end
 
   scope :settings do
     get '/profile' => 'settings#edit_profile', as: :edit_profile

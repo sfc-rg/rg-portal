@@ -11,12 +11,12 @@
   %h2 Handouts
   - @presentation.handouts.each do |handout|
     %p
-      = link_to handout.file.url, target: '_blank' do
+      = link_to file_upload_url(handout.to_param), target: '_blank' do
         = handout.file_identifier
         %i.fa.fa-external-link
     - if handout.pdf?
       .handout-pdf
-        %object{ data: handout.file.url, type: 'application/pdf' }
+        %object{ data: file_upload_url(handout.to_param), type: 'application/pdf' }
   - if @presentation.juried
     %h2 Judgement
     .judgment-field
