@@ -13,7 +13,8 @@ class Upload < ActiveRecord::Base
   end
 
   def to_param
-    { id: self.id,
+    {
+      id: self.id,
       filename: self.file.file.filename,
     }
   end
