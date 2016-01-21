@@ -16,4 +16,8 @@ class Presentation < ActiveRecord::Base
   def judgment_by(user)
     user_judgments.find_by(user_id: user.id)
   end
+
+  def last_edited_at
+    [self.updated_at, handouts.pluck(:updated_at)].flatten.max
+  end
 end

@@ -23,6 +23,7 @@
       %th Presenter
       %th Title
       %th Handouts
+      %th Last Edited At
     - @meeting.presentations.each do |presentation|
       %tr
         %td
@@ -40,6 +41,7 @@
               = link_to file_upload_url(handout.to_param), target: '_blank' do
                 = handout.file_identifier.truncate(20)
                 %i.fa.fa-external-link
+        %td= presentation.last_edited_at
   = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting)
   - if @current_user.has_privilege?('meetings', 'update')
     .edit_link
