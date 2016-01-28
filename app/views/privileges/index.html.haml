@@ -1,0 +1,9 @@
+.content
+  %h1 権限を持っているユーザ一覧
+  %ul.accordion-tabs
+    - @privilege_groups.each do |name, privileges|
+      %li.tab-header-and-content
+        %a.tab-link= name
+        .tab-content
+          - privileges.each do |p|
+            %p= p.user.nickname

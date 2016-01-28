@@ -1,6 +1,10 @@
 class PrivilegesController < ApplicationController
   before_action :require_active_current_user
 
+  def index
+    @privilege_groups = Privilege.all.group_by(&:stringify)
+  end
+
   def new
     @privilege = Privilege.new
   end

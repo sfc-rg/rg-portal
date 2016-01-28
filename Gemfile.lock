@@ -88,7 +88,7 @@ GEM
     diff-lcs (1.2.5)
     diffy (3.0.7)
     erubis (2.7.0)
-    eventmachine (1.0.8)
+    eventmachine (1.0.9.1)
     execjs (2.5.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -234,6 +234,7 @@ GEM
     rake (10.4.2)
     redcarpet (3.3.1)
     ref (1.0.5)
+    refills (0.1.0)
     request_store (1.2.0)
     rsolr (1.0.12)
       builder (>= 2.1.2)
@@ -356,6 +357,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails-i18n (~> 4.0.0)
   redcarpet (~> 3.3.1)
+  refills
   rsolr
   rspec-rails (~> 3.2.1)
   sass-rails (~> 5.0)

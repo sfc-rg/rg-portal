@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210070651) do
+ActiveRecord::Schema.define(version: 20160128114700) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20151210070651) do
     t.text     "content"
     t.boolean  "juried",                    default: false, null: false
     t.integer  "meeting_attendances_count", default: 0
+    t.boolean  "accepting",                 default: true,  null: false
   end
 
   create_table "page_histories", force: :cascade do |t|
