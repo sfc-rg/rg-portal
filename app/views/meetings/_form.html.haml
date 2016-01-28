@@ -9,6 +9,8 @@
     = f.datetime_select :end_at, default: Time.now + 3.hours
   = f.label :juried
   = f.check_box :juried
+  = f.label :accepting
+  = f.check_box :accepting, checked: true
   = f.text_area :content, rows: 20, class: 'emoji-complete user-complete'
   = f.submit
   = link_to 'Cancel', cancel_path

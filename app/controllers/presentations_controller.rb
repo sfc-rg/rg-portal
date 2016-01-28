@@ -12,11 +12,13 @@ class PresentationsController < ApplicationController
   end
 
   def new
+    return redirect_to meeting_path(@meeting) unless @meeting.accepting?
     @presentation = @meeting.presentations.build
     @presentation.presentation_handouts.build
   end
 
   def create
+    return redirect_to meeting_path(@meeting) unless @meeting.accepting?
     @presentation = @meeting.presentations.build(presentation_params)
     if @presentation.save
       redirect_to meeting_path(@meeting)
