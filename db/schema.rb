@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20160128114700) do
     t.text     "content"
     t.boolean  "juried",                    default: false, null: false
     t.integer  "meeting_attendances_count", default: 0
-    t.boolean  "accepting",                 default: true
+    t.boolean  "accepting",                 default: true,  null: false
   end
 
   create_table "page_histories", force: :cascade do |t|
