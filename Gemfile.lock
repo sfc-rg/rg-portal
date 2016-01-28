@@ -88,7 +88,7 @@ GEM
     diff-lcs (1.2.5)
     diffy (3.0.7)
     erubis (2.7.0)
-    eventmachine (1.0.8)
+    eventmachine (1.0.9.1)
     execjs (2.5.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
