@@ -2,7 +2,7 @@ class PrivilegesController < ApplicationController
   before_action :require_active_current_user
 
   def index
-    @privilege_groups = Privilege.all.group_by { |p| p.stringify }
+    @privilege_groups = Privilege.all.group_by(&:stringify)
   end
 
   def new

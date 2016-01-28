@@ -4,6 +4,6 @@
     - @privilege_groups.each do |name, privileges|
       %li.tab-header-and-content
         %a.tab-link= name
-        %div.tab-content
+        .tab-content
           - privileges.each do |p|
             %p= p.user.nickname
