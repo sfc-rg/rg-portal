@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'bower-rails'
 gem 'bourbon'
 gem 'neat'
+gem 'refills'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'gon'
 

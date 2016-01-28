@@ -5,6 +5,11 @@ RSpec.describe PrivilegesController, type: :controller do
   let(:user) { FactoryGirl.create(:user) }
   before { login_as_user(user) }
 
+  describe '#index' do
+    subject { get :index }
+    it { is_expected.to render_template :index }
+  end
+
   describe '#new' do
     subject { get :new }
     it { is_expected.to render_template :new }
