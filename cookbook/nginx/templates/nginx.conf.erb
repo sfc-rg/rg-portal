@@ -42,7 +42,7 @@ http {
     ssl_certificate_key  /etc/letsencrypt/live/<%= node['nginx']['host'] %>/privkey.pem;
     ssl_session_timeout  5m;
     ssl_protocols        TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers          ECDHE+RSAGCM:ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:!aNULL!eNull:!EXPORT:!DES:!3DES:!MD5:!DSS;
+    ssl_ciphers          ECDHE+RSAGCM:ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:!DH!aNULL!eNull:!EXPORT:!DES:!3DES:!MD5:!DSS;
     ssl_prefer_server_ciphers on;
 
     gzip on;
