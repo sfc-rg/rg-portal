@@ -16,3 +16,7 @@ rbenv:
     - 2.2.1
   gems:
     - bundler
+letsencrypt:
+  domain: portal.gw.sfc.wide.ad.jp
+  email: miyukki@sfc.wide.ad.jp
+  document_root: /var/www/rg-portal/current/public
