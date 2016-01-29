@@ -30,6 +30,20 @@ http {
   server {
     listen       80;
     server_name  <%= node['nginx']['host'] %>;
+    rewrite ^ https://$server_name$request_uri? permanent;
+  }
+
+  server {
+    listen       443;
+    server_name  <%= node['nginx']['host'] %>;
+
+    ssl                  on;
+    ssl_certificate      /etc/letsencrypt/live/<%= node['nginx']['host'] %>/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/<%= node['nginx']['host'] %>/privkey.pem;
+    ssl_session_timeout  5m;
+    ssl_protocols        TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers          ECDHE+RSAGCM:ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:!aNULL!eNull:!EXPORT:!DES:!3DES:!MD5:!DSS;
+    ssl_prefer_server_ciphers on;
 
     gzip on;
     gzip_types application/json text/css text/javascript application/javascript;
@@ -49,7 +63,7 @@ http {
 
     location @application {
       proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header X-Forwarded-Proto http;
+      proxy_set_header X-Forwarded-Proto https;
       proxy_set_header X-Forwarded-For $remote_addr;
       proxy_set_header X-Sendfile-Type X-Accel-Redirect;
       proxy_set_header X-Accel-Mapping (/var/www/<%= node['nginx']['name'] %>/current|/var/www/<%= node['nginx']['name'] %>/releases/[\d]+)/public/upload_files=/upload_files;
