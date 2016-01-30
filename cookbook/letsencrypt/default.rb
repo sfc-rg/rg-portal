@@ -15,7 +15,7 @@ end
 
 file 'regist letsencrypt auto renew script in cron.d' do
   path '/etc/cron.d/letsencrypt'
-  content "0 5 1 * * root scl enable python27 \"/opt/letsencrypt/letsencrypt-auto certonly --webroot -w #{node['letsencrypt']['document_root']} -d #{node['letsencrypt']['domain']} -m #{node['letsencrypt']['email']} --agree-tos --renew-by-default\""
+  content "0 5 1 * * root scl enable python27 \"/opt/letsencrypt/letsencrypt-auto certonly --webroot -w #{node['letsencrypt']['document_root']} -d #{node['letsencrypt']['domain']} -m #{node['letsencrypt']['email']} --agree-tos --renew-by-default\" && /sbin/service nginx reload"
   owner 'root'
   group 'root'
   mode '0644'
