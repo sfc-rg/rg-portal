@@ -4,6 +4,7 @@ class PresentationsController < ApplicationController
   before_action :require_active_current_user
   before_action :set_meeting, only: [:new, :create]
   before_action :set_presentation, only: [:show, :edit, :update, :destroy]
+  before_action :require_accepting, only: [:new, :create]
   before_action :require_ownership, except: [:show, :new, :create]
   before_action :set_emoji_completion, only: [:show]
   before_action :set_user_completion, only: [:show]
@@ -12,13 +13,11 @@ class PresentationsController < ApplicationController
   end
 
   def new
-    return redirect_to meeting_path(@meeting) unless @meeting.accepting?
     @presentation = @meeting.presentations.build
     @presentation.presentation_handouts.build
   end
 
   def create
-    return redirect_to meeting_path(@meeting) unless @meeting.accepting?
     @presentation = @meeting.presentations.build(presentation_params)
     if @presentation.save
       redirect_to meeting_path(@meeting)
@@ -52,6 +51,10 @@ class PresentationsController < ApplicationController
 
   def set_presentation
     @presentation = Presentation.find(params[:id])
+  end
+
+  def require_accepting
+    redirect_to meeting_path(@meeting) unless @meeting.accepting?
   end
 
   def require_ownership
