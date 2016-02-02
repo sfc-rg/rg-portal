@@ -39,6 +39,7 @@
     %ul
       - @current_user.privileges.each do |privilege|
         %li= privilege.stringify
-    = link_to '他のユーザへの権限共有', new_privilege_path
+    %p= link_to '他のユーザへの権限共有', new_privilege_path
+    %p= link_to '権限を持っているユーザ一覧', privileges_path
   - else
     %p 特別に許可されたアクセス権限はありません
