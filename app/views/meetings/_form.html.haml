@@ -10,7 +10,7 @@
   = f.label :juried
   = f.check_box :juried
   = f.label :accepting
-  = f.check_box :accepting, checked: true
+  = f.check_box :accepting, checked: !@meeting.persisted? || @meeting.accepting
   = f.text_area :content, rows: 20, class: 'emoji-complete user-complete'
   = f.submit
   = link_to 'Cancel', cancel_path
