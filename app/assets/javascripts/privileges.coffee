@@ -19,9 +19,10 @@ jQuery ($) ->
         actionIdx = $option.text().indexOf(action)
         if modelIdx > -1 && actionIdx > -1 && actionIdx > modelIdx
           $option.prop('selected', true)
-          break
+          return true
+      return false
 
     $targetSelector = $('select#privilege')
     $targetSelector.change ->
       setPrivilegeFormValues($(this))
-    initPrivilegeSelector($targetSelector)
+    setPrivilegeFormValues($targetSelector) unless initPrivilegeSelector($targetSelector)
