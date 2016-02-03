@@ -11,5 +11,5 @@
       %tr
         %td= presentation.user.nickname
         %td= link_to presentation.title, presentation_path(presentation)
-        %td= user_judgements[true].map { |j| j.user.nickname }.join(', ')
-        %td= user_judgements[false].map { |j| j.user.nickname }.join(', ')
+        %td= user_judgements[true].try(:map) { |j| j.user.nickname }.try(:join, ', ')
+        %td= user_judgements[false].try(:map) { |j| j.user.nickname }.try(:join, ', ')
