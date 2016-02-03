@@ -1,12 +1,12 @@
 class UserJudgmentsController < ApplicationController
   before_action :require_active_current_user
   before_action :require_privilege, only: :index
-  before_action :set_presentation, only: [:index, :create]
+  before_action :set_presentation, only: :create
   before_action :set_user_judgment, only: :destroy
   before_action :require_ownership, only: :destroy
 
   def index
-    @user_judgments = @presentation.user_judgments.includes(:user)
+    @meeting = Meeting.includes(presentations: :user_judgments).find(params[:meeting_id])
   end
 
   def create

@@ -1,17 +1,15 @@
 .content
-  %h1 評価一覧
-  %p
-    発表者:
-    = @presentation.user.nickname
-  %p
-    発表タイトル:
-    = link_to @presentation.title , presentation_path(@presentation)
-  %h2 評価
+  %h1 #{@meeting.name}のプレゼンテーション評価一覧
   %table
     %tr
       %th Name
-      %th Judgement
-    - @user_judgments.each do |user_judgment|
+      %th Title
+      %th Pass
+      %th Fail
+    - @meeting.presentations.each do |presentation|
+      - user_judgements = presentation.user_judgments.group_by(&:passed)
       %tr
-        %td= user_judgment.user.nickname
-        %td= user_judgment.stringify
+        %td= presentation.user.nickname
+        %td= link_to presentation.title, presentation_path(presentation)
+        %td= user_judgements[true].try(:map) { |j| j.user.nickname }.try(:join, ', ')
+        %td= user_judgements[false].try(:map) { |j| j.user.nickname }.try(:join, ', ')

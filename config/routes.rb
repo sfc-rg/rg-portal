@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   resources :groups, only: [:index, :create]
   resources :privileges, only: [:index, :new, :create]
   resources :meetings, except: :destroy, shallow: true do
+    resources :user_judgments, only: :index
     resources :presentations, except: :index, shallow: true do
-      resources :user_judgments, only: [:index, :create, :destroy]
+      resources :user_judgments, only: [:create, :destroy]
     end
   end
   resources :uploads, only: [:index, :create, :show] do

@@ -3,11 +3,12 @@ require 'rails_helper'
 RSpec.describe UserJudgmentsController, type: :controller do
   render_views
   let(:user) { FactoryGirl.create(:user) }
+  let(:meeting) { FactoryGirl.create(:meeting) }
   let(:presentation) { FactoryGirl.create(:presentation) }
   before { login_as_user(user) }
 
   describe '#index' do
-    subject { get :index, presentation_id: presentation.id }
+    subject { get :index, meeting_id: meeting.id }
 
     context 'with privilege' do
       before { FactoryGirl.create(:privilege, user: user, model: 'user_judgments', action: 'index') }
