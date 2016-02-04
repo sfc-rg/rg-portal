@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128114700) do
+ActiveRecord::Schema.define(version: 20160204155932) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -149,9 +149,10 @@ ActiveRecord::Schema.define(version: 20160128114700) do
   create_table "presentations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "meeting_id"
-    t.string   "title",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "order",      default: 1, null: false
   end
 
   add_index "presentations", ["meeting_id"], name: "index_presentations_on_meeting_id"

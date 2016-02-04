@@ -12,6 +12,7 @@ class Presentation < ActiveRecord::Base
   validates :title, presence: true
   validates :user, presence: true
   validates :meeting, presence: true
+  validates :order, numericality: { greater_than: 0 }
 
   def judgment_by(user)
     user_judgments.find_by(user_id: user.id)

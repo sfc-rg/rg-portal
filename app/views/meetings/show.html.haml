@@ -18,14 +18,18 @@
   - if @meeting.content
     = @meeting.render_content.html_safe
   %h2 登録プレゼンテーション一覧
+  - if @current_user.has_privilege?(:presentation_orders, :create)
+    = link_to 'プレゼンテーション順を調整', meeting_presentation_orders_path(@meeting), class: 'button'
   %table
     %tr
+      %th Order
       %th Presenter
       %th Title
       %th Handouts
       %th Last Edited At
     - @meeting.presentations.each do |presentation|
       %tr
+        %td= presentation.order
         %td
           - if presentation.user_id == @current_user.id
             = link_to edit_presentation_path(presentation) do

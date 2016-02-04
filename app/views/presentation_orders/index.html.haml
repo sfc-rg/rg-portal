@@ -1,0 +1,27 @@
+.content
+  .breadcrumb
+    .link= link_to 'ミーティング一覧', meetings_path
+    .link= link_to @meeting.name, meeting_path(@meeting)
+
+  %h1 #{@meeting.name}の発表順を調整
+  - if @meeting.presentations.empty?
+    %p まだこのミーティングにはプレゼンテーション登録がありません
+  - else
+    %p
+      プレゼンテーション登録者数:
+      = @meeting.presentations.size
+    %h2 登録プレゼンテーション一覧
+    = form_tag meeting_presentation_orders_path(@meeting)
+    %table
+      %tr
+        %th Order
+        %th Presenter
+        %th Title
+      - orders = Array(0..@meeting.presentations.size).map { |i| [i == 0 ? 'random' : i, i] }
+      - @meeting.presentations.each do |presentation|
+        %tr
+          %td
+            = select 'presentation_order[order]', presentation.id, orders, {}, class: 'order-selector'
+          %td= presentation.user.nickname
+          %td= presentation.title
+    = submit_tag
