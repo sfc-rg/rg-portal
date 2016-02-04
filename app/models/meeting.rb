@@ -3,7 +3,7 @@ class Meeting < ActiveRecord::Base
   include MarkdownRender
 
   has_many :meeting_attendances, dependent: :destroy
-  has_many :presentations
+  has_many :presentations, -> { order(order: :asc, created_at: :asc) }
 
   validates :name, presence: true
   validates :start_at, presence: true
