@@ -185,6 +185,7 @@ GEM
       omniauth (~> 1.2)
     omniauth-slack (2.0.0)
       omniauth-oauth2 (~> 1.2.0)
+    pr_geohash (1.0.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -283,6 +284,14 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sunspot (2.2.0)
+      pr_geohash (~> 1.0)
+      rsolr (~> 1.0.7)
+    sunspot_rails (2.2.0)
+      nokogiri
+      rails (>= 3)
+      sunspot (= 2.2.0)
+    sunspot_solr (2.2.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -365,6 +374,8 @@ DEPENDENCIES
   spring
   sprockets (~> 3.2)
   sqlite3 (= 1.3.10)
+  sunspot_rails
+  sunspot_solr
   therubyracer
   timecop
   turbolinks

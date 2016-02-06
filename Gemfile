@@ -41,6 +41,9 @@ gem 'rsolr'
 gem 'net-ldap'
 gem 'carrierwave'
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
