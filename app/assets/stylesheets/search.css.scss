@@ -1,46 +1,40 @@
-.page_result,
-.slack_result {
+.search_result {
+  display: block;
   margin-bottom: 10px;
-  padding: 15px;
+  padding: 15px 15px 0;
   border: solid 2px #eee;
   border-bottom: solid 3px #ddd;
   border-radius: 5px;
   color: #444;
-}
 
-.page_result {
-  .info {
-    margin-bottom: 5px;
-    color: #111;
+  .label {
+    display: inline;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 3px 5px;
+
+    &.label-page {
+      background-color: #3cf;
+      border: solid 1px darken(#3cf, 20%);
+    }
+
+    &.label-blog {
+      background-color: #f93;
+      border: solid 1px darken(#f93, 20%);
+    }
   }
 
   .title {
+    display: inline;
     font-size: 110%;
     font-weight: bold;
   }
 
+  .text {
+    margin-top: 10px;
+  }
+
   .highlight {
     background-color: #ff9;
-  }
-}
-
-.slack_result {
-  .info {
-    margin-bottom: 5px;
-    color: #111;
-    font-size: 90%;
-  }
-
-  .small {
-    color: #888;
-    font-size: 90%;
-  }
-
-  .user, .room {
-    font-weight: bold;
-  }
-
-  .timestamp {
-    color: #888;
   }
 }

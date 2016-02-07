@@ -40,6 +40,7 @@ gem 'slack-api', require: 'slack'
 gem 'rsolr'
 gem 'net-ldap'
 gem 'carrierwave'
+gem 'whenever'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
@@ -68,6 +69,7 @@ group :development do
   gem 'capistrano3-unicorn', '0.2.1'
   gem 'capistrano-rbenv', '~> 2.0'
 
+  gem 'foreman'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-stack_explorer'

@@ -1,7 +1,6 @@
 class SearchController < ApplicationController
   before_action :require_active_current_user
-  before_action :set_keyword, except: :index
-  before_action :set_page_results, only: [:show, :pages]
+  before_action :set_keyword, only: :show
   before_action :set_slack_results, only: [:show, :slack]
 
   SLACK_SOLR_SERVER_ADDR = 'http://rg-slack-solr.sfc.widead.jp:8983/solr/rg_slack'
@@ -12,17 +11,15 @@ class SearchController < ApplicationController
   end
 
   def show
-
+    @search = Sunspot.search(Page, Blog) do
+      fulltext params[:keyword]
+    end
   end
 
   private
 
   def set_keyword
     @keyword = params[:keyword]
-  end
-
-  def set_page_results
-    @page_results = Page.where('content LIKE ?', "%#{@keyword}%")
   end
 
   def set_slack_results

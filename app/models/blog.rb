@@ -12,6 +12,15 @@ class Blog < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
 
+  searchable do
+    text :title, :content
+    text :comments do
+      comments.map { |comment| comment.content }
+    end
+    integer :user_id
+    time :created_at
+  end
+
   def header_level
     2
   end

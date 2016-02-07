@@ -13,6 +13,14 @@ class Page < ActiveRecord::Base
   after_save :create_renamed_page, if: :renamed?
   after_save :create_page_history, if: :changed?
 
+  searchable do
+    text :path, :content
+    text :comments do
+      comments.map { |comment| comment.content }
+    end
+    time :created_at
+  end
+
   def like_by(user)
     self.likes.find_by(user: user)
   end
