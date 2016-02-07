@@ -40,7 +40,7 @@ gem 'slack-api', require: 'slack'
 gem 'rsolr'
 gem 'net-ldap'
 gem 'carrierwave'
-gem 'whenever'
+gem 'whenever', require: false
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
