@@ -15,7 +15,7 @@ class Blog < ActiveRecord::Base
   searchable do
     text :title, :content
     text :comments do
-      comments.map { |comment| comment.content }
+      comments.map(&:content)
     end
     integer :user_id
     time :created_at

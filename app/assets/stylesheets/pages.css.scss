@@ -1,10 +1,10 @@
 .header {
   padding: 0 25px;
-  background-color: #F93;
+  background-color: $blog-theme-color;
 
   .inner {
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.14);
+    background-color: lighten($blog-theme-color, 5%);
   }
 
   h1 {

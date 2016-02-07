@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
   searchable do
     text :path, :content
     text :comments do
-      comments.map { |comment| comment.content }
+      comments.map(&:content)
     end
     time :created_at
   end

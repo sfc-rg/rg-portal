@@ -1,4 +1,4 @@
-= link_to page_path(path: page.path), class: 'search_result' do
+= link_to page_path(path: page.path), class: 'search-result' do
   .label.label-page Page
   .title= page.title
   .text= highlight_content(@keyword, page.content).html_safe

@@ -1,4 +1,4 @@
-.search_result {
+.search-result {
   display: block;
   margin-bottom: 10px;
   padding: 15px 15px 0;
@@ -14,13 +14,13 @@
     padding: 3px 5px;
 
     &.label-page {
-      background-color: #3cf;
-      border: solid 1px darken(#3cf, 20%);
+      background-color: $page-theme-color;
+      border: solid 1px darken($page-theme-color, 20%);
     }
 
     &.label-blog {
-      background-color: #f93;
-      border: solid 1px darken(#f93, 20%);
+      background-color: $blog-theme-color;
+      border: solid 1px darken($blog-theme-color, 20%);
     }
   }
 
@@ -36,5 +36,33 @@
 
   .highlight {
     background-color: #ff9;
+  }
+}
+
+.slack-result {
+  margin-bottom: 10px;
+  padding: 15px 15px 0;
+  border: solid 2px #eee;
+  border-bottom: solid 3px #ddd;
+  border-radius: 5px;
+  color: #444;
+
+  .info {
+    margin-bottom: 5px;
+    color: #111;
+    font-size: 90%;
+  }
+
+  .small {
+    color: #888;
+    font-size: 90%;
+  }
+
+  .user, .room {
+    font-weight: bold;
+  }
+
+  .timestamp {
+    color: #888;
   }
 }

@@ -1,4 +1,4 @@
-= link_to blog_path(blog.to_param), class: 'search_result' do
+= link_to blog_path(blog.to_param), class: 'search-result' do
   .label.label-blog Blog
   .title= blog.title
   .text= highlight_content(@keyword, blog.content).html_safe
