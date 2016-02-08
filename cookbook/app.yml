@@ -22,3 +22,4 @@ letsencrypt:
   document_root: /var/www/rg-portal/current/public
 solr:
   version: 5.4.1
+  core: production

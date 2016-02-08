@@ -21,3 +21,19 @@ end
 service 'solr' do
   action [:start, :enable]
 end
+
+execute "create core" do
+  command "/opt/solr/bin/solr create -c #{node['solr']['core']} -d basic_configs"
+  not_if "test -d /var/solr/data/#{node['solr']['core']}"
+  user 'solr'
+end
+
+remote_file 'copy solr schema.xml' do
+  source 'files/schema.xml'
+  path "/var/solr/data/#{node['solr']['core']}/conf/schema.xml"
+end
+
+remote_file 'copy solr solrconfig.xml' do
+  source 'files/solrconfig.xml'
+  path "/var/solr/data/#{node['solr']['core']}/conf/solrconfig.xml"
+end
