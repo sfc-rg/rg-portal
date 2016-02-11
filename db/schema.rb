@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204155932) do
+ActiveRecord::Schema.define(version: 20160211150857) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -186,6 +186,27 @@ ActiveRecord::Schema.define(version: 20160204155932) do
   end
 
   add_index "slack_credentials", ["user_id"], name: "index_slack_credentials_on_user_id"
+
+  create_table "slack_message_mentions", force: :cascade do |t|
+    t.integer  "slack_message_id"
+    t.string   "user"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "slack_message_mentions", ["slack_message_id"], name: "index_slack_message_mentions_on_slack_message_id"
+
+  create_table "slack_messages", force: :cascade do |t|
+    t.string   "pid"
+    t.string   "room"
+    t.string   "user"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "timestamp"
+  end
+
+  add_index "slack_messages", ["pid"], name: "index_slack_messages_on_pid"
 
   create_table "uploads", force: :cascade do |t|
     t.integer  "user_id"
