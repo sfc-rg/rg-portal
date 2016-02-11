@@ -1,0 +1,4 @@
+= link_to slack_log_url(message), class: 'search-result' do
+  .label.label-slack Slack
+  .title Posted by #{message.user} in ##{message.room} at #{message.timestamp}
+  .text= highlight_content(@keyword, message.message).html_safe

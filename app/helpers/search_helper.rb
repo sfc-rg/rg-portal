@@ -15,8 +15,8 @@ module SearchHelper
     "#{min_index != 0 ? '...' : ''}#{match_content}#{max_index != content.size - 1 ? '...' : ''}"
   end
 
-  def slack_log_url(result)
-    "https://sfc-rg.slack.com/archives/#{result[:room]}/p#{result[:id].gsub(/\./, '')}"
+  def slack_log_url(message)
+    "https://sfc-rg.slack.com/archives/#{message.room}/p#{message.pid.gsub(/\./, '')}"
   end
 
   def slack_log_date(timestamp)

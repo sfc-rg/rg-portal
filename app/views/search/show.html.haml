@@ -7,14 +7,5 @@
       = render 'page', page: result
     - elsif result.is_a?(Blog)
       = render 'blog', blog: result
-
-  %h1 Slackの検索結果 #{@slack_results.size}件
-  - @slack_results.each do |result|
-    = link_to slack_log_url(result), target: '_blank' do
-      .slack-result
-        .info
-          %span.user= result[:user]
-          %span.small in
-          %span.room= "##{result[:room]}"
-          %span.timestamp= slack_log_date(result[:timestamp])
-        .message= result[:message]
+    - elsif result.is_a?(SlackMessage)
+      = render 'slack_message', message: result

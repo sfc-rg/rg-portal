@@ -22,6 +22,12 @@
       background-color: $blog-theme-color;
       border: solid 1px darken($blog-theme-color, 20%);
     }
+
+    &.label-slack {
+      color: white;
+      background-color: #ce1f5b;
+      border: solid 1px darken(#ce1f5b, 20%);
+    }
   }
 
   .title {
