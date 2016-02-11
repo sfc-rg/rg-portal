@@ -1,20 +1,17 @@
 = render 'search_bar'
 
 .content
+  %h1 #{@keyword}の検索結果
+  - @search.results.each do |result|
+    - if result.is_a?(Page)
+      = render 'page', page: result
+    - elsif result.is_a?(Blog)
+      = render 'blog', blog: result
 
-  %h2= "ページの検索結果 #{@page_results.size}件"
-  - @page_results.each do |result|
-    = link_to page_path(path: result.path) do
-      .page_result
-        .info
-          %span.title= result.title
-        .text= highlight_content(@keyword, result.content).html_safe
-
-
-  %h2= "Slackの検索結果 #{@slack_results.size}件"
+  %h1 Slackの検索結果 #{@slack_results.size}件
   - @slack_results.each do |result|
     = link_to slack_log_url(result), target: '_blank' do
-      .slack_result
+      .slack-result
         .info
           %span.user= result[:user]
           %span.small in

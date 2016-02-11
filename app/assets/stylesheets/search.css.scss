@@ -1,22 +1,37 @@
-.page_result,
-.slack_result {
+.search-result {
+  display: block;
   margin-bottom: 10px;
-  padding: 15px;
+  padding: 15px 15px 0;
   border: solid 2px #eee;
   border-bottom: solid 3px #ddd;
   border-radius: 5px;
   color: #444;
-}
 
-.page_result {
-  .info {
-    margin-bottom: 5px;
-    color: #111;
+  .label {
+    display: inline;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 3px 5px;
+
+    &.label-page {
+      background-color: $page-theme-color;
+      border: solid 1px darken($page-theme-color, 20%);
+    }
+
+    &.label-blog {
+      background-color: $blog-theme-color;
+      border: solid 1px darken($blog-theme-color, 20%);
+    }
   }
 
   .title {
+    display: inline;
     font-size: 110%;
     font-weight: bold;
+  }
+
+  .text {
+    margin-top: 10px;
   }
 
   .highlight {
@@ -24,7 +39,14 @@
   }
 }
 
-.slack_result {
+.slack-result {
+  margin-bottom: 10px;
+  padding: 15px 15px 0;
+  border: solid 2px #eee;
+  border-bottom: solid 3px #ddd;
+  border-radius: 5px;
+  color: #444;
+
   .info {
     margin-bottom: 5px;
     color: #111;

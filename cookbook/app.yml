@@ -20,3 +20,6 @@ letsencrypt:
   domain: portal.gw.sfc.wide.ad.jp
   email: miyukki@sfc.wide.ad.jp
   document_root: /var/www/rg-portal/current/public
+solr:
+  version: 5.4.1
+  core: production
