@@ -63,7 +63,7 @@ textarea {
 }
 
 [type="search"] {
-  appearance: none;
+  @include appearance(none);
 }
 
 [type="checkbox"],
