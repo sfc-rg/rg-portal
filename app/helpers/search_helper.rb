@@ -16,7 +16,7 @@ module SearchHelper
   end
 
   def slack_log_url(message)
-    "https://sfc-rg.slack.com/archives/#{message.room}/p#{message.pid.gsub(/\./, '')}"
+    "https://sfc-rg.slack.com/archives/#{message.room}/p#{message.pid.delete('.')}"
   end
 
   def slack_log_date(timestamp)

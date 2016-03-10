@@ -25,8 +25,8 @@
 
     &.label-slack {
       color: white;
-      background-color: #ce1f5b;
-      border: solid 1px darken(#ce1f5b, 20%);
+      background-color: $slack-theme-color;
+      border: solid 1px darken($slack-theme-color, 20%);
     }
   }
 
