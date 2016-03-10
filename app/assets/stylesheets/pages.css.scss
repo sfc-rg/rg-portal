@@ -1,3 +1,30 @@
+.pages.index {
+  .recent_contents {
+    list-style: none;
+
+    li {
+      position: relative;
+    }
+
+    li::before {
+      position: absolute;
+      content: " ";
+      width: 15px;
+      height: 15px;
+      top: 5px;
+      left: 0;
+    }
+
+    .page::before {
+      background-color: $page-theme-color;
+    }
+
+    .blog::before {
+      background-color: $blog-theme-color;
+    }
+  }
+}
+
 .blogs .header {
   background-color: $blog-theme-color;
 

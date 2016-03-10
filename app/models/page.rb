@@ -19,6 +19,7 @@ class Page < ActiveRecord::Base
       comments.map(&:content)
     end
     time :created_at
+    time :updated_at
   end
 
   def like_by(user)

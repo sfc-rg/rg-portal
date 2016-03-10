@@ -11,8 +11,10 @@ class PagesController < ApplicationController
   NUM_OF_RECENT_ITEMS = 30
 
   def index
-    @recent_pages = Page.order(updated_at: :desc).limit(NUM_OF_RECENT_ITEMS)
-    @recent_blogs = Blog.order(created_at: :desc).limit(NUM_OF_RECENT_ITEMS)
+    @recent_contents = Sunspot.search(Page, Blog) do
+      order_by :updated_at, :desc
+      paginate per_page: NUM_OF_RECENT_ITEMS
+    end
   end
 
   def show
