@@ -1,10 +1,24 @@
-.header {
-  padding: 0 25px;
+.blogs .header {
   background-color: $blog-theme-color;
 
   .inner {
+    background-color: lighten($blog-theme-color, 4%);
+  }
+}
+
+.pages .header {
+  background-color: $page-theme-color;
+
+  .inner {
+    background-color: lighten($page-theme-color, 10%);
+  }
+}
+
+.header {
+  padding: 0 25px;
+
+  .inner {
     padding: 30px;
-    background-color: lighten($blog-theme-color, 5%);
   }
 
   h1 {
@@ -23,6 +37,34 @@
 
     a {
       color: white;
+    }
+  }
+
+  .edited_users {
+    .edited_user {
+      display: inline;
+      position: relative;
+      top: 5px;
+    }
+
+    .name {
+      display: none;
+      position: absolute;
+      font-size: 12px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 3px 6px;
+      border-radius: 3px;
+      top: -24px;
+      left: 0;
+    }
+
+    .edited_user:hover .name {
+      display: block;
+    }
+
+    .icon {
+      border-radius: 3px;
     }
   }
 

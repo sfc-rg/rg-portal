@@ -4,6 +4,23 @@ describe Page, type: :model do
   let(:page) { FactoryGirl.create(:page, path: 'A', content: 'A') }
   it_behaves_like 'emojifier'
 
+  describe '#edited_users' do
+    let!(:created_user) { page.user }
+    let!(:edited_user1) { FactoryGirl.create(:user) }
+    let!(:edited_user2) { FactoryGirl.create(:user) }
+    subject { page.edited_users.map(&:id) }
+
+    before do
+      page.update(content: 'contentA', user: edited_user2)
+      page.update(content: 'contentB', user: edited_user1)
+      page.update(content: 'contentC', user: edited_user2)
+    end
+
+    it 'returns edited users' do
+      is_expected.to eq([created_user.id, edited_user2.id, edited_user1.id])
+    end
+  end
+
   describe '#renamed?' do
     subject { page.send(:renamed?) }
 

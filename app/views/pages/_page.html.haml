@@ -11,6 +11,12 @@
       = link_to page_histories_path do
         %i.fa.fa-history
         = page.histories.size
+    %span.edited_users
+      - page.edited_users.each do |user|
+        = link_to list_blog_path(nickname: user.nickname) do
+          .edited_user
+            .name= user.nickname
+            = image_tag user.icon_url, size: '26x26', class: 'icon'
   .breadcrumb= page_breadcrumb_links(page).html_safe
 
 .content
