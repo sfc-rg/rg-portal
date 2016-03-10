@@ -61,6 +61,12 @@ $ bundle exec rake db:migrate RAILS_ENV=development
 
 It will create database file like `db/development.sqlite3`
 
+### Start sunspot solr on local
+
+```
+$ rake sunspot:solr:start
+```
+
 ### Generate test data
 
 ```
