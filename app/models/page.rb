@@ -33,6 +33,10 @@ class Page < ActiveRecord::Base
     self.class.where('path LIKE ?', "#{self.path}/%")
   end
 
+  def edited_users
+    self.histories.map(&:user).uniq
+  end
+
   private
 
   def renamed?
