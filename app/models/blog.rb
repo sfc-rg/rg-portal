@@ -19,6 +19,7 @@ class Blog < ActiveRecord::Base
     end
     integer :user_id
     time :created_at
+    time :updated_at
   end
 
   def header_level
