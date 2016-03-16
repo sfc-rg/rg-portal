@@ -9,6 +9,13 @@ mysql:
 nginx:
   host: portal.gw.sfc.wide.ad.jp
   name: rg-portal
+ndenv:
+  global:
+    5.8.0
+  versions:
+    - 5.8.0
+  packages:
+    - bower
 rbenv:
   global:
     2.2.1

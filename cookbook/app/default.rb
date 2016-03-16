@@ -2,18 +2,6 @@
   package name
 end
 
-execute 'add nodejs repo' do
-  command 'curl --silent --location https://rpm.nodesource.com/setup | bash -'
-  not_if 'test -f /usr/bin/node'
-end
-
-package 'nodejs'
-
-execute 'install bower' do
-  command 'npm install -g bower'
-  not_if 'npm list -g | grep bower'
-end
-
 user 'create rails user' do
   username 'rails'
   password 'password'
