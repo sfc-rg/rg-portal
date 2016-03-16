@@ -12,27 +12,12 @@ package 'git'
 RBENV_DIR = '/usr/local/rbenv'
 RBENV_SCRIPT = '/etc/profile.d/rbenv.sh'
 
+# Download
 git RBENV_DIR do
   repository 'git://github.com/sstephenson/rbenv.git'
 end
 
-remote_file RBENV_SCRIPT do
-  source 'files/rbenv.sh'
-end
-
-execute "set mode for #{RBENV_SCRIPT}" do
-  command "chown root: #{RBENV_SCRIPT}"
-  not_if "test `stat -c %U #{RBENV_SCRIPT}` = root"
-  user 'root'
-end
-
-execute "set owner for #{RBENV_SCRIPT}" do
-  command "chmod 644 #{RBENV_SCRIPT}"
-  not_if "test `stat -c %A #{RBENV_SCRIPT}` = -rw-r--r--"
-  user 'root'
-end
-
-execute "mkdir #{RBENV_DIR}/plugins" do
+directory "#{RBENV_DIR}/plugins" do
   not_if "test -d #{RBENV_DIR}/plugins"
 end
 
@@ -40,6 +25,19 @@ git "#{RBENV_DIR}/plugins/ruby-build" do
   repository 'git://github.com/sstephenson/ruby-build.git'
 end
 
+# Setup profile script
+file RBENV_SCRIPT do
+  content <<-EOH
+export RBENV_ROOT="#{RBENV_DIR}"
+export PATH="${RBENV_ROOT}/bin:${PATH}"
+eval "$(rbenv init --no-rehash -)"
+EOH
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+# Install ruby and gems
 node['rbenv']['versions'].each do |version|
   execute "install ruby #{version}" do
     command "source #{RBENV_SCRIPT}; rbenv install #{version}"
