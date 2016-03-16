@@ -45,6 +45,11 @@ gem 'whenever', require: false
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
+group :production do
+  gem 'exception_notification'
+  gem 'slack-notifier'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
