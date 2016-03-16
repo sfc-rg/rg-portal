@@ -9,8 +9,8 @@ package 'zlib-devel'
 package 'libffi-devel'
 package 'git'
 
-RBENV_DIR = '/usr/local/rbenv'
-RBENV_SCRIPT = '/etc/profile.d/rbenv.sh'
+RBENV_DIR = '/usr/local/rbenv'.freeze
+RBENV_SCRIPT = '/etc/profile.d/rbenv.sh'.freeze
 
 # Download
 git RBENV_DIR do

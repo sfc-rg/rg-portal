@@ -4,12 +4,12 @@ package 'openssl-devel'
 package 'git'
 package 'tar'
 
-NDENV_DIR = '/usr/local/ndenv'
-NDENV_SCRIPT = '/etc/profile.d/ndenv.sh'
+NDENV_DIR = '/usr/local/ndenv'.freeze
+NDENV_SCRIPT = '/etc/profile.d/ndenv.sh'.freeze
 
 # Download
 git NDENV_DIR do
-  repository "git://github.com/riywo/ndenv.git"
+  repository 'git://github.com/riywo/ndenv.git'
 end
 
 directory "#{NDENV_DIR}/plugins" do
@@ -17,7 +17,7 @@ directory "#{NDENV_DIR}/plugins" do
 end
 
 git "#{NDENV_DIR}/plugins/node-build" do
-  repository "git://github.com/riywo/node-build.git"
+  repository 'git://github.com/riywo/node-build.git'
 end
 
 # Setup profile script
