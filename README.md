@@ -75,3 +75,9 @@ $ SLACK_USER_ID=<your slack user ID here> rake db:seed
 
 You can run the seed task to generate test data.
 If you provide your slack ID via environment variable, you can login as one of the test users.
+
+### Move secrets files from production server
+
+```
+$ scp "rg-portal:/var/www/rg-portal/shared/config/*" cookbook/app/shared_files
+```

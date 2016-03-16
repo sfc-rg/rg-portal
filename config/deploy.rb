@@ -15,7 +15,7 @@ set :log_level, :debug
 set :rails_env, :production
 set :keep_releases, 5
 
-set :linked_files, %w{config/ldap.yml config/secrets.yml config/oauth.yml config/database.yml}
+set :linked_files, %w{config/ldap.yml config/secrets.yml config/oauth.yml config/database.yml config/exception_notifier.yml}
 set :linked_dirs, %w{public/uploads public/upload_files}
 
 set :bundle_env_variables, { nokogiri_use_system_libraries: 1 }
