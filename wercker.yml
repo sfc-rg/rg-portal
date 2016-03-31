@@ -4,7 +4,7 @@ services:
 build:
   steps:
     - rvm-use:
-        version: 2.2.4
+        version: 2.3.0
     - bundle-install:
         jobs: 4
     - rails-database-yml
@@ -39,7 +39,7 @@ build:
 deploy:
   steps:
     - rvm-use:
-        version: 2.2.4
+        version: 2.3.0
     - bundle-install:
         jobs: 4
     - script:

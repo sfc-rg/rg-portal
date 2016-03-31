@@ -4,4 +4,4 @@ set :deploy_to, '/var/www/rg-portal'
 set :unicorn_pid, "#{shared_path}/tmp/unicorn.pid"
 set :unicorn_config_path, "#{current_path}/config/unicorn/production.rb"
 
-server '160.16.64.33', port: 22, user: 'rails', roles: %w{web app db}
+server 'portal.sfc.wide.ad.jp', port: 22, user: 'rails', roles: %w{web app db}
