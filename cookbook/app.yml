@@ -7,7 +7,7 @@ mysql:
   password: password
   database: rg_portal
 nginx:
-  host: portal.gw.sfc.wide.ad.jp
+  host: portal.sfc.wide.ad.jp
   name: rg-portal
 ndenv:
   global:
@@ -18,13 +18,13 @@ ndenv:
     - bower
 rbenv:
   global:
-    2.2.1
+    2.3.0
   versions:
-    - 2.2.1
+    - 2.3.0
   gems:
     - bundler
 letsencrypt:
-  domain: portal.gw.sfc.wide.ad.jp
+  domain: portal.sfc.wide.ad.jp
   email: miyukki@sfc.wide.ad.jp
   document_root: /var/www/rg-portal/current/public
 solr:

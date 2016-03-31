@@ -8,6 +8,7 @@ package 'readline-devel'
 package 'zlib-devel'
 package 'libffi-devel'
 package 'git'
+package 'bzip2'
 
 RBENV_DIR = '/usr/local/rbenv'.freeze
 RBENV_SCRIPT = '/etc/profile.d/rbenv.sh'.freeze

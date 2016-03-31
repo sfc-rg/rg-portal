@@ -1,6 +1,6 @@
 include_recipe 'selinux::disabled'
-include_recipe 'letsencrypt/default.rb'
 include_recipe 'nginx/default.rb'
+include_recipe 'letsencrypt/default.rb'
 include_recipe 'mysql/default.rb'
 include_recipe 'ndenv/default.rb'
 include_recipe 'rbenv/default.rb'
