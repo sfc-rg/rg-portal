@@ -39,7 +39,7 @@ $ bundle config build.libv8 --with-system-v8
 $ bundle config build.therubyracer --with-v8-dir
 ```
 
-If you failed install the libv8, See: http://qiita.com/yakiimo23/items/eaf48164821897e3dde9
+If you failed install the libv8, See: http://qiita.com/yakiimo23/items/eaf48164821897e3dde9 or http://qiita.com/withelmo/items/723344ccec9b4450f360
 
 ### Copy emoji files to public directory
 
