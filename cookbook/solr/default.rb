@@ -1,3 +1,4 @@
+package 'unzip'
 package 'java-1.8.0'
 
 execute "download solr-#{node['solr']['version']}" do
@@ -31,9 +32,15 @@ end
 remote_file 'copy solr schema.xml' do
   source 'files/schema.xml'
   path "/var/solr/data/#{node['solr']['core']}/conf/schema.xml"
+  owner 'solr'
+  group 'solr'
+  mode '0644'
 end
 
 remote_file 'copy solr solrconfig.xml' do
   source 'files/solrconfig.xml'
   path "/var/solr/data/#{node['solr']['core']}/conf/solrconfig.xml"
+  owner 'solr'
+  group 'solr'
+  mode '0644'
 end
