@@ -50,7 +50,7 @@ http {
 
     root /var/www/<%= node['nginx']['name'] %>/current/public;
     error_page 500 502 503 504 /500.html;
-    client_max_body_size 20M;
+    client_max_body_size 100M;
 
     location / {
       try_files $uri @application;
