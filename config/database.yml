@@ -27,3 +27,4 @@ production:
   password: password
   database: team-io
   timeout: 5000
+  encoding: utf8mb4
