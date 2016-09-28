@@ -1,3 +1,5 @@
+OAUTH_CONFIG = HashWithIndifferentAccess.new(YAML.load(File.open(Rails.root.join('config', 'oauth.yml'))))
+
 class SessionController < ApplicationController
   def slack_callback
     auth = request.env['omniauth.auth']
@@ -10,6 +12,12 @@ class SessionController < ApplicationController
     # => "miyukki"
     # >> auth.info.user_id
     # => "U03AE1H0U"
+    # >> auth.info.team_id
+    # => "T02C4D9FP"
+
+    if OAUTH_CONFIG[:slack][:team_id] != auth.info.team_id
+      return render template: 'session/slack_invalid_team'
+    end
 
     slack_credential = SlackCredential.find_or_initialize_by(slack_user_id: auth.info.user_id)
     user = if slack_credential.new_record?
