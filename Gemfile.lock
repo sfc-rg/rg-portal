@@ -152,7 +152,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.3)
-    libv8 (3.16.14.7)
+    libv8 (3.16.14.15)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -398,4 +398,4 @@ DEPENDENCIES
   yajl-ruby (~> 1.2.1)
 
 BUNDLED WITH
-   1.10.6
+   1.13.1
