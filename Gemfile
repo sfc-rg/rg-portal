@@ -43,7 +43,6 @@ gem 'carrierwave'
 gem 'whenever', require: false
 
 gem 'sunspot_rails'
-gem 'sunspot_solr'
 
 group :production do
   gem 'exception_notification'
@@ -51,6 +50,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'sunspot_solr'
   gem 'byebug'
   gem 'spring'
 
