@@ -52,7 +52,6 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.2.1'
@@ -64,6 +63,7 @@ end
 group :development do
   gem 'bullet'
   gem 'sqlite3', '1.3.10'
+  gem 'web-console', '~> 2.0'
 
   gem 'better_errors', '2.1.1'
   gem 'binding_of_caller', '0.7.2'
