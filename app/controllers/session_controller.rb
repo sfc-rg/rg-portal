@@ -30,6 +30,9 @@ class SessionController < ApplicationController
                     slack_credential: slack_credential,
                     ldap_credential: ldap_credential)
       else
+        slack_credential.user.update(name: auth.info.name,
+                                     nickname: auth.info.nickname,
+                                     icon_url: auth.extra.user_info.user.profile.image_192)
         slack_credential.user
       end
 
