@@ -27,9 +27,6 @@ build:
         name: setup bower component
         code: bin/rake bower:install
     - script:
-        name: start sunspot solr
-        code: bin/rake sunspot:solr:start
-    - script:
         name: rspec
         code: bundle exec rspec
   after-steps:
