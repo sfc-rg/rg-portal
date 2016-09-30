@@ -2,7 +2,6 @@
 @import "reset";
 
 // Autocomplete
-@import "jquery-textcomplete/dist/jquery.textcomplete";
 @import "prism/themes/prism";
 
 // Bootstrap
@@ -58,5 +57,30 @@
 
   &.dragover {
     box-shadow: $dark-green 0 0 5px !important;
+  }
+}
+
+.textcomplete-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  background-color: white;
+
+  li {
+    border-top: 1px solid #ddd;
+    padding: 2px 5px;
+  }
+
+  li:first-child {
+    border-top: none;
+  }
+
+  li:hover, .active {
+    background-color: rgb(110, 183, 219);
+  }
+
+  a:hover {
+    cursor: pointer;
   }
 }

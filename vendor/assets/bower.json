@@ -1,5 +1,5 @@
 {
-  "name": "dsl-generated dependencies",
+  "name": "dsl-generated-dependencies",
   "dependencies": {
     "async": "latest",
     "jquery-textcomplete": "latest",
