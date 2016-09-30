@@ -14,8 +14,8 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require jquery-textcomplete/dist/jquery.textcomplete
-//= require prism/prism
-//= require async/lib/async
+//= require jquery-textcomplete
+//= require prism
+//= require async
 //= require turbolinks
 //= require_tree .
