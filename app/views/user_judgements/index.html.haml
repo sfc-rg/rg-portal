@@ -7,7 +7,7 @@
       %th Pass
       %th Fail
     - @meeting.presentations.each do |presentation|
-      - user_judgements = presentation.user_judgments.group_by(&:passed)
+      - user_judgements = presentation.user_judgements.group_by(&:passed)
       %tr
         %td= presentation.user.nickname
         %td= link_to presentation.title, presentation_path(presentation)

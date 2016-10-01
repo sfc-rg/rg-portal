@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserJudgmentsController, type: :controller do
+RSpec.describe UserJudgementsController, type: :controller do
   render_views
   let(:user) { FactoryGirl.create(:user) }
   let(:meeting) { FactoryGirl.create(:meeting) }
@@ -11,7 +11,7 @@ RSpec.describe UserJudgmentsController, type: :controller do
     subject { get :index, meeting_id: meeting.id }
 
     context 'with privilege' do
-      before { FactoryGirl.create(:privilege, user: user, model: 'user_judgments', action: 'index') }
+      before { FactoryGirl.create(:privilege, user: user, model: 'user_judgements', action: 'index') }
       it { is_expected.to render_template :index }
     end
 
@@ -25,26 +25,26 @@ RSpec.describe UserJudgmentsController, type: :controller do
       post :create,
            format: :js,
            presentation_id: presentation.id,
-           user_judgment: FactoryGirl.attributes_for(:user_judgment)
+           user_judgement: FactoryGirl.attributes_for(:user_judgement)
     end
     it { is_expected.to render_template :create }
   end
 
   describe '#destroy' do
-    subject { delete :destroy, format: :js, id: user_judgment.id }
+    subject { delete :destroy, format: :js, id: user_judgement.id }
 
     context 'when having an ownership' do
-      let!(:user_judgment) { FactoryGirl.create(:user_judgment, presentation: presentation, user: user) }
-      it 'delete user judgment' do
-        expect { subject }.to change(UserJudgment, :count).by(-1)
+      let!(:user_judgement) { FactoryGirl.create(:user_judgement, presentation: presentation, user: user) }
+      it 'delete user judgement' do
+        expect { subject }.to change(UserJudgement, :count).by(-1)
       end
       it { is_expected.to render_template :create }
     end
 
     context 'when not having an ownership' do
-      let!(:user_judgment) { FactoryGirl.create(:user_judgment, presentation: presentation) }
-      it 'do not delete user judgment' do
-        expect { subject }.not_to change(UserJudgment, :count)
+      let!(:user_judgement) { FactoryGirl.create(:user_judgement, presentation: presentation) }
+      it 'do not delete user judgement' do
+        expect { subject }.not_to change(UserJudgement, :count)
       end
       it { is_expected.to be_forbidden }
     end

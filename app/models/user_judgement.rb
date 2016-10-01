@@ -1,4 +1,4 @@
-class UserJudgment < ActiveRecord::Base
+class UserJudgement < ActiveRecord::Base
   belongs_to :presentation
   belongs_to :user
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211150857) do
+ActiveRecord::Schema.define(version: 20161001013606) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -218,7 +218,7 @@ ActiveRecord::Schema.define(version: 20160211150857) do
 
   add_index "uploads", ["user_id"], name: "index_uploads_on_user_id"
 
-  create_table "user_judgments", force: :cascade do |t|
+  create_table "user_judgements", force: :cascade do |t|
     t.integer  "presentation_id"
     t.integer  "user_id"
     t.boolean  "passed"
@@ -226,9 +226,9 @@ ActiveRecord::Schema.define(version: 20160211150857) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "user_judgments", ["presentation_id", "user_id"], name: "index_user_judgments_on_presentation_id_and_user_id", unique: true
-  add_index "user_judgments", ["presentation_id"], name: "index_user_judgments_on_presentation_id"
-  add_index "user_judgments", ["user_id"], name: "index_user_judgments_on_user_id"
+  add_index "user_judgements", ["presentation_id", "user_id"], name: "index_user_judgements_on_presentation_id_and_user_id", unique: true
+  add_index "user_judgements", ["presentation_id"], name: "index_user_judgements_on_presentation_id"
+  add_index "user_judgements", ["user_id"], name: "index_user_judgements_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
