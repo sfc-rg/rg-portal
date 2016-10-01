@@ -50,8 +50,8 @@
     = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting), class: 'button'
   - else
     %p (プレゼンテーション登録は現在締め切られています)
-  - if @meeting.juried? && @current_user.has_privilege?(:user_judgments, :index)
-    = link_to 'プレゼンテーションの評価結果を確認', meeting_user_judgments_path(@meeting)
+  - if @meeting.juried? && @current_user.has_privilege?(:user_judgements, :index)
+    = link_to 'プレゼンテーションの評価結果を確認', meeting_user_judgements_path(@meeting)
   - if @current_user.has_privilege?('meetings', 'update')
     .edit_link
       = link_to 'このミーティングを編集', edit_meeting_path(@meeting)
