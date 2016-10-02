@@ -15,13 +15,19 @@
     %table
       %tr
         %th Order
+        %th
+          Random -
+          = link_to 'All', 'javascript: void(0);', class: 'presentation-order-random-all'
+          = link_to 'Clear', 'javascript: void(0);', class: 'presentation-order-random-clear'
         %th Presenter
         %th Title
-      - orders = Array(0..@meeting.presentations.size).map { |i| [i == 0 ? 'random' : i, i] }
-      - @meeting.presentations.each do |presentation|
+      - orders = Array(1..@meeting.presentations.size)
+      - @meeting.presentations.each_with_index do |presentation, index|
         %tr
           %td
-            = select 'presentation_order[order]', presentation.id, orders, {}, class: 'order-selector'
+            = select 'presentation_order[order]', presentation.id, orders, { selected: index + 1 }, class: 'order-selector'
+          %td
+            = check_box 'presentation_order[random]', presentation.id, class: 'presentation-order-random'
           %td= presentation.user.nickname
           %td= presentation.title
     = submit_tag
