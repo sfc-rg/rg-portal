@@ -57,6 +57,10 @@
   - if @meeting.juried? && @current_user.has_privilege?(:user_judgements, :index)
     = link_to 'プレゼンテーションの評価結果を確認', meeting_user_judgements_path(@meeting), class: 'button'
 
-  - if @current_user.has_privilege?('meetings', 'update')
+  - if @current_user.has_privilege?('meetings')
     .edit_link
-      = link_to 'このミーティングを編集', edit_meeting_path(@meeting)
+      - if @current_user.has_privilege?('meetings', 'update')
+        = link_to 'このミーティングを編集', edit_meeting_path(@meeting)
+      - if @current_user.has_privilege?('meetings', 'destroy')
+        = link_to 'このミーティングを削除', meeting_path(@meeting), method: :delete,
+          data: { confirm: '削除すると元に戻せませんが、本当に削除しますか?' }

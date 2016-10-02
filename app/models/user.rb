@@ -12,7 +12,11 @@ class User < ActiveRecord::Base
     self.ldap_credential.present? && self.groups.present?
   end
 
-  def has_privilege?(model, action)
-    privileges.where(model: model, action: action).present?
+  def has_privilege?(model, action = nil)
+    if action.present?
+      privileges.where(model: model, action: action).present?
+    else
+      privileges.where(model: model).present?
+    end
   end
 end
