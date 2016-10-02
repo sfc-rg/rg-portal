@@ -1,6 +1,4 @@
 jQuery ($) ->
-  $.event.props.push('dataTransfer')
-
   $('.js-smart-uploader').each ->
     generatePlaceholder = (file) ->
       "{Uploading... #{file.name} #{file.lastModified}} "
@@ -20,7 +18,7 @@ jQuery ($) ->
       $this.removeClass('dragover')
       e.stopPropagation()
       e.preventDefault()
-      files = e.target?.files || e.dataTransfer?.files
+      files = e.target?.files || e.originalEvent.dataTransfer?.files
       return unless files?
 
       for file in files
