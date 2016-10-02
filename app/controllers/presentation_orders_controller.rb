@@ -22,7 +22,7 @@ class PresentationOrdersController < ApplicationController
     randoms = presentation_order_params[:random]
     available_orders = Array(1..@meeting.presentations.size)
     available_orders -= orders.values.map(&:to_i)
-    randoms.select { |_, random| random == '1' }.each do |id, order|
+    randoms.select { |_, random| !random.to_i.zero? }.each do |id, order|
       orders[id] = available_orders.delete(available_orders.sample)
     end
     Presentation.where(meeting: @meeting, id: orders.keys.map(&:to_i)).each do |presentation|
