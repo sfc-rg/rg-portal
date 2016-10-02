@@ -2,7 +2,7 @@ class Meeting < ActiveRecord::Base
   include Emojifier
   include MarkdownRender
 
-  has_many :meeting_attendances, dependent: :destroy
+  has_many :meeting_attendances
   has_many :presentations, -> { order(order: :asc, created_at: :asc) }
 
   validates :name, presence: true

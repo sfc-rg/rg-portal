@@ -2,13 +2,15 @@ class MeetingsController < ApplicationController
   include EmojiComplete
   include UserComplete
   before_action :require_active_current_user
-  before_action :require_privilege, only: [:update]
-  before_action :set_meeting, only: [:edit, :update]
+  before_action :require_privilege, only: [:update, :destroy]
+  before_action :set_meeting, only: [:edit, :update, :destroy]
   before_action :set_emoji_completion, only: [:new, :edit]
   before_action :set_user_completion, only: [:new, :edit]
 
+  NUM_OF_MEETINGS_PER_PAGE = 20
+
   def index
-    @meetings = Meeting.order(start_at: :desc).page(params[:page]).per(10)
+    @meetings = Meeting.order(start_at: :desc).page(params[:page]).per(NUM_OF_MEETINGS_PER_PAGE)
   end
 
   def show
@@ -32,6 +34,14 @@ class MeetingsController < ApplicationController
       redirect_to meeting_path(@meeting)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @meeting.destroy
+      redirect_to meetings_path, flash: { success: "ミーティングを削除しました" }
+    else
+      redirect_to meeting_path(@meeting)
     end
   end
 

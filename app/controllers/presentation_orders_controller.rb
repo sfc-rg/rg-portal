@@ -8,25 +8,7 @@ class PresentationOrdersController < ApplicationController
 
   def create
     Presentation.transaction do
-      orders = Array(1..@meeting.presentations.size)
-      randomize_presentations = []
-      presentation_order_params[:order].each do |presentation_id, order|
-        order = order.to_i
-        presentation = Presentation.find(presentation_id)
-        unless order > 0
-          # delay the determination of randomized order
-          randomize_presentations.push(presentation)
-          next
-        end
-        # update order fixed presentation
-        presentation.update_attributes!(order: order)
-        orders.delete(order)
-      end
-      # update order randomized presentation
-      randomize_presentations.each do |presentation|
-        order = orders.delete_at(rand(orders.size))
-        presentation.update_attributes!(order: order)
-      end
+      settle_presentation_order!
     end
     redirect_to meeting_path(@meeting), flash: { success: 'プレゼンテーション順を変更しました' }
   rescue => e
@@ -35,13 +17,28 @@ class PresentationOrdersController < ApplicationController
 
   private
 
+  def settle_presentation_order!
+    orders = presentation_order_params[:order]
+    randoms = presentation_order_params[:random]
+    available_orders = Array(1..@meeting.presentations.size)
+    available_orders -= orders.values.map(&:to_i)
+    randoms.select { |_, random| !random.to_i.zero? }.each do |id, order|
+      orders[id] = available_orders.delete(available_orders.sample)
+    end
+    Presentation.where(meeting: @meeting, id: orders.keys.map(&:to_i)).each do |presentation|
+      presentation.update!(order: orders[presentation.id.to_s].to_i)
+    end
+  end
+
   def set_meeting
     @meeting = Meeting.find(params[:meeting_id])
   end
 
   def presentation_order_params
-    params.require(:presentation_order).tap do |list|
-      list[:order] = params[:order] if params[:order].is_a?(Hash)
-    end
+    @presentation_order_params ||=
+      params.require(:presentation_order).tap do |list|
+        list[:order] = list[:order].is_a?(Hash) ? list[:order] : Hash.new
+        list[:random] = list[:random].is_a?(Hash) ? list[:random] : Hash.new
+      end
   end
 end

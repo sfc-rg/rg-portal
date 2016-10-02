@@ -8,18 +8,19 @@
   %p
     = @meeting.start_at.strftime('%Y/%m/%d %H:%M ~')
     = @meeting.end_at.strftime('%Y/%m/%d %H:%M')
-  %p
+    /
     現在の出席者数:
     = @meeting.meeting_attendances.size
-  - if @meeting.presentations.any?
-    %p
+    /
+    - if @meeting.presentations.any?
       プレゼンテーション登録者数:
       = @meeting.presentations.size
+
   - if @meeting.content
     = @meeting.render_content.html_safe
+
   %h2 登録プレゼンテーション一覧
-  - if @current_user.has_privilege?(:presentation_orders, :create)
-    = link_to 'プレゼンテーション順を調整', meeting_presentation_orders_path(@meeting), class: 'button'
+
   %table
     %tr
       %th Order
@@ -27,9 +28,9 @@
       %th Title
       %th Handouts
       %th Last Edited At
-    - @meeting.presentations.each do |presentation|
+    - @meeting.presentations.each_with_index do |presentation, index|
       %tr
-        %td= presentation.order
+        %td= index + 1
         %td
           - if presentation.user_id == @current_user.id
             = link_to edit_presentation_path(presentation) do
@@ -46,12 +47,21 @@
                 = handout.file_identifier.truncate(20)
                 %i.fa.fa-external-link
         %td= presentation.last_edited_at
+
   - if @meeting.accepting?
     = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting), class: 'button'
   - else
     %p (プレゼンテーション登録は現在締め切られています)
+
+  - if @current_user.has_privilege?(:presentation_orders, :create)
+    = link_to 'プレゼンテーション順を調整', meeting_presentation_orders_path(@meeting), class: 'button'
   - if @meeting.juried? && @current_user.has_privilege?(:user_judgements, :index)
-    = link_to 'プレゼンテーションの評価結果を確認', meeting_user_judgements_path(@meeting)
-  - if @current_user.has_privilege?('meetings', 'update')
+    = link_to 'プレゼンテーションの評価結果を確認', meeting_user_judgements_path(@meeting), class: 'button'
+
+  - if @current_user.has_privilege?('meetings')
     .edit_link
-      = link_to 'このミーティングを編集', edit_meeting_path(@meeting)
+      - if @current_user.has_privilege?('meetings', 'update')
+        = link_to 'このミーティングを編集', edit_meeting_path(@meeting)
+      - if @current_user.has_privilege?('meetings', 'destroy')
+        = link_to 'このミーティングを削除', meeting_path(@meeting), method: :delete,
+          data: { confirm: '削除すると元に戻せませんが、本当に削除しますか?' }
