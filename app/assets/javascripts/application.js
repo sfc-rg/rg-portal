@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
+//! require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require jquery-textcomplete
 //= require prism
 //= require async
-//= require turbolinks
 //= require_tree .
+//! require turbolinks
