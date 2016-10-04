@@ -1,6 +1,8 @@
 class Upload < ActiveRecord::Base
   belongs_to :user
 
+  validates :user, presence: true
+
   mount_uploader :file, FileUploader
   before_save :set_content_type, if: :file_changed?
 
