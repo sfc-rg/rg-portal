@@ -28,6 +28,6 @@
             = select 'presentation_order[order]', presentation.id, orders, { selected: index + 1 }, class: 'order-selector'
           %td
             = check_box 'presentation_order[random]', presentation.id, class: 'presentation-order-random'
-          %td= presentation.user.nickname
+          %td= show_user_badge(presentation.user)
           %td= presentation.title
     = submit_tag

@@ -31,15 +31,15 @@
     - @meeting.presentations.each_with_index do |presentation, index|
       %tr
         %td= index + 1
+        %td= show_user_badge(presentation.user)
         %td
+          = link_to presentation.title, presentation_path(presentation)
           - if presentation.user_id == @current_user.id
             = link_to edit_presentation_path(presentation) do
               %i.fa.fa-edit
             = link_to presentation_path(presentation), method: :delete,
               data: { confirm: '削除すると元に戻せませんが、本当に削除しますか?' } do
               %i.fa.fa-trash
-          = presentation.user.nickname
-        %td= link_to presentation.title, presentation_path(presentation)
         %td
           - presentation.handouts.each do |handout|
             .handout_link

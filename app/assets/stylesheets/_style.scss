@@ -88,6 +88,29 @@ nav {
   }
 }
 
+.user_badge {
+  display: inline;
+  height: 28px;
+  margin-right: 10px;
+
+  .user_icon {
+    margin: 0;
+    padding: 0;
+    display: inline;
+
+    border-radius: 3px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .user_nickname {
+    margin-left: 5px;
+    display: inline;
+    line-height: 28px;
+    vertical-align: text-bottom;
+  }
+}
+
 .main {
   padding: 25px;
   background-color: white;

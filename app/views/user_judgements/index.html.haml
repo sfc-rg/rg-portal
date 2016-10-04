@@ -2,14 +2,15 @@
   %h1 #{@meeting.name}のプレゼンテーション評価一覧
   %table
     %tr
-      %th Name
+      %th User
       %th Title
       %th Pass
       %th Fail
     - @meeting.presentations.each do |presentation|
       - user_judgements = presentation.user_judgements.group_by(&:passed)
       %tr
-        %td= presentation.user.nickname
+        %td
+          = show_user_badge(presentation.user)
         %td= link_to presentation.title, presentation_path(presentation)
         %td= user_judgements[true].try(:map) { |j| j.user.nickname }.try(:join, ', ')
         %td= user_judgements[false].try(:map) { |j| j.user.nickname }.try(:join, ', ')
