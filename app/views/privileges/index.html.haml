@@ -6,4 +6,4 @@
         %a.tab-link= name
         .tab-content
           - privileges.each do |p|
-            %p= p.user.nickname
+            = show_user_badge(p.user)

@@ -13,6 +13,6 @@
         %tr
           %td= user.id
           %td= user.name
-          %td= user.nickname
+          %td= show_user_badge(user)
           %td= user.ldap_credential.try(:student_id)
           %td= user.active?
