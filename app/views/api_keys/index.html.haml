@@ -1,0 +1,29 @@
+.content
+  %h1 APIキー一覧
+  %table
+    %tr
+      %th Id
+      %th User
+      %th Access Token
+      %th Created At
+      %th Action
+    - @api_keys.each do |api_key|
+      %tr
+        %td= api_key.id
+        %td= show_user_badge(api_key.user)
+        %td
+          - if api_key.user == @current_user
+            = text_field_tag(nil, api_key.access_token)
+          - else
+            \-
+        %td= api_key.created_at
+        %td
+          - if api_key.revoked?
+            %b Revoked!
+          - elsif api_key.user == @current_user || @current_user.has_privilege?('api_keys', 'destroy')
+            = link_to 'Revoke', api_key_path(api_key), method: :delete, class: 'button'
+          - else
+            \-
+
+  - if @current_user.has_privilege?('api_keys', 'create')
+    %p= link_to 'APIキー作成', api_keys_path, method: :create, class: 'button'

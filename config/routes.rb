@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :update]
   resources :groups, only: [:index, :create]
   resources :privileges, only: [:index, :new, :create]
+  resources :api_keys, only: [:index, :create, :destroy]
   resources :meetings, shallow: true do
     resources :presentation_orders, only: [:index, :create]
     resources :user_judgements, only: :index

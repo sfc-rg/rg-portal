@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002110907) do
+ActiveRecord::Schema.define(version: 20161004080700) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,9 +19,11 @@ ActiveRecord::Schema.define(version: 20161002110907) do
     t.string   "access_token", limit: 32
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.datetime "revoked_at"
   end
 
   add_index "api_keys", ["access_token"], name: "index_api_keys_on_access_token"
+  add_index "api_keys", ["revoked_at"], name: "index_api_keys_on_revoked_at"
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id"
 
   create_table "blogs", force: :cascade do |t|

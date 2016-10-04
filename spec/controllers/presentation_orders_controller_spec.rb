@@ -10,7 +10,7 @@ RSpec.describe PresentationOrdersController, type: :controller do
     subject { get :index, meeting_id: meeting.id }
     it { is_expected.to render_template :index }
   end
-  #
+
   describe '#create' do
     let(:presentation1) { FactoryGirl.create(:presentation, meeting: meeting, order: 1) }
     let(:presentation2) { FactoryGirl.create(:presentation, meeting: meeting, order: 2) }

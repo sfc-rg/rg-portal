@@ -43,3 +43,8 @@
     %p= link_to '権限を持っているユーザ一覧', privileges_path
   - else
     %p 特別に許可されたアクセス権限はありません
+
+  - if @current_user.has_privilege?('api_keys')
+    %h2
+      APIキー設定
+    %p= link_to 'APIキー一覧', api_keys_path
