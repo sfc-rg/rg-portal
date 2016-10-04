@@ -4,7 +4,7 @@ class Api::V1::BaseController < ApplicationController
   private
 
   def require_api_key
-    key = ApiKey.find_by(access_token: params[:access_token])
+    key = ApiKey.active.find_by(access_token: params[:access_token])
     return if key.present?
     render json: { error: 'Need valid api key.' }, status: 401
   end

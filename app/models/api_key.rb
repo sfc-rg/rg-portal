@@ -6,6 +6,8 @@ class ApiKey < ActiveRecord::Base
   validates :access_token, presence: true, uniqueness: true
   validates :user, presence: true
 
+  scope :active, -> { where(revoked_at: nil) }
+
   def generate_access_token!
     self.access_token = SecureRandom.hex(ACCESS_TOKEN_LENGTH/2)
   end
