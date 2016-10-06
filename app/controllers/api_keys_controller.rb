@@ -1,4 +1,5 @@
 class ApiKeysController < ApplicationController
+  before_action :require_active_current_user
   before_action :set_api_key, only: :destroy
 
   def index
