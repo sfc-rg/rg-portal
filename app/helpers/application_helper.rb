@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def show_user_badge(user)
     return if user.blank?
-    content_tag(:div, class: 'user_badge') do
+    content_tag(:span, class: 'user_badge') do
       concat image_tag(user.icon_url, class: 'user_icon')
       concat content_tag(:span, user.nickname, class: 'user_nickname')
     end
