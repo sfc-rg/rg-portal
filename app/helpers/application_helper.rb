@@ -18,4 +18,9 @@ module ApplicationHelper
       concat content_tag(:span, user.nickname, class: 'user_nickname')
     end
   end
+
+  def ga_track_attributes(category, action)
+    data_attribute = { category: category, action: action }
+    { class: 'ga-track', data: data_attribute }
+  end
 end

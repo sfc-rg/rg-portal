@@ -24,3 +24,7 @@
 .refreshable-comments{ data: { refresh_url: presentation_comments_path(presentation_id: @presentation.id) } }
   = render 'comments/show', comments: @presentation.comments,
     new_comment: PresentationComment.new(presentation: @presentation)
+- if @presentation.next.present?
+  %p.next-presentation
+    = link_to "#{@presentation.next.title} Next>>", presentation_path(@presentation.next),
+      ga_track_attributes('presentations#show', 'next-presentation')
