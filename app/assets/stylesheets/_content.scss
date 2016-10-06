@@ -61,6 +61,12 @@
 
   table {
     border-collapse: separate;
+    table-layout: auto;
+
+    tr, td, th {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
 
   .breadcrumb {

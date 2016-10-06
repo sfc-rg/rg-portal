@@ -15,7 +15,7 @@
       %tr
         %td= upload.id
         %td= show_user_badge(upload.user)
-        %td
+        %td{ width: '300px' }
           - if upload.image?
             = image_tag file_upload_url(upload.to_param)
           - else

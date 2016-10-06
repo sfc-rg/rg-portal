@@ -90,23 +90,21 @@ nav {
 
 .user_badge {
   display: inline-block;
-  height: 28px;
-  margin-right: 10px;
+  position: relative;
 
   .user_icon {
-    margin: 0 5px 0 0;
+    position: absolute;
+    margin: 0;
     padding: 0;
-    display: inline;
 
     border-radius: 3px;
     width: 28px;
     height: 28px;
+    top: -2px;
   }
 
   .user_nickname {
-    display: inline;
-    line-height: 28px;
-    vertical-align: text-bottom;
+    margin-left: 33px;
   }
 }
 

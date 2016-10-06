@@ -14,6 +14,12 @@ class Presentation < ActiveRecord::Base
   validates :meeting, presence: true
   validates :order, numericality: { greater_than: 0 }
 
+  def next
+    @next ||=
+      Presentation.where(meeting: self.meeting, order: self.order..Float::INFINITY)
+        .where.not(id: self.id).order(order: :asc, created_at: :asc).first
+  end
+
   def judgement_by(user)
     user_judgements.find_by(user_id: user.id)
   end
