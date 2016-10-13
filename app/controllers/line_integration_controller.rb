@@ -2,6 +2,7 @@ class LineIntegrationController < ApplicationController
   before_action :verify_singature, only: :callback
   before_action :require_current_user, only: [:associate, :do_associate]
   before_action :set_line_credential, only: [:associate, :do_associate]
+  protect_from_forgery except: :callback
 
   def associate
 
