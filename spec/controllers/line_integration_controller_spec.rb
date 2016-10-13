@@ -75,7 +75,7 @@ RSpec.describe LineIntegrationController, type: :controller do
     end
     before do
       allow(LineClient).to receive(:validate_signature).and_return(true)
-      allow(LineClient).to receive(:get_profile).and_return(profile_json)
+      allow(LineClient).to receive(:get_profile).and_return(double('response', body: profile_json.to_json))
       allow(LineClient).to receive(:reply_message)
     end
 
