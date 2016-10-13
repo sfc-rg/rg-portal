@@ -19,6 +19,7 @@ class LineIntegrationController < ApplicationController
   def callback
     LineClient.parse_events_from(request.raw_post).each do |event|
       encrypted_line_user_id = event['source']['userId']
+      logger.debug(" line_integration#callback >> type=#{event['type']}, id=#{encrypted_line_user_id}")
 
       case event
       when Line::Bot::Event::Follow
