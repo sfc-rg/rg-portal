@@ -24,7 +24,7 @@ class LineIntegrationController < ApplicationController
 
       case event
       when Line::Bot::Event::Follow
-        profile = LineClient.get_profile(encrypted_line_user_id)
+        profile = JSON.parse(LineClient.get_profile(encrypted_line_user_id).body)
         line_credential = LineCredential.find_or_initialize_by(encrypted_line_user_id: encrypted_line_user_id)
         line_credential.update(
           display_name: profile['displayName'],
