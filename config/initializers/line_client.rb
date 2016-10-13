@@ -1,6 +1,6 @@
 require 'line/bot'
 
-OAUTH_CONFIG = HashWithIndifferentAccess.new(YAML.load(File.open(Rails.root.join('config', 'oauth.yml'))))
+OAUTH_CONFIG = HashWithIndifferentAccess.new(YAML.load(File.open(Rails.root.join('config', 'oauth.yml')))) unless defined?(OAUTH_CONFIG)
 
 LineClient = Line::Bot::Client.new do |config|
   config.channel_secret = config.try(:line).try(:beacon).try(:channel_secret)

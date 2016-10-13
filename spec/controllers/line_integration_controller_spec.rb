@@ -6,9 +6,10 @@ RSpec.describe LineIntegrationController, type: :controller do
   let(:dummy_line_id) { 'dummyLineId' }
 
   describe '#associate' do
-    before { login_as_user }
+    let(:user) { FactoryGirl.create(:user) }
     let(:line_credential) { FactoryGirl.create(:line_credential, user: nil) }
     let(:associate_key) { line_credential.associate_key }
+    before { login_as_user }
 
     subject { get :associate, ak: associate_key }
 
@@ -21,12 +22,18 @@ RSpec.describe LineIntegrationController, type: :controller do
       let(:associate_key) { 'invalid_key' }
       it { is_expected.to be_forbidden }
     end
+
+    context 'when access correct associate_key with already associated' do
+      let(:line_credential) { FactoryGirl.create(:line_credential, user: user) }
+      it { is_expected.to be_forbidden }
+    end
   end
 
   describe '#do_associate' do
-    before { login_as_user }
+    let(:user) { FactoryGirl.create(:user) }
     let(:line_credential) { FactoryGirl.create(:line_credential, user: nil) }
     let(:associate_key) { line_credential.associate_key }
+    before { login_as_user(user) }
     before do
       allow(LineClient).to receive(:push_message)
     end
@@ -45,6 +52,11 @@ RSpec.describe LineIntegrationController, type: :controller do
 
     context 'when access invalid associate_key' do
       let(:associate_key) { 'invalid_key' }
+      it { is_expected.to be_forbidden }
+    end
+
+    context 'when access correct associate_key with already associated' do
+      let(:line_credential) { FactoryGirl.create(:line_credential, user: user) }
       it { is_expected.to be_forbidden }
     end
   end
@@ -82,15 +94,33 @@ RSpec.describe LineIntegrationController, type: :controller do
         }
       end
 
-      it { is_expected.to be_ok }
+      context 'at first time' do
+        it { is_expected.to be_ok }
 
-      it 'creates line credential' do
-        expect{ subject }.to change{ LineCredential.count }.by(1)
+        it 'creates line credential' do
+          expect{ subject }.to change{ LineCredential.count }.by(1)
+        end
 
-        expect(LineClient).to have_received(:reply_message) do |token, message|
-          expect(
-            message[:text].include?(associate_line_url(ak: LineCredential.last.associate_key))
-          ).to be_truthy
+        it 'calls line client reply_message' do
+          subject
+          associate_url = associate_line_url(ak: LineCredential.last.associate_key)
+          expect(LineClient).to have_received(:reply_message) do |token, message|
+            expect(message[:text].include?(associate_url)).to be_truthy
+          end
+        end
+      end
+
+      context 'already associated' do
+        let(:line_credential) { FactoryGirl.create(:line_credential) }
+        let(:dummy_line_id) { line_credential.encrypted_line_user_id }
+
+        it 'does not create line credential' do
+          expect{ subject }.not_to change{ LineCredential.count }
+        end
+
+        it 'does not call line client reply_message' do
+          subject
+          expect(LineClient).not_to have_received(:reply_message)
         end
       end
     end
