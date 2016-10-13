@@ -59,7 +59,7 @@ RSpec.describe ApiKeysController, type: :controller do
       it { is_expected.to be_forbidden }
 
       it 'does not revoke the api key' do
-        expect { subject }.to_not change{ api_key.reload.revoked? }
+        expect { subject }.not_to change{ api_key.reload.revoked? }
       end
     end
   end

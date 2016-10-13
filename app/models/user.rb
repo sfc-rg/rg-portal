@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_one :slack_credential, dependent: :destroy
   has_one :ldap_credential, dependent: :destroy
+  has_one :line_credential, dependent: :destroy
   has_many :group_users, dependent: :destroy
   has_many :blogs
   has_many :groups, through: :group_users

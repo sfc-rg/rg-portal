@@ -1,0 +1,16 @@
+.content
+  = form_tag associate_line_path(ak: @line_credential.associate_key), method: :post do
+    %table
+      %tr
+        %th LINEアカウント
+        %th Portalアカウント
+      %tr
+        %td
+          %p= @line_credential.display_name
+          %p= image_tag(@line_credential.picture_url, width: 200, height: 'auto')
+        %td
+          %p= @current_user.nickname
+          %p= image_tag(@current_user.icon_url, width: 200, height: 'auto')
+
+    LINE アカウントと連携しますか
+    = submit_tag '連携する'

@@ -68,9 +68,13 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/line/associate' => 'line_integration#associate', as: :associate_line
+  post '/line/associate' => 'line_integration#do_associate'
+  post '/line/callback' => 'line_integration#callback', as: :callback_line
+
   namespace :api do
     namespace :v1, format: :json do
-      resources :attendances
+      resources :attendances, only: :create
     end
   end
 end

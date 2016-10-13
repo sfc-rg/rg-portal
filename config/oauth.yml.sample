@@ -2,3 +2,7 @@ slack:
   client_id: ""
   client_secret: ""
   team_id: ""
+line:
+  beacon:
+    channel_secret: ~
+    channel_token: ~
