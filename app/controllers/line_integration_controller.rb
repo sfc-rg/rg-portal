@@ -66,6 +66,8 @@ class LineIntegrationController < ApplicationController
 
   def verify_singature
     signature = request.headers['HTTP_X_LINE_SIGNATURE']
+    p signature
+    p request.raw_post
     unless LineClient.validate_signature(request.raw_post, signature)
       head :bad_request
     end
