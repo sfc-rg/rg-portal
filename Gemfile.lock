@@ -152,6 +152,7 @@ GEM
       activesupport (>= 3.0.0)
     kgio (2.10.0)
     libv8 (3.16.14.15)
+    line-bot-api (1.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -368,6 +369,7 @@ DEPENDENCIES
   jquery-turbolinks
   json_expressions (~> 0.8.3)
   kaminari
+  line-bot-api
   mysql2 (= 0.3.18)
   neat
   nested_form

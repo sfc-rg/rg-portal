@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004080700) do
+ActiveRecord::Schema.define(version: 20161012011039) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -90,6 +90,19 @@ ActiveRecord::Schema.define(version: 20161004080700) do
 
   add_index "likes", ["page_id"], name: "index_likes_on_page_id"
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
+  create_table "line_credentials", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "encrypted_line_user_id"
+    t.string   "display_name"
+    t.text     "picture_url"
+    t.string   "associate_key"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.datetime "unfollowed_at"
+  end
+
+  add_index "line_credentials", ["user_id"], name: "index_line_credentials_on_user_id"
 
   create_table "meeting_attendances", force: :cascade do |t|
     t.integer  "meeting_id"

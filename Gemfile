@@ -39,6 +39,7 @@ gem 'omniauth-slack', '~> 2.0.0'
 gem 'slack-api', require: 'slack'
 gem 'rsolr'
 gem 'net-ldap'
+gem 'line-bot-api'
 gem 'carrierwave'
 gem 'whenever', require: false
 
