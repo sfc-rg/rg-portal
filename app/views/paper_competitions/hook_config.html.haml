@@ -1,0 +1,22 @@
+.content
+  %h1 Attendance Config
+
+  = form_for @attendance, url: hook_config_paper_competition_path do |f|
+    = f.label :target_repository
+    = f.text_field :target_repository
+    = f.label :target_branch
+    = f.text_field :target_branch
+    = f.label :target_path
+    = f.text_field :target_path
+    = f.submit
+
+  %h1 Repository Config
+
+  %h2 Add Webhooks
+  %p Add webhooks your repository related `push` event.
+  - callback_url = callback_paper_competition_url(id: @competition.id, callback_token: @attendance.callback_token)
+  = text_field_tag(nil, callback_url)
+
+  %h2 Add Deploy Key
+  %p Add public key to clone your repository.
+  = text_field_tag(nil, @attendance.public_key)

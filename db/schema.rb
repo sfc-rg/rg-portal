@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012011039) do
+ActiveRecord::Schema.define(version: 20161124040444) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -150,6 +150,42 @@ ActiveRecord::Schema.define(version: 20161012011039) do
 
   add_index "pages", ["content"], name: "index_pages_on_content"
   add_index "pages", ["user_id"], name: "index_pages_on_user_id"
+
+  create_table "paper_competition_attendances", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "paper_competition_id"
+    t.text     "target_repository"
+    t.string   "target_branch"
+    t.string   "target_path"
+    t.text     "private_key"
+    t.text     "public_key"
+    t.string   "callback_token"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "paper_competition_attendances", ["paper_competition_id"], name: "index_paper_competition_attendances_on_paper_competition_id"
+  add_index "paper_competition_attendances", ["user_id"], name: "index_paper_competition_attendances_on_user_id"
+
+  create_table "paper_competition_checkpoints", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "paper_competition_id"
+    t.text     "message"
+    t.integer  "num_of_pages"
+    t.integer  "num_of_commits"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "paper_competition_checkpoints", ["paper_competition_id"], name: "index_paper_competition_checkpoints_on_paper_competition_id"
+  add_index "paper_competition_checkpoints", ["user_id"], name: "index_paper_competition_checkpoints_on_user_id"
+
+  create_table "paper_competitions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slack_report_channel"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "presentation_handouts", force: :cascade do |t|
     t.integer  "presentation_id"
