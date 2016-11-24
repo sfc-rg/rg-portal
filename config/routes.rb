@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  # Slack Callback
   get '/auth/slack/callback' => 'session#slack_callback'
 
+  # Pre Builts
   root 'pages#index'
   get '/wip_term' => 'pre_built_pages#wip_term'
   get '/thesis' => 'pre_built_pages#thesis'
@@ -68,13 +70,26 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/line/associate' => 'line_integration#associate', as: :associate_line
-  post '/line/associate' => 'line_integration#do_associate'
-  post '/line/callback' => 'line_integration#callback', as: :callback_line
-
+  # API for attendance system
   namespace :api do
     namespace :v1, format: :json do
       resources :attendances, only: :create
     end
   end
+
+  # Extra - Paper Competition
+  resources :paper_competitions do
+    member do
+      post '/callback/:callback_token' => 'paper_competitions#callback', as: :callback
+      post :join
+      post :leave
+      get :hook_config
+      patch :hook_config, action: :update_hook_config
+    end
+  end
+
+  # Extra - Line Authentication (Beacon Attendance)
+  get '/line/associate' => 'line_integration#associate', as: :associate_line
+  post '/line/associate' => 'line_integration#do_associate'
+  post '/line/callback' => 'line_integration#callback', as: :callback_line
 end

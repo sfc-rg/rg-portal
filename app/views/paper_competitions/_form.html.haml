@@ -1,0 +1,5 @@
+= form_for @competition do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.submit
+  = link_to 'Cancel', cancel_path

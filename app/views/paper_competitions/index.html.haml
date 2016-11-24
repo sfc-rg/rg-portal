@@ -1,0 +1,12 @@
+.content
+  %h1 Paper Competitions
+  %table
+    %tr
+      %th Name
+      %th Attendance Count
+    - @competitions.each do |competition|
+      %tr
+        %td= link_to competition.name, paper_competition_path(competition)
+        %td= competition.paper_competition_attendances.count
+  = paginate @competitions
+  = link_to 'New Paper Competition', new_paper_competition_path, class: 'button'

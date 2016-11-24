@@ -1,0 +1,33 @@
+.content
+  %h1= @competition.name
+
+  %h2 Attendance
+  %div
+    - @competition.paper_competition_attendances.each do |attendance|
+      = show_user_badge(attendance.user)
+
+  %h2 Pages Graph
+  = paper_competition_pages_graph(@competition)
+
+  %h2 Pages Ranking
+  = render 'ranking', ranking: paper_competitions_pages_ranking(@competition)
+
+  %h2 Commits Graph
+  = paper_competition_commits_graph(@competition)
+
+  %h2 Commits Ranking
+  = render 'ranking', ranking: paper_competitions_commits_ranking(@competition)
+
+  - if @competition.joined?(@current_user)
+    = link_to 'Show Hook Config', hook_config_paper_competition_path, class: 'button'
+  - else
+    %h2 Join Competition
+    %div
+      = form_for PaperCompetitionAttendance.new, url: join_paper_competition_path do |f|
+        = f.label :target_repository
+        = f.text_field :target_repository, placeholder: 'git@github.com:miyukki/graduate-thesis.git'
+        = f.label :target_branch
+        = f.text_field :target_branch, placeholder: 'master'
+        = f.label :target_path
+        = f.text_field :target_path, placeholder: 'main.pdf'
+        = f.submit
