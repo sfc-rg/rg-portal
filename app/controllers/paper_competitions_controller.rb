@@ -99,7 +99,7 @@ class PaperCompetitionsController < ApplicationController
     )
 
     FileUtils.rm_rf(checkout_path)
-    render :nothing
+    render nothing: true
   end
 
   private
