@@ -97,6 +97,8 @@ class PaperCompetitionsController < ApplicationController
       num_of_pages: reader.pages.count,
       num_of_commits: num_of_commits,
     )
+
+    FileUtils.rm_rf(checkout_path)
     render :nothing
   end
 
