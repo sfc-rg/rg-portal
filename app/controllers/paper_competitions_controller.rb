@@ -70,7 +70,7 @@ class PaperCompetitionsController < ApplicationController
 
   def callback
     event = JSON.parse(request.raw_post)
-    render nothing: true and return if request.env['HTTP_X_GITHUB_EVENT'] != 'push' || event['object_kind'] != 'push'
+    render nothing: true and return if request.env['HTTP_X_GITHUB_EVENT'] != 'push' && event['object_kind'] != 'push'
 
     attendance = PaperCompetitionAttendance.find_by(callback_token: params[:callback_token])
     render nothing: true and return if attendance.blank?
