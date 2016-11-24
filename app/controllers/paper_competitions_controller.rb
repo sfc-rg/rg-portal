@@ -49,7 +49,7 @@ class PaperCompetitionsController < ApplicationController
       public_key: key.ssh_public_key,
       callback_token: key.fingerprint.gsub(/:/, '')
     ))
-    redirect_to config_paper_competition_path
+    redirect_to hook_config_paper_competition_path
   end
 
   def leave
