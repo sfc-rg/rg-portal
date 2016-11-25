@@ -75,9 +75,11 @@ class PaperCompetitionsController < ApplicationController
     attendance = PaperCompetitionAttendance.find_by(callback_token: params[:callback_token])
     render nothing: true and return if attendance.blank?
 
-    latest_hash = event['commits'].last['id']
-    latest_message = event['commits'].last['message']
     render nothing: true and return unless event['ref'].include?(attendance.target_branch)
+    latest_commit = event['commits'].last
+    render nothing: true and return if latest_commit.blank?
+    latest_hash = latest_commit['id']
+    latest_message = latest_commit['message']
 
     checkout_path = "/tmp/checkout-#{latest_hash}"
     num_of_commits =

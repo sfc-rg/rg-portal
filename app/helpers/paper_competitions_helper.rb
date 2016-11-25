@@ -7,7 +7,7 @@ module PaperCompetitionsHelper
         data: Hash[*count_set]
       }
     end
-    line_chart data
+    line_chart data, library: { interpolateNulls: true }
   end
 
   def paper_competition_commits_graph(competition)
@@ -18,7 +18,7 @@ module PaperCompetitionsHelper
         data: Hash[*count_set]
       }
     end
-    line_chart data
+    line_chart data, library: { interpolateNulls: true }
   end
 
   def paper_competitions_pages_ranking(competition)
