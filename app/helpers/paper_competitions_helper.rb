@@ -22,10 +22,14 @@ module PaperCompetitionsHelper
   end
 
   def paper_competitions_pages_ranking(competition)
-    @competition.paper_competition_checkpoints.group(:user_id).order(:num_of_pages)
+    competition.paper_competition_attendances.map do |attendance|
+      competition.paper_competition_checkpoints.where(user: attendance.user).order('created_at DESC').first
+    end.compact.sort_by(&:num_of_pages).reverse
   end
 
   def paper_competitions_commits_ranking(competition)
-    @competition.paper_competition_checkpoints.group(:user_id).order(:num_of_commits)
+    competition.paper_competition_attendances.map do |attendance|
+      competition.paper_competition_checkpoints.where(user: attendance.user).order('created_at DESC').first
+    end.compact.sort_by(&:num_of_commits).reverse
   end
 end

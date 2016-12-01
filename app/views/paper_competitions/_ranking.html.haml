@@ -14,4 +14,4 @@
           %td= show_user_badge(checkpoint.user)
           %td= checkpoint.num_of_pages
           %td= checkpoint.num_of_commits
-          %td= checkpoint.message
+          %td{ title: checkpoint.created_at }= checkpoint.message
