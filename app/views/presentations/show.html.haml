@@ -10,13 +10,14 @@
     = @presentation.user.nickname
   %h2 Handouts
   - @presentation.handouts.each do |handout|
-    %p
-      = link_to file_upload_url(handout.to_param), target: '_blank' do
-        = handout.file_identifier
-        %i.fa.fa-external-link
-    - if handout.pdf?
-      .handout-pdf
-        %object{ data: file_upload_url(handout.to_param), type: 'application/pdf' }
+    .handout
+      %p
+        = link_to file_upload_url(handout.to_param), target: '_blank', class: 'handout-file-link' do
+          = handout.file_identifier
+          %i.fa.fa-external-link
+      - if handout.pdf?
+        .handout-pdf
+          %object{ data: file_upload_url(handout.to_param), type: 'application/pdf' }
   - if @presentation.juried
     %h2 Judgement
     .judgement-field
