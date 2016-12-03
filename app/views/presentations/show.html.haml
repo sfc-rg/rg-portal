@@ -15,6 +15,8 @@
         = link_to file_upload_url(handout.to_param), target: '_blank', class: 'handout-file-link' do
           = handout.file_identifier
           %i.fa.fa-external-link
+        - if handout.pdf? && handout.pdf_extra.present?
+          (#{handout.pdf_extra.num_of_pages}p)
       - if handout.pdf?
         .handout-pdf
           %object{ data: file_upload_url(handout.to_param), type: 'application/pdf' }

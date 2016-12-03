@@ -46,6 +46,8 @@
               = link_to file_upload_url(handout.to_param), target: '_blank' do
                 = handout.file_identifier.truncate(20)
                 %i.fa.fa-external-link
+              - if handout.pdf? && handout.pdf_extra.present?
+                (#{handout.pdf_extra.num_of_pages}p)
         %td= presentation.last_edited_at
 
   - if @meeting.accepting?
