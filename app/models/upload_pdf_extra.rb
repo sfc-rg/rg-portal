@@ -12,5 +12,7 @@ class UploadPdfExtra < ActiveRecord::Base
     self.pdf_version = reader.pdf_version
     self.num_of_pages = reader.page_count
     self
+  rescue
+    self
   end
 end
