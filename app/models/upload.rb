@@ -25,6 +25,10 @@ class Upload < ActiveRecord::Base
 
   private
 
+  def set_content_type
+    self.content_type = self.file.content_type
+  end
+
   def set_pdf_extra
     return unless self.pdf?
     if self.pdf_extra
@@ -32,9 +36,5 @@ class Upload < ActiveRecord::Base
     else
       self.pdf_extra = self.build_pdf_extra
     end
-  end
-
-  def set_content_type
-    self.content_type = self.file.content_type
   end
 end
