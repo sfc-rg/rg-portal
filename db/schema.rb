@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124040444) do
+ActiveRecord::Schema.define(version: 20161203075508) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -258,6 +258,16 @@ ActiveRecord::Schema.define(version: 20161124040444) do
   end
 
   add_index "slack_messages", ["pid"], name: "index_slack_messages_on_pid"
+
+  create_table "upload_pdf_extras", force: :cascade do |t|
+    t.integer  "upload_id"
+    t.text     "pdf_version"
+    t.integer  "num_of_pages"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "upload_pdf_extras", ["upload_id"], name: "index_upload_pdf_extras_on_upload_id"
 
   create_table "uploads", force: :cascade do |t|
     t.integer  "user_id"

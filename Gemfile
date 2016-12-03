@@ -36,7 +36,7 @@ gem 'diffy'
 gem 'git-ssh-wrapper'
 gem 'sshkey'
 gem 'chartkick'
-gem 'pdf-reader'
+gem 'pdf-reader', require: 'pdf-reader'
 
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-slack', '~> 2.0.0'
