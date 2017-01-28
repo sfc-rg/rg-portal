@@ -42,16 +42,36 @@
     font-size: 100%;
   }
 
-  ul li {
+  ul {
     padding-left: 10px;
-    list-style-type: disc;
-    list-style-position: inside;
+
+    li {
+      padding-left: 10px;
+      list-style-type: disc;
+      list-style-position: inside;
+    }
+
+    p {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
   }
 
-  ol li {
+  ol {
     padding-left: 10px;
-    list-style-type: decimal;
-    list-style-position: inside;
+
+    li {
+      padding-left: 10px;
+      list-style-type: decimal;
+      list-style-position: inside;
+    }
+
+    p {
+      display: inline;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   h3, h4, h5, h6, div, p, ol, ul, table, img, form {
