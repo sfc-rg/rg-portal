@@ -4,7 +4,7 @@ app_shared_path = "#{app_path}/shared"
 listen "#{app_shared_path}/tmp/unicorn.sock"
 pid "#{app_shared_path}/tmp/unicorn.pid"
 
-worker_processes 8
+worker_processes 4
 preload_app true
 
 working_directory "#{app_path}/current/"
