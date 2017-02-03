@@ -1,9 +1,10 @@
-- comments.each do |comment|
-  .comment
-    .user
-      .icon= image_tag comment.user.icon_url
-    .box
-      .info
-        .nickname= comment.user.nickname
-        .time= displayable_datetime(comment.created_at)
-      .content= comment.render_content.html_safe
+- cache comments do
+  - comments.each do |comment|
+    .comment
+      .user
+        .icon= image_tag comment.user.icon_url
+      .box
+        .info
+          .nickname= comment.user.nickname
+          .time= displayable_datetime(comment.created_at)
+        .content= comment.render_content.html_safe
