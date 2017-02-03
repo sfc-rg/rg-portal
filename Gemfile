@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 
-gem 'therubyracer'
+group :therubyracer do
+  gem 'therubyracer'
+end
+
 gem 'sprockets', '~> 3.2'
 gem 'haml-rails', '~> 0.9.0'
 gem 'sass-rails', '~> 5.0'
