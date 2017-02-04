@@ -28,27 +28,28 @@
       %th Title
       %th Handouts
       %th Last Edited At
-    - @meeting.presentations.each_with_index do |presentation, index|
-      %tr
-        %td= index + 1
-        %td= show_user_badge(presentation.user)
-        %td
-          = link_to presentation.title, presentation_path(presentation)
-          - if presentation.user_id == @current_user.id
-            = link_to edit_presentation_path(presentation) do
-              %i.fa.fa-edit
-            = link_to presentation_path(presentation), method: :delete,
-              data: { confirm: '削除すると元に戻せませんが、本当に削除しますか?' } do
-              %i.fa.fa-trash
-        %td
-          - presentation.handouts.each do |handout|
-            .handout_link
-              = link_to file_upload_url(handout.to_param), target: '_blank' do
-                = handout.file_identifier.truncate(20)
-                %i.fa.fa-external-link
-              - if handout.pdf? && handout.pdf_extra.present?
-                (#{handout.pdf_extra.num_of_pages}p)
-        %td= presentation.last_edited_at
+    - cache [@meeting, @current_user] do
+      - @meeting.presentations.each_with_index do |presentation, index|
+        %tr
+          %td= index + 1
+          %td= show_user_badge(presentation.user)
+          %td
+            = link_to presentation.title, presentation_path(presentation)
+            - if presentation.user_id == @current_user.id
+              = link_to edit_presentation_path(presentation) do
+                %i.fa.fa-edit
+              = link_to presentation_path(presentation), method: :delete,
+                data: { confirm: '削除すると元に戻せませんが、本当に削除しますか?' } do
+                %i.fa.fa-trash
+          %td
+            - presentation.handouts.each do |handout|
+              .handout_link
+                = link_to file_upload_url(handout.to_param), target: '_blank' do
+                  = handout.file_identifier.truncate(20)
+                  %i.fa.fa-external-link
+                - if handout.pdf? && handout.pdf_extra.present?
+                  (#{handout.pdf_extra.num_of_pages}p)
+          %td= presentation.last_edited_at
 
   - if @meeting.accepting?
     = link_to 'プレゼンテーション登録', new_meeting_presentation_path(@meeting), class: 'button'
