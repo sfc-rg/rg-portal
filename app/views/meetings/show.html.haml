@@ -28,8 +28,9 @@
       %th Title
       %th Handouts
       %th Last Edited At
-    - cache [@meeting, @current_user] do
-      - @meeting.presentations.each_with_index do |presentation, index|
+    - @meeting.presentations.each_with_index do |presentation, index|
+      -# Cache by presentation only if not own presentation
+      - cache_if presentation.user_id != @current_user.id, presentation do
         %tr
           %td= index + 1
           %td= show_user_badge(presentation.user)
