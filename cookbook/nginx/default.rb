@@ -7,11 +7,18 @@ end
 
 package 'install nginx' do
   name 'nginx'
-  version '1.8.0-1.el7.ngx'
+  version '1.10.2-1.el7.ngx'
 end
 
 template '/etc/nginx/nginx.conf' do
   source 'templates/nginx.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+remote_file '/etc/logrotate.d/nginx' do
+  source 'files/nginx'
   owner 'root'
   group 'root'
   mode '0644'

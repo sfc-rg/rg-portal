@@ -1,4 +1,5 @@
 include_recipe 'selinux::disabled'
+include_recipe 'munin/default.rb'
 include_recipe 'nginx/default.rb'
 include_recipe 'solr/default.rb'
 include_recipe 'letsencrypt/default.rb'
