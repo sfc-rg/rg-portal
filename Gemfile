@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.10'
 
 gem 'therubyracer'
 gem 'sprockets', '~> 3.2'
