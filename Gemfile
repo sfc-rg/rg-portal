@@ -59,7 +59,7 @@ group :development, :test do
   gem 'byebug'
   gem 'spring'
 
-  gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec-rails', '~> 3.7.2'
   gem 'json_expressions', '~> 0.8.3'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'timecop'
