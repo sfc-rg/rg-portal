@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.5.1'
 
 gem 'therubyracer'
 gem 'sprockets', '~> 3.2'
@@ -59,7 +59,7 @@ group :development, :test do
   gem 'byebug'
   gem 'spring'
 
-  gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec-rails', '~> 3.6'
   gem 'json_expressions', '~> 0.8.3'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'timecop'
