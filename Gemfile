@@ -39,7 +39,7 @@ gem 'chartkick'
 gem 'pdf-reader', require: 'pdf-reader'
 
 gem 'omniauth', '~> 1.8.1'
-gem 'omniauth-slack', '~> 2.0.0'
+gem 'omniauth-slack', '~> 2.3.0'
 gem 'slack-api', require: 'slack'
 gem 'rsolr'
 gem 'net-ldap'
