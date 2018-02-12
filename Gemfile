@@ -28,7 +28,7 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'http_accept_language'
 
 gem 'jbuilder', '~> 2.2.12'
-gem 'yajl-ruby', '~> 1.2.1'
+gem 'yajl-ruby', '~> 1.3.1'
 gem 'github-markdown', '~> 0.6.8'
 gem 'redcarpet', '~> 3.3.1'
 gem 'gemoji'
