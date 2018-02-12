@@ -18,9 +18,9 @@ ndenv:
     - bower
 rbenv:
   global:
-    2.3.0
+    2.3.6
   versions:
-    - 2.3.0
+    - 2.3.6
   gems:
     - bundler
 letsencrypt:
