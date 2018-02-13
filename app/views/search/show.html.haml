@@ -1,7 +1,7 @@
 = render 'search_bar'
 
 .content
-  %h1 #{@keyword}の検索結果
+  %h1 #{t 'search.results_header', keyword: @keyword}
   - @search.results.each do |result|
     - if result.is_a?(Page)
       = render 'page', page: result

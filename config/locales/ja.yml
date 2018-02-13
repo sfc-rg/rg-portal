@@ -1,6 +1,7 @@
 ja:
   search:
     placeholder: 'Portal内を検索'
+    results_header: '"%{keyword}"の検索結果'
   button:
     search: '検索'
     edit_this_page: 'このページを編集'

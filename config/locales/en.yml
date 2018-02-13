@@ -1,6 +1,7 @@
 en:
   search:
     placeholder: 'Search the portal...'
+    results_header: 'Search results for "%{keyword}"'
   button:
     search: 'Search'
     edit_this_page: 'Edit this page'
