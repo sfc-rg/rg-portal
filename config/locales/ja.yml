@@ -1,1 +1,5 @@
 ja:
+  search:
+    placeholder: 'Portal内を検索'
+  button:
+    search: '検索'
