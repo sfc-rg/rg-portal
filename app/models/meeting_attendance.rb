@@ -4,5 +4,5 @@ class MeetingAttendance < ActiveRecord::Base
 
   validates :meeting, presence: true
   validates :user, presence: true
-  validates :meeting, uniqueness: { scope: :user, message: 'should uniqueness per user' }
+  validates :meeting, uniqueness: { scope: :user, message: 'should be unique per user.' }
 end
