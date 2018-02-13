@@ -3,3 +3,4 @@ ja:
     placeholder: 'Portal内を検索'
   button:
     search: '検索'
+    edit_this_page: 'このページを編集'

@@ -3,3 +3,4 @@ en:
     placeholder: 'Search the portal...'
   button:
     search: 'Search'
+    edit_this_page: 'Edit this page'

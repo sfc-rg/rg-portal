@@ -6,7 +6,7 @@ module PreBuiltPagesHelper
 
     page = Page.find_by(path: path)
     return "<div><a href='#{edit_page_path(path)}'>#{message}</a></div>" if page.blank?
-    edit_button = options[:edit_link] ? "<div class=edit_link><a href='#{edit_page_path(path)}'>このページを編集</a></div>" : ''
+    edit_button = options[:edit_link] ? "<div class=edit_link><a href='#{edit_page_path(path)}'>#{t 'button.edit_this_page'}</a></div>" : ''
     page.render_content + edit_button
   end
 
