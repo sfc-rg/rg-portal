@@ -6,6 +6,7 @@ en:
     search: 'Search'
     edit_this_page: 'Edit this page'
     add: 'Add'
+    cancel: 'Cancel'
     link_account: 'Link account'
     kg_update: 'Update your KGs'
     give_permissions: 'Grant permission to another user'

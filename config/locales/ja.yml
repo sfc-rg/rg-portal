@@ -6,6 +6,7 @@ ja:
     search: '検索'
     edit_this_page: 'このページを編集'
     add: '追加'
+    cancel: 'キャンセル'
     link_account: 'アカウント連携をする'
     kg_update: 'KG設定を変更する'
     give_permissions: '他のユーザへの権限共有'
