@@ -1,5 +1,5 @@
 .content
   %h1
     = @presentation.meeting.name
-  %h2 プレゼンテーションの編集
+  %h2 #{t 'presentations.edit_header'}
   = render 'form', cancel_path: meeting_path(@presentation.meeting)

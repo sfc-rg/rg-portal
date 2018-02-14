@@ -1,13 +1,13 @@
 .content
   .breadcrumb
-    .link= link_to 'ミーティング一覧', meetings_path
+    .link= link_to t('meetings.header'), meetings_path
     .link= link_to @presentation.meeting.name, meeting_path(@presentation.meeting)
     .link= link_to @presentation.title, presentation_path(@presentation)
 
   %h1= @presentation.title
   - cache @presentation do
     %p
-      発表者:
+      #{t 'meetings.presenter'}
       = show_user_badge(@presentation.user)
     %h2 Handouts
     - @presentation.handouts.each do |handout|
@@ -30,5 +30,5 @@
     new_comment: PresentationComment.new(presentation: @presentation)
 - if @presentation.next.present?
   %p.next-presentation
-    = link_to "#{@presentation.next.title} Next>>", presentation_path(@presentation.next),
+    = link_to "#{@presentation.next.title} (#{t 'button.next'} >>)", presentation_path(@presentation.next),
       ga_track_attributes('presentations#show', 'next-presentation')

@@ -1,5 +1,5 @@
 .content
-  %h1 ミーティング一覧
+  %h1 #{t 'meetings.header'}
   %table
     %tr
       %th Name
@@ -13,4 +13,4 @@
         %td= meeting.end_at.strftime('%Y/%m/%d %H:%M')
         %td= meeting.meeting_attendances.size
   = paginate @meetings
-  = link_to 'ミーティング追加', new_meeting_path
+  = link_to t('button.add_meeting'), new_meeting_path
