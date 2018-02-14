@@ -20,6 +20,7 @@ en:
     change_presentation_order: 'Change presentation order'
     confirm_delete: 'Deletion cannot be undone.  Are you sure you want to continue?'
     next: 'Next'
+    create_page: 'Would you like to create a page here?'
   profile:
     rg_account_link_header: 'Linked rg-net Account'
     student_id: 'Student ID'
@@ -54,3 +55,6 @@ en:
     edit_header: 'Edit Presentation'
     order_header: 'Registered Presentations for %{name}'
     none_registered_msg: 'No presentations have been registered for this meeting yet'
+  pages:
+    recently_updated: 'Recently updated pages'
+    not_created_msg: 'Nobody has created this page yet.'
