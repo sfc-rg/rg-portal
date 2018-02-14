@@ -1,24 +1,24 @@
 .content
   %h2
-    rg-net アカウント連携
-    = "(#{@current_user.ldap_credential.present? ? '認証済み' : '未認証'})"
+    = t 'profile.rg_account_link_header'
+    = "(#{@current_user.ldap_credential.present? ? t('profile.account_linked') : t('profile.account_not_linked')})"
   - if @current_user.ldap_credential.present?
     .setting-form
-      %label Username
+      %label #{t 'profile.username'}
       = text_field :ldap, :username, disabled: true, value: @current_user.ldap_credential.uid
-      %label Student Id
+      %label #{t 'profile.student_id'}
       = text_field :ldap, :username, disabled: true, value: @current_user.ldap_credential.student_id
-    %p この情報が間違っている場合は #coordinator まで連絡してください。
+    %p #{t 'profile.user_info_message'}
   - else
     = form_tag update_ldap_path, method: :patch, class: 'setting-form' do
-      %label Username
-      = text_field :ldap, :username, placeholder: 'username'
-      %label Password
-      = password_field :ldap, :password, placeholder: 'password'
-      = submit_tag 'アカウント連携をする'
+      %label #{t 'profile.username' }
+      = text_field :ldap, :username, placeholder: t('profile.username')
+      %label #{t 'profile.password'}
+      = password_field :ldap, :password, placeholder: t('profile.password')
+      = submit_tag t('button.link_account')
 
   %h2
-    KG設定
+    #{t 'profile.kg_setting'}
   = nested_form_for @current_user, url: update_profile_path, class: 'setting-form' do |f|
     - if @current_user.errors.any?
       .flash.error
@@ -30,21 +30,21 @@
           %i.fa.fa-trash
         = group_form.hidden_field :id
         = group_form.select :group_id, group_list
-      = f.link_to_add '追加', :group_users
-      = f.submit 'KG設定を更新する'
+      = f.link_to_add t('button.add'), :group_users
+      = f.submit t('button.kg_update')
 
   %h2
-    アクセス権限
+    #{t 'profile.special_access_header'}
   - if @current_user.privileges.any?
     %ul
       - @current_user.privileges.each do |privilege|
         %li= privilege.stringify
-    %p= link_to '他のユーザへの権限共有', new_privilege_path
-    %p= link_to '権限を持っているユーザ一覧', privileges_path
+    %p= link_to t('button.give_permissions'), new_privilege_path
+    %p= link_to t('profile.special_access_list'), privileges_path
   - else
-    %p 特別に許可されたアクセス権限はありません
+    %p #{t 'profile.special_access_none_msg'}
 
   - if @current_user.has_privilege?('api_keys')
     %h2
-      APIキー設定
-    %p= link_to 'APIキー一覧', api_keys_path
+      #{t 'profile.api_keys_header'}
+    %p= link_to t('profile.api_keys_list'), api_keys_path

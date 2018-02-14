@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   def require_active_current_user
     require_current_user
     if @current_user.present? && !@current_user.active?
-      redirect_to edit_profile_path, flash: { error: "アカウントを有効化するには、rg-netの認証とKGの登録が必要です。" }
+      redirect_to edit_profile_path, flash: { error: t('error.unfinished_registration') }
     end
   end
 

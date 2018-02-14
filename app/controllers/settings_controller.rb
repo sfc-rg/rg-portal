@@ -8,13 +8,13 @@ class SettingsController < ApplicationController
     ldap = params.require(:ldap).permit(:username, :password)
 
     unless LdapSupport.ldap_bind(ldap[:username], ldap[:password])
-      flash[:error] = '認証情報が正しくありません'
+      flash[:error] = t('error.ldap_auth_incorrect')
       return redirect_to edit_profile_path
     end
 
     info = LdapSupport.ldap_info(ldap[:username])
     unless LdapCredential.import(user: @current_user, info: info).save
-      flash[:error] = '認証情報の保存で問題が発生しました'
+      flash[:error] = t('error.ldap_unable_to_save')
       return redirect_to edit_profile_path
     end
 
@@ -23,7 +23,7 @@ class SettingsController < ApplicationController
 
   def update_profile
     unless @current_user.update(user_params)
-      flash[:error] = 'ユーザー情報が正しくありません'
+      flash[:error] = t('error.user_info_incorrect')
       return render action: :edit_profile
     end
 
