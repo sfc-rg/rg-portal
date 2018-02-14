@@ -3,9 +3,9 @@
     %h1.title= blog.title
 
   .information
-    Wrote by #{blog.author_nickname},
+    Written by #{blog.author_nickname},
     Created at: #{displayable_datetime(blog.created_at)},
-    Updated at: #{displayable_datetime(blog.updated_at)}
+    Last updated at: #{displayable_datetime(blog.updated_at)}
 
     - if blog.user == @current_user
       = link_to edit_blog_path(blog.to_param) do
