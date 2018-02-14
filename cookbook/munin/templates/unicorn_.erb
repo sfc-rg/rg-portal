@@ -1,0 +1,5 @@
+[unicorn_*]
+env.rails_root /var/www/<%= node['nginx']['name'] %>
+env.pid_name unicorn.pid
+user rails
+group rails
