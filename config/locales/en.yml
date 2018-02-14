@@ -28,3 +28,4 @@ en:
     user_info_incorrect: 'User information is incorrect.  Please double-check your entries and try again.'
     ldap_auth_incorrect: 'The username and/or password you provided was incorrect.'
     ldap_unable_to_save: 'Unable to store authentication information successfully.'
+    user_already_has_privilege: 'The specified user already has the requested permission.'

@@ -28,3 +28,4 @@ ja:
     user_info_incorrect: 'ユーザー情報が正しくありません。入力したデータをもう一度確認してください。'
     ldap_auth_incorrect: '認証情報が正しくありません'
     ldap_unable_to_save: '認証情報の保存で問題が発生しました'
+    user_already_has_privilege: '指定されたユーザはすでにリクエストされた権限を持っています'
