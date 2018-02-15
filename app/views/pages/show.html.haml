@@ -2,5 +2,5 @@
   = render 'page', page: @page
 - else
   .content
-    #{t 'pages.not_created_msg'}
+    = t 'pages.not_created_msg'
     = link_to t('button.create_page'), edit_page_path

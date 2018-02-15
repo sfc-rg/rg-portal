@@ -1,5 +1,5 @@
 .content
-  %h1 #{t 'privileges.header'}
+  %h1= t 'privileges.header'
   %ul.accordion-tabs
     - @privilege_groups.each do |name, privileges|
       %li.tab-header-and-content

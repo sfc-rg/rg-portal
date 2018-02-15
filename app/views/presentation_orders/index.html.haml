@@ -3,14 +3,14 @@
     .link= link_to t('meetings.header'), meetings_path
     .link= link_to @meeting.name, meeting_path(@meeting)
 
-  %h1 #{t 'presentations.order_header', name: @meeting.name}
+  %h1= t 'presentations.order_header', name: @meeting.name
   - if @meeting.presentations.empty?
-    %p #{t 'presentations.none_registered_msg'}
+    %p= t 'presentations.none_registered_msg'
   - else
     %p
       = t 'meetings.num_presentations'
       = @meeting.presentations.size
-    %h2 #{t 'meetings.presentations_list_header'}
+    %h2= t 'meetings.presentations_list_header'
     = form_tag meeting_presentation_orders_path(@meeting)
     %table
       %tr

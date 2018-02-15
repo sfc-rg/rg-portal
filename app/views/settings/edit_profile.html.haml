@@ -4,21 +4,21 @@
     = "(#{@current_user.ldap_credential.present? ? t('profile.account_linked') : t('profile.account_not_linked')})"
   - if @current_user.ldap_credential.present?
     .setting-form
-      %label #{t 'profile.username'}
+      %label= t 'profile.username'
       = text_field :ldap, :username, disabled: true, value: @current_user.ldap_credential.uid
-      %label #{t 'profile.student_id'}
+      %label= t 'profile.student_id'
       = text_field :ldap, :username, disabled: true, value: @current_user.ldap_credential.student_id
-    %p #{t 'profile.user_info_message'}
+    %p= t 'profile.user_info_message'
   - else
     = form_tag update_ldap_path, method: :patch, class: 'setting-form' do
-      %label #{t 'profile.username' }
+      %label = t 'profile.username'
       = text_field :ldap, :username, placeholder: t('profile.username')
-      %label #{t 'profile.password'}
+      %label= t 'profile.password'
       = password_field :ldap, :password, placeholder: t('profile.password')
       = submit_tag t('button.link_account')
 
   %h2
-    #{t 'profile.kg_setting'}
+    = t 'profile.kg_setting'
   = nested_form_for @current_user, url: update_profile_path, class: 'setting-form' do |f|
     - if @current_user.errors.any?
       .flash.error
@@ -34,7 +34,7 @@
       = f.submit t('button.kg_update')
 
   %h2
-    #{t 'profile.special_access_header'}
+    = t 'profile.special_access_header'
   - if @current_user.privileges.any?
     %ul
       - @current_user.privileges.each do |privilege|
@@ -42,9 +42,9 @@
     %p= link_to t('button.give_permissions'), new_privilege_path
     %p= link_to t('profile.special_access_list'), privileges_path
   - else
-    %p #{t 'profile.special_access_none_msg'}
+    %p= t 'profile.special_access_none_msg'
 
   - if @current_user.has_privilege?('api_keys')
     %h2
-      #{t 'profile.api_keys_header'}
+      = t 'profile.api_keys_header'
     %p= link_to t('profile.api_keys_list'), api_keys_path

@@ -7,7 +7,7 @@
   %h1= @presentation.title
   - cache @presentation do
     %p
-      #{t 'meetings.presenter'}
+      = t 'meetings.presenter'
       = show_user_badge(@presentation.user)
     %h2 Handouts
     - @presentation.handouts.each do |handout|

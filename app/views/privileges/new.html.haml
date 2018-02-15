@@ -1,5 +1,5 @@
 .content
-  %h1 #{t 'privileges.share_header'}
+  %h1= t 'privileges.share_header'
   = form_for @privilege, url: privileges_path, method: :post do |f|
     - if @privilege.errors.any?
       .flash.error
