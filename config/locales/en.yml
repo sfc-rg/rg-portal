@@ -22,6 +22,7 @@ en:
     confirm_delete: 'Deletion cannot be undone.  Are you sure you want to continue?'
     next: 'Next'
     create_page: 'Would you like to create a page here?'
+    upload: 'Upload file'
   profile:
     rg_account_link_header: 'Linked rg-net Account'
     student_id: 'Student ID'
@@ -60,3 +61,6 @@ en:
   pages:
     recently_updated: 'Recently updated pages'
     not_created_msg: 'Nobody has created this page yet.'
+  uploads:
+    header: 'Upload a file'
+    list_header: 'Uploaded files'

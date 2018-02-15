@@ -22,6 +22,7 @@ ja:
     confirm_delete: '削除すると元に戻せませんが、本当に削除しますか？'
     next: '次へ'
     create_page: '良かったら作りませんか？'
+    upload: 'アップロードをする'
   profile:
     rg_account_link_header: 'rg-netアカウント連携'
     student_id: '学籍番号'
@@ -60,3 +61,6 @@ ja:
   pages:
     recently_updated: '最近更新されたコンテンツ'
     not_created_msg: 'まだ誰も作成していません。'
+  uploads:
+    header: 'ファイルをアップロード'
+    list_header: 'アップロードされたファイル'

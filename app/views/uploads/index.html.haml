@@ -1,10 +1,10 @@
 .content
-  %h1 ファイルをアップロード
+  %h1 #{t 'uploads.header'}
   = form_for Upload.new do |f|
     = f.file_field :file
-    = f.submit
+    = f.submit t('button.upload')
 
-  %h1 アップロードされたファイル
+  %h1 #{t 'uploads.list_header'}
   %table
     %tr
       %th #
