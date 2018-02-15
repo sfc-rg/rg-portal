@@ -77,5 +77,5 @@ en:
     share_success_msg: 'Successfully shared %{privilege} with %{nickname}'
   users:
     header: 'All Users'
-  judgments:
+  judgements:
     header: 'Presentation Evaluations for %{name}'

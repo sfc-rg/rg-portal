@@ -77,5 +77,5 @@ ja:
     share_success_msg: '%{nickname}に%{privilege}の権限を共有しました'
   users:
     header: 'ユーザー一覧'
-  judgments:
+  judgements:
     header: '%{name}のプレゼンテーション評価一覧'
