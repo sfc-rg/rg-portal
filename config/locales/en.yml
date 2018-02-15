@@ -3,6 +3,7 @@ en:
     placeholder: 'Search the portal...'
     results_header: 'Search results for "%{keyword}"'
   button:
+    reauthenticate: 'Reauthenticate'
     search: 'Search'
     edit_this_page: 'Edit this page'
     edit_this_meeting: 'Edit this meeting'
@@ -36,6 +37,7 @@ en:
     api_keys_header: 'API Key Settings'
     api_keys_list: 'View list of registered API keys'
   error:
+    invalid_slack_team: 'You logged in with an invalid Slack team (please double-check the Slack team you used to log in)'
     unfinished_registration: 'In order to activate your account, you must link an rg-net account and register a KG.'
     user_info_incorrect: 'User information is incorrect.  Please double-check your entries and try again.'
     ldap_auth_incorrect: 'The username and/or password you provided was incorrect.'

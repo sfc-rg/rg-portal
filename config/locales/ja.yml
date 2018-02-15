@@ -3,6 +3,7 @@ ja:
     placeholder: 'Portal内を検索'
     results_header: '"%{keyword}"の検索結果'
   button:
+    reauthenticate: '再認証する'
     search: '検索'
     edit_this_page: 'このページを編集'
     edit_this_meeting: 'このミーティングを編集'
@@ -36,6 +37,7 @@ ja:
     api_keys_header: 'APIキー設定'
     api_keys_list: 'APIキー一覧'
   error:
+    invalid_slack_team: '無効なチームでログインしました（Slackでログインするチームを確認してください）'
     unfinished_registration: 'アカウントを有効化するには、rg-netの認証とKGの登録が必要です。'
     user_info_incorrect: 'ユーザー情報が正しくありません。入力したデータをもう一度確認してください。'
     ldap_auth_incorrect: '認証情報が正しくありません'
