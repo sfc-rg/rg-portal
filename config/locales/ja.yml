@@ -61,6 +61,8 @@ ja:
   pages:
     recently_updated: '最近更新されたコンテンツ'
     not_created_msg: 'まだ誰も作成していません。'
+    create_top_page_msg: 'トップページをつくる'
+    create_this_sem_schedule_msg: '今学期の授業情報を載せる'
   uploads:
     header: 'ファイルをアップロード'
     list_header: 'アップロードされたファイル'

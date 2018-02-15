@@ -61,6 +61,8 @@ en:
   pages:
     recently_updated: 'Recently updated pages'
     not_created_msg: 'Nobody has created this page yet.'
+    create_top_page_msg: 'Create top page'
+    create_this_sem_schedule_msg: 'Post schedule for this semester'
   uploads:
     header: 'Upload a file'
     list_header: 'Uploaded files'
