@@ -34,7 +34,7 @@ en:
     user_info_message: 'If any of the above information is incorrect, please contact the #coordinator channel in Slack.'
     kg_setting: 'KG Registration'
     special_access_header: 'Special Access'
-    special_access_none_msg: 'You have been granted any special access permissions.'
+    special_access_none_msg: 'You have not been granted any special access permissions.'
     special_access_list: 'View list of users with special access'
     api_keys_header: 'API Key Settings'
     api_keys_list: 'View list of registered API keys'
