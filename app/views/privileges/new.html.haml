@@ -1,5 +1,5 @@
 .content
-  %h1 アクセス権限の共有
+  %h1 #{t 'privileges.share_header'}
   = form_for @privilege, url: privileges_path, method: :post do |f|
     - if @privilege.errors.any?
       .flash.error
@@ -12,4 +12,4 @@
     = f.hidden_field :model
     = f.hidden_field :action
     = f.collection_select :user_id, User.all, :id, :nickname
-    = f.submit
+    = f.submit t('button.share_privileges')

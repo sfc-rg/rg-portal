@@ -23,6 +23,7 @@ ja:
     next: '次へ'
     create_page: '良かったら作りませんか？'
     upload: 'アップロードをする'
+    share_privileges: '登録する'
   profile:
     rg_account_link_header: 'rg-netアカウント連携'
     student_id: '学籍番号'
@@ -44,6 +45,8 @@ ja:
     ldap_auth_incorrect: '認証情報が正しくありません'
     ldap_unable_to_save: '認証情報の保存で問題が発生しました'
     user_already_has_privilege: '指定されたユーザはすでにリクエストされた権限を持っています'
+    share_no_privilege: '自分が許可されていない権限は共有出来ません'
+    update_presentation_order: 'プレゼンテーション順の変更に失敗しました\nエラー: %{msg}'
   meetings:
     header: 'ミーティング一覧'
     create_header: 'ミーティングの作成'
@@ -53,11 +56,13 @@ ja:
     presentations_list_header: '登録プレゼンテーション一覧'
     presenter: '発表者：'
     registration_closed: '（プレゼンテーション登録は現在締め切られています。）'
+    deleted_msg: 'ミーティングを削除しました'
   presentations:
     new_header: 'プレゼンテーションの登録'
     edit_header: 'プレゼンテーションの編集'
     order_header: '%{name}の発表順を調整'
     none_registered_msg: 'まだこのミーティングにはプレゼンテーション登録がありません'
+    order_changed_msg: 'プレゼンテーション順を変更しました'
   pages:
     recently_updated: '最近更新されたコンテンツ'
     not_created_msg: 'まだ誰も作成していません。'
@@ -66,3 +71,11 @@ ja:
   uploads:
     header: 'ファイルをアップロード'
     list_header: 'アップロードされたファイル'
+  privileges:
+    header: '権限を持っているユーザ一覧'
+    share_header: 'アクセス権限の共有'
+    share_success_msg: '%{nickname}に%{privilege}の権限を共有しました'
+  users:
+    header: 'ユーザー一覧'
+  judgments:
+    header: '%{name}のプレゼンテーション評価一覧'

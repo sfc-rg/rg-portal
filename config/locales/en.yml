@@ -23,6 +23,7 @@ en:
     next: 'Next'
     create_page: 'Would you like to create a page here?'
     upload: 'Upload file'
+    share_privileges: 'Grant access'
   profile:
     rg_account_link_header: 'Linked rg-net Account'
     student_id: 'Student ID'
@@ -44,6 +45,8 @@ en:
     ldap_auth_incorrect: 'The username and/or password you provided was incorrect.'
     ldap_unable_to_save: 'Unable to store authentication information successfully.'
     user_already_has_privilege: 'The specified user already has the requested permission.'
+    share_no_privilege: 'You cannot share permissions you do not have.'
+    update_presentation_order: 'Unable to update presentation order\nError: %{msg}'
   meetings:
     header: 'Meeting List'
     create_header: 'Create a Meeting'
@@ -53,11 +56,13 @@ en:
     presentations_list_header: 'List of registered presentations'
     presenter: 'Presenter:'
     registration_closed: '(Registration for this meeting is closed.)'
+    deleted_msg: 'The meeting was deleted'
   presentations:
     new_header: 'Presentation Registration'
     edit_header: 'Edit Presentation'
     order_header: 'Registered Presentations for %{name}'
     none_registered_msg: 'No presentations have been registered for this meeting yet'
+    order_changed_msg: 'Updated presentation order'
   pages:
     recently_updated: 'Recently updated pages'
     not_created_msg: 'Nobody has created this page yet.'
@@ -66,3 +71,11 @@ en:
   uploads:
     header: 'Upload a file'
     list_header: 'Uploaded files'
+  privileges:
+    header: 'Users with Special Access Privileges'
+    share_header: 'Grant access privileges to another user'
+    share_success_msg: 'Successfully shared %{privilege} with %{nickname}'
+  users:
+    header: 'All Users'
+  judgments:
+    header: 'Presentation Evaluations for %{name}'
