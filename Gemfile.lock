@@ -159,7 +159,7 @@ GEM
     kgio (2.10.0)
     libv8 (3.16.14.15)
     line-bot-api (1.0.0)
-    loofah (2.2.0)
+    loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
