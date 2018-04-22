@@ -70,5 +70,6 @@
       - if @current_user.has_privilege?('meetings', 'update')
         = link_to t('button.edit_this_meeting'), edit_meeting_path(@meeting)
       - if @current_user.has_privilege?('meetings', 'destroy')
-        = link_to t('button.delete_this_meeting'), meeting_path(@meeting), method: :delete,
+        = link_to t('button.delete_this_meeting'),
+          meeting_path(@meeting), method: :delete,
           data: { confirm: t('button.confirm_delete') }
