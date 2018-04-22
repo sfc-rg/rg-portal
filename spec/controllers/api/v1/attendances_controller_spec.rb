@@ -22,7 +22,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
 
       it 'returns error response' do
         expect(response).to have_http_status(:forbidden)
-        expect(response.body).to eq({ error: 'Not found meeting at current time.' }.to_json)
+        expect(response.body).to eq({ error: 'No meeting in progress at this time.' }.to_json)
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
 
       it 'returns error response' do
         expect(response).to have_http_status(:forbidden)
-        expect(response.body).to eq({ error: 'Not found user with student id.' }.to_json)
+        expect(response.body).to eq({ error: 'No user found with specified student ID.' }.to_json)
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe Api::V1::AttendancesController, type: :controller do
 
       it 'returns error response' do
         expect(response).to have_http_status(:conflict)
-        expect(response.body).to eq({ error: 'Duplicated attendance.' }.to_json)
+        expect(response.body).to eq({ error: 'Attendance already registered for current meeting.' }.to_json)
       end
     end
   end

@@ -5,7 +5,7 @@ class Api::V1::AttendancesController < Api::V1::BaseController
 
   def create
     if MeetingAttendance.exists?(user: @user, meeting: @meeting)
-      return render json: { error: 'Attendance already registered for this meeting.' }, status: 409
+      return render json: { error: 'Attendance already registered for current meeting.' }, status: 409
     end
 
     MeetingAttendance.create!(user: @user, meeting: @meeting)
