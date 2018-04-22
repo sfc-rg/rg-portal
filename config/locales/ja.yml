@@ -47,6 +47,8 @@ ja:
     user_already_has_privilege: '指定されたユーザはすでにリクエストされた権限を持っています'
     share_no_privilege: '自分が許可されていない権限は共有出来ません'
     update_presentation_order: 'プレゼンテーション順の変更に失敗しました\nエラー: %{msg}'
+    api_key_create: 'APIキーの作成に失敗しました\nエラー: %{msg}'
+    api_key_revoke: 'APIキーの無効化に失敗しました\nエラー: %{msg}'
   meetings:
     header: 'ミーティング一覧'
     create_header: 'ミーティングの作成'
@@ -79,3 +81,7 @@ ja:
     header: 'ユーザー一覧'
   judgements:
     header: '%{name}のプレゼンテーション評価一覧'
+  api_keys:
+    header: 'APIキー一覧'
+    created_msg: 'APIキーを作成しました'
+    revoked_msg: 'APIキーを無効化しました'

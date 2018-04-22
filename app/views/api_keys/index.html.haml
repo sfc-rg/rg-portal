@@ -1,5 +1,5 @@
 .content
-  %h1 APIキー一覧
+  %h1= t 'api_keys.header'
   %table
     %tr
       %th Id
@@ -26,4 +26,4 @@
             \-
 
   - if @current_user.has_privilege?('api_keys', 'create')
-    %p= link_to 'APIキー作成', api_keys_path, method: :create, class: 'button'
+    %p= link_to t('button.create_api_key'), api_keys_path, method: :create, class: 'button'

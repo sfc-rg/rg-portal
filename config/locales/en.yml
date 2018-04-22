@@ -24,6 +24,7 @@ en:
     create_page: 'Would you like to create a page here?'
     upload: 'Upload file'
     share_privileges: 'Grant access'
+    create_api_key: 'Generate new API key'
   profile:
     rg_account_link_header: 'Linked rg-net Account'
     student_id: 'Student ID'
@@ -47,6 +48,8 @@ en:
     user_already_has_privilege: 'The specified user already has the requested permission.'
     share_no_privilege: 'You cannot share permissions you do not have.'
     update_presentation_order: 'Unable to update presentation order\nError: %{msg}'
+    api_key_create: 'Unable to create API key\nError: %{msg}'
+    api_key_revoke: 'Unable to revoke API key\nError: %{msg}'
   meetings:
     header: 'Meeting List'
     create_header: 'Create a Meeting'
@@ -79,3 +82,7 @@ en:
     header: 'All Users'
   judgements:
     header: 'Presentation Evaluations for %{name}'
+  api_keys:
+    header: 'All API keys'
+    created_msg: 'API key created successfully'
+    revoked_msg: 'API key revoked successfully'
