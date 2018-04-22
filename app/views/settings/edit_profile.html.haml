@@ -1,7 +1,10 @@
 .content
   %h2
     = t 'profile.rg_account_link_header'
-    = "(#{@current_user.ldap_credential.present? ? t('profile.account_linked') : t('profile.account_not_linked')})"
+    - if @current_user.ldap_credential.present?
+      = t('profile.account_linked')
+    - else
+      = t('profile.account_not_linked')
   - if @current_user.ldap_credential.present?
     .setting-form
       %label= t 'profile.username'
