@@ -2,8 +2,10 @@
 
 .content-outer
   .left.content
-    = include_or_create_page_content('TopPage', t('pages.create_top_page_msg')).html_safe
-    = include_or_create_page_content(term_name, t('pages.create_this_sem_schedule_msg')).html_safe
+    = include_or_create_page_content('TopPage',
+      t('pages.create_top_page_msg')).html_safe
+    = include_or_create_page_content(term_name,
+      t('pages.create_this_sem_schedule_msg')).html_safe
 
   .right.content
     %h2= t 'pages.recently_updated'
