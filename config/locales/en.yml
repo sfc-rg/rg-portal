@@ -86,3 +86,6 @@ en:
     header: 'All API keys'
     created_msg: 'API key created successfully'
     revoked_msg: 'API key revoked successfully'
+  groups:
+    header: 'List of registered groups'
+    create_header: 'Register a new group'

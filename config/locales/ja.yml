@@ -85,3 +85,6 @@ ja:
     header: 'APIキー一覧'
     created_msg: 'APIキーを作成しました'
     revoked_msg: 'APIキーを無効化しました'
+  groups:
+    header: 'グループ一覧'
+    create_header: 'グループ追加'
