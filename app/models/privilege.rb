@@ -5,7 +5,7 @@ class Privilege < ActiveRecord::Base
   validates :action, presence: true
   validates :user, uniqueness: {
     scope: [:model, :action],
-    message: '指定されたユーザはすでにリクエストされた権限を持っています'
+    message: I18n.t('error.user_already_has_privilege')
   }
 
   def stringify

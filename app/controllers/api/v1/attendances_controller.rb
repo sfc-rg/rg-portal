@@ -5,7 +5,7 @@ class Api::V1::AttendancesController < Api::V1::BaseController
 
   def create
     if MeetingAttendance.exists?(user: @user, meeting: @meeting)
-      return render json: { error: 'Duplicated attendance.' }, status: 409
+      return render json: { error: 'Attendance already registered for current meeting.' }, status: 409
     end
 
     MeetingAttendance.create!(user: @user, meeting: @meeting)
@@ -17,11 +17,11 @@ class Api::V1::AttendancesController < Api::V1::BaseController
 
   def set_meeting
     @meeting = Meeting.current
-    render json: { error: 'Not found meeting at current time.' }, status: 403 if @meeting.blank?
+    render json: { error: 'No meeting in progress at this time.' }, status: 403 if @meeting.blank?
   end
 
   def set_user_by_student_id
     @user = LdapCredential.find_by(student_id: params[:student_id]).try(:user)
-    render json: { error: 'Not found user with student id.' }, status: 403 if @user.blank?
+    render json: { error: 'No user found with specified student ID.' }, status: 403 if @user.blank?
   end
 end

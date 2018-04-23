@@ -1,4 +1,4 @@
 .content
-  無効なチームでログインしました(Slackでログインするチームを確認してください)
+  = t 'error.invalid_slack_team'
 
-  = link_to '再認証する', '/auth/slack'
+  = link_to t('button.reauthenticate'), '/auth/slack'

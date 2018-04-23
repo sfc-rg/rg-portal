@@ -1,5 +1,5 @@
 .content
-  %h1 #{@meeting.name}のプレゼンテーション評価一覧
+  %h1= t 'judgements.header', name: @meeting.name
   %table
     %tr
       %th User

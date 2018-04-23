@@ -1,4 +1,5 @@
 .search_bar
   = form_tag nil, id: 'search_form' do
-    = text_field :search, :keyword, id: 'search_keyword', value: params[:keyword], placeholder: 'Portal内を検索'
-    = submit_tag '検索', id: 'search_submit'
+    = text_field :search, :keyword, id: 'search_keyword',
+      value: params[:keyword], placeholder: t('search.placeholder')
+    = submit_tag t('button.search'), id: 'search_submit'

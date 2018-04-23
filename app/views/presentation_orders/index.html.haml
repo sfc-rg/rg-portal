@@ -1,16 +1,16 @@
 .content
   .breadcrumb
-    .link= link_to 'ミーティング一覧', meetings_path
+    .link= link_to t('meetings.header'), meetings_path
     .link= link_to @meeting.name, meeting_path(@meeting)
 
-  %h1 #{@meeting.name}の発表順を調整
+  %h1= t 'presentations.order_header', name: @meeting.name
   - if @meeting.presentations.empty?
-    %p まだこのミーティングにはプレゼンテーション登録がありません
+    %p= t 'presentations.none_registered_msg'
   - else
     %p
-      プレゼンテーション登録者数:
+      = t 'meetings.num_presentations'
       = @meeting.presentations.size
-    %h2 登録プレゼンテーション一覧
+    %h2= t 'meetings.presentations_list_header'
     = form_tag meeting_presentation_orders_path(@meeting)
     %table
       %tr
@@ -18,6 +18,7 @@
         %th
           Random -
           = link_to 'All', 'javascript: void(0);', class: 'presentation-order-random-all'
+          |
           = link_to 'Clear', 'javascript: void(0);', class: 'presentation-order-random-clear'
         %th Presenter
         %th Title

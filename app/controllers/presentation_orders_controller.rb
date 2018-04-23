@@ -10,9 +10,9 @@ class PresentationOrdersController < ApplicationController
     Presentation.transaction do
       settle_presentation_order!
     end
-    redirect_to meeting_path(@meeting), flash: { success: 'プレゼンテーション順を変更しました' }
+    redirect_to meeting_path(@meeting), flash: { success: t('presentations.order_changed_msg') }
   rescue => e
-    redirect_to meeting_path(@meeting), flash: { error: "プレゼンテーション順の変更に失敗しました\nエラー: #{e.message}" }
+    redirect_to meeting_path(@meeting), flash: { error:t('error.update_presentation_order', msg: e.message) }
   end
 
   private

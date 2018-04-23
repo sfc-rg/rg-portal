@@ -39,7 +39,7 @@ class MeetingsController < ApplicationController
 
   def destroy
     if @meeting.destroy
-      redirect_to meetings_path, flash: { success: "ミーティングを削除しました" }
+      redirect_to meetings_path, flash: { success: t('meetings.deleted_msg') }
     else
       redirect_to meeting_path(@meeting)
     end

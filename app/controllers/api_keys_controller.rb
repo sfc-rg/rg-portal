@@ -13,9 +13,9 @@ class ApiKeysController < ApplicationController
     api_key = ApiKey.new(user: @current_user)
     api_key.generate_access_token!
     api_key.save!
-    redirect_to api_keys_path, flash: { success: "APIキーを作成しました" }
+    redirect_to api_keys_path, flash: { success: t('api_keys.created_msg') }
   rescue => e
-    redirect_to api_keys_path, flash: { error: "APIキーの作成に失敗しました\nエラー: #{e.message}" }
+    redirect_to api_keys_path, flash: { error: t('error.api_key_create', msg: e.message) }
   end
 
   def destroy
@@ -23,9 +23,9 @@ class ApiKeysController < ApplicationController
       return render text: '403 Forbidden', layout: true, status: :forbidden
     end
     @api_key.revoke!
-    redirect_to api_keys_path, flash: { success: "APIキーを無効化しました" }
+    redirect_to api_keys_path, flash: { success: t('api_keys.revoked_msg') }
   rescue => e
-    redirect_to api_keys_path, flash: { error: "APIキーの無効化に失敗しました\nエラー: #{e.message}" }
+    redirect_to api_keys_path, flash: { error: t('error.api_key_revoke', msg: e.message) }
   end
 
   private

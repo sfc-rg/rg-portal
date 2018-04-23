@@ -1,5 +1,5 @@
 class LineIntegrationController < ApplicationController
-  before_action :verify_singature, only: :callback
+  before_action :verify_signature, only: :callback
   before_action :require_current_user, only: [:associate, :do_associate]
   before_action :set_line_credential, only: [:associate, :do_associate]
   protect_from_forgery except: :callback
@@ -64,7 +64,7 @@ class LineIntegrationController < ApplicationController
 
   private
 
-  def verify_singature
+  def verify_signature
     signature = request.headers['HTTP_X_LINE_SIGNATURE']
     unless LineClient.validate_signature(request.raw_post, signature)
       head :bad_request

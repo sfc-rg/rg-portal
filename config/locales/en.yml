@@ -1,23 +1,88 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  search:
+    placeholder: 'Search the portal...'
+    results_header: 'Search results for "%{keyword}"'
+  button:
+    reauthenticate: 'Reauthenticate'
+    search: 'Search'
+    edit_this_page: 'Edit this page'
+    edit_this_meeting: 'Edit this meeting'
+    add: 'Add'
+    cancel: 'Cancel'
+    link_account: 'Link account'
+    kg_update: 'Update your KGs'
+    give_permissions: 'Grant permission to another user'
+    add_meeting: 'Create meeting'
+    register_presentation: 'Register a presentation'
+    check_results: 'View evaluation results'
+    add_file: 'Add a file'
+    delete_this_meeting: 'Delete this meeting'
+    delete_this_presentation: 'Delete this presentation'
+    change_presentation_order: 'Change presentation order'
+    confirm_delete: 'Deletion cannot be undone.  Are you sure you want to continue?'
+    next: 'Next'
+    create_page: 'Would you like to create a page here?'
+    upload: 'Upload file'
+    share_privileges: 'Grant access'
+    create_api_key: 'Generate new API key'
+  profile:
+    rg_account_link_header: 'Linked rg-net Account'
+    student_id: 'Student ID'
+    username: 'Username'
+    password: 'Password'
+    account_linked: '(Authenticated)'
+    account_not_linked: '(Unconfirmed)'
+    user_info_message: 'If any of the above information is incorrect, please contact the #coordinator channel in Slack.'
+    kg_setting: 'KG Registration'
+    special_access_header: 'Special Access'
+    special_access_none_msg: 'You have not been granted any special access permissions.'
+    special_access_list: 'View list of users with special access'
+    api_keys_header: 'API Key Settings'
+    api_keys_list: 'View list of registered API keys'
+  error:
+    invalid_slack_team: 'You logged in with an invalid Slack team (please double-check the Slack team you used to log in)'
+    unfinished_registration: 'In order to activate your account, you must link an rg-net account and register a KG.'
+    user_info_incorrect: 'User information is incorrect.  Please double-check your entries and try again.'
+    ldap_auth_incorrect: 'The username and/or password you provided was incorrect.'
+    ldap_unable_to_save: 'Unable to store authentication information successfully.'
+    user_already_has_privilege: 'The specified user already has the requested permission.'
+    share_no_privilege: 'You cannot share permissions you do not have.'
+    update_presentation_order: 'Unable to update presentation order\nError: %{msg}'
+    api_key_create: 'Unable to create API key\nError: %{msg}'
+    api_key_revoke: 'Unable to revoke API key\nError: %{msg}'
+  meetings:
+    header: 'Meeting List'
+    create_header: 'Create a Meeting'
+    edit_header: 'Edit Meeting'
+    num_attendees: 'Attendees:'
+    num_presentations: 'Number of presentations:'
+    presentations_list_header: 'List of registered presentations'
+    presenter: 'Presenter:'
+    registration_closed: '(Registration for this meeting is closed.)'
+    deleted_msg: 'The meeting was deleted'
+  presentations:
+    new_header: 'Presentation Registration'
+    edit_header: 'Edit Presentation'
+    order_header: 'Registered Presentations for %{name}'
+    none_registered_msg: 'No presentations have been registered for this meeting yet'
+    order_changed_msg: 'Updated presentation order'
+  pages:
+    recently_updated: 'Recently updated pages'
+    not_created_msg: 'Nobody has created this page yet.'
+    create_top_page_msg: 'Create top page'
+    create_this_sem_schedule_msg: 'Post schedule for this semester'
+  uploads:
+    header: 'Upload a file'
+    list_header: 'Uploaded files'
+  privileges:
+    header: 'Users with Special Access Privileges'
+    share_header: 'Grant access privileges to another user'
+    share_success_msg: 'Successfully shared %{privilege} with %{nickname}'
+  users:
+    header: 'All Users'
+  judgements:
+    header: 'Presentation Evaluations for %{name}'
+  api_keys:
+    header: 'All API keys'
+    created_msg: 'API key created successfully'
+    revoked_msg: 'API key revoked successfully'

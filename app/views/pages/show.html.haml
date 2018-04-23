@@ -2,5 +2,5 @@
   = render 'page', page: @page
 - else
   .content
-    まだ誰も作成していません
-    = link_to '良かったら作りませんか', edit_page_path
+    = t 'pages.not_created_msg'
+    = link_to t('button.create_page'), edit_page_path
