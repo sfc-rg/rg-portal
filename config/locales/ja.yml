@@ -70,6 +70,11 @@ ja:
     not_created_msg: 'まだ誰も作成していません。'
     create_top_page_msg: 'トップページをつくる'
     create_this_sem_schedule_msg: '今学期の授業情報を載せる'
+    create_newcomers_page_msg: '新人向けの説明をつくる'
+    create_wip_term_explanation_msg: 'WIP/TERMの説明をつくる'
+    create_this_sem_wip_term_page_msg: '今学期のWIP/TERM情報を載せる'
+    create_gp_explanation_msg: '卒論の説明をつくる'
+    create_this_sem_gp_page_msg: '今学期の卒論情報を載せる'
   uploads:
     header: 'ファイルをアップロード'
     list_header: 'アップロードされたファイル'

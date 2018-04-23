@@ -71,6 +71,11 @@ en:
     not_created_msg: 'Nobody has created this page yet.'
     create_top_page_msg: 'Create top page'
     create_this_sem_schedule_msg: 'Post schedule for this semester'
+    create_newcomers_page_msg: 'Create page for newcomers'' information'
+    create_wip_term_explanation_msg: 'Create explanation of WIP/TERM'
+    create_this_sem_wip_term_page_msg: 'Post information about this semester''s WIP/TERM'
+    create_gp_explanation_msg: 'Create explanation of GP'
+    create_this_sem_gp_page_msg: 'Post information about this semester''s GP'
   uploads:
     header: 'Upload a file'
     list_header: 'Uploaded files'

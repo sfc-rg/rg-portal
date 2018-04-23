@@ -2,5 +2,7 @@
 
 .content-outer
   .content
-    = include_or_create_page_content('Thesis', '卒論の説明をつくる').html_safe
-    = include_or_create_page_content("#{term_name}/Thesis", '今学期の卒論情報を載せる').html_safe
+    = include_or_create_page_content('Thesis',
+      t('pages.create_gp_explanation_msg')).html_safe
+    = include_or_create_page_content("#{term_name}/Thesis",
+      t('pages.create_this_sem_gp_page_msg')).html_safe
