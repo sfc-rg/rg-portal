@@ -2,5 +2,7 @@
 
 .content-outer
   .content
-    = include_or_create_page_content('WipTerm', 'WIP/TERMの説明をつくる').html_safe
-    = include_or_create_page_content("#{term_name}/WipTerm", '今学期のWIP/TERM情報を載せる').html_safe
+    = include_or_create_page_content('WipTerm',
+      t('pages.create_wip_term_explanation_msg')).html_safe
+    = include_or_create_page_content("#{term_name}/WipTerm",
+      t('pages.create_this_sem_wip_term_page_msg')).html_safe
