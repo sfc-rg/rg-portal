@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :require_current_user
   def index
     @groups = Group.all
   end
