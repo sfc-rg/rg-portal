@@ -14,7 +14,7 @@
     %p= t 'profile.user_info_message'
   - else
     = form_tag update_ldap_path, method: :patch, class: 'setting-form' do
-      %label = t 'profile.username'
+      %label= t 'profile.username'
       = text_field :ldap, :username, placeholder: t('profile.username')
       %label= t 'profile.password'
       = password_field :ldap, :password, placeholder: t('profile.password')

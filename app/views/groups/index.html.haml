@@ -1,5 +1,5 @@
 .content
-  %h1 t('groups.header')
+  %h1= t('groups.header')
   %table
     %tr
       %th #
@@ -13,7 +13,7 @@
         %td= group.name
         %td= group.users.size
 
-  %h1 t('groups.create_header')
+  %h1= t('groups.create_header')
   = form_for Group.new do |f|
     = f.select :kind, Group.kinds.keys
     = f.text_field :name
