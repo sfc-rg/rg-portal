@@ -7,7 +7,7 @@ RG Portal
 
 ### Requirements
 
-* Ruby 2.3.0
+* Ruby 2.3.7
 * Bundler
 * Bower
 

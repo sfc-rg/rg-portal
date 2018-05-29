@@ -1,13 +1,14 @@
-box: wercker/rvm
-services:
-  - wercker/mysql
+box: ruby:2.3.7
 build:
   steps:
-    - rvm-use:
-        version: 2.3.0
+    - script:
+        name: install nodejs
+        code: |
+          curl -sL https://deb.nodesource.com/setup_8.x | bash
+          apt-get install -y nodejs
     - bundle-install:
         jobs: 4
-    - rails-database-yml
+        binstubs: true
     - create-file:
         name: write oauth.yml
         filename: $WERCKER_SOURCE_DIR/config/oauth.yml
@@ -25,7 +26,7 @@ build:
         code: bin/rake emoji
     - script:
         name: setup bower component
-        code: bin/rake bower:install
+        code: bin/rake bower:install['--allow-root']
     - script:
         name: rspec
         code: bundle exec rspec
@@ -35,8 +36,6 @@ build:
         branches: ^master$
 deploy:
   steps:
-    - rvm-use:
-        version: 2.3.0
     - bundle-install:
         jobs: 4
     - script:
